@@ -1,3 +1,6 @@
 __pycache__/
 *.pyc
 _site/
+
+# Private scouting/prep data (requester sets, week-shared team sheets). Never commit.
+prep/
