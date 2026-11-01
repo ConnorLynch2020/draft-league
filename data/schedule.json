@@ -200,11 +200,11 @@
   "matchup": "Ethan vs Dennis",
   "player1": "Ethan",
   "player2": "Dennis",
-  "status": "Upcoming",
-  "winner": null,
-  "score": null,
-  "game1": null,
-  "game2": null,
+  "status": "Played",
+  "winner": "Ethan",
+  "score": "2–0",
+  "game1": "2707493080",
+  "game2": "2707496957",
   "game3": null
  },
  {
@@ -239,11 +239,11 @@
   "matchup": "Dzzy vs David Kim",
   "player1": "Dzzy",
   "player2": "David Kim",
-  "status": "Upcoming",
-  "winner": null,
-  "score": null,
-  "game1": null,
-  "game2": null,
+  "status": "Played",
+  "winner": "Dzzy",
+  "score": "2–0",
+  "game1": "2707504678",
+  "game2": "2707511616",
   "game3": null
  },
  {
