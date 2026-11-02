@@ -6,9 +6,12 @@
 
 replays.txt: one replay URL per line, optionally followed by a week number
 (`https://replay.pokemonshowdown.com/gen5doublescustomgame-123 4`). '#' starts a comment.
+A line can instead name a replay file downloaded from Showdown and committed under replays/
+(`replays/my-game.html 4`), for games whose link wasn't saved.
 Fetched replay logs are cached in cache/ so a rebuild never re-downloads them.
 """
 import datetime
+import html
 import json
 import os
 import re
@@ -87,6 +90,7 @@ def species_types(species, name):
 
 
 def parse_links(path):
+    """replays.txt -> OrderedDict(replay id -> (week override, local HTML path or None))."""
     out = OrderedDict()
     with open(path) as f:
         for raw in f:
@@ -94,13 +98,45 @@ def parse_links(path):
             if not line:
                 continue
             parts = line.split()
+            week = int(parts[1]) if len(parts) > 1 and parts[1].isdigit() else None
+            if parts[0].lower().endswith((".html", ".htm")):
+                file = os.path.normpath(os.path.join(ROOT, parts[0]))
+                if not os.path.isfile(file):
+                    sys.exit("Replay file %s doesn't exist. Upload it to the replays/ folder." % parts[0])
+                rep = read_html_replay(file)
+                out[rep["id"]] = (week, file)
+                continue
             m = re.search(r"replay\.pokemonshowdown\.com/([A-Za-z0-9\-]+?)(?:\.json|\.log)?(?:\?.*)?$", parts[0])
             if not m:
                 sys.exit("Can't read a replay link from: %r" % raw.strip())
-            rid = m.group(1)
-            week = int(parts[1]) if len(parts) > 1 and parts[1].isdigit() else None
-            out[rid] = week
+            out[m.group(1)] = (week, None)
     return out
+
+
+def read_html_replay(path):
+    """A replay saved with Showdown's "Download replay" button -> the same dict the replay JSON API gives."""
+    with open(path, encoding="utf-8", errors="replace") as f:
+        page = f.read()
+    m = re.search(r'<script[^>]*class="(?:battle-log-data|log)"[^>]*>(.*?)</script>', page, re.S)
+    if m:
+        log = m.group(1).replace("\\/", "/")  # the download escapes every '/' as '\/'
+    else:
+        m = re.search(r'<textarea[^>]*class="(?:battle-log-data|log)"[^>]*>(.*?)</textarea>', page, re.S)
+        if not m:
+            sys.exit("Replay file %s has no battle log in it. Use the file from Showdown's Download replay "
+                     "button." % os.path.relpath(path, ROOT))
+        log = html.unescape(m.group(1))
+    log = log.strip("\r\n").replace("\r\n", "\n")
+    m = re.search(r'name="replayid" value="([^"]+)"', page)
+    rid = m.group(1) if m else ""
+    if not re.fullmatch(r"[A-Za-z0-9\-]+", rid):
+        rid = re.sub(r"[^A-Za-z0-9\-]+", "-", os.path.splitext(os.path.basename(path))[0]).strip("-")
+    m = re.search(r"^\|t:\|(\d+)", log, re.M)
+    uploadtime = int(m.group(1)) if m else int(os.path.getmtime(path))
+    players = [ln.split("|")[3] for ln in log.split("\n")
+               if ln.startswith("|player|") and len(ln.split("|")) > 3 and ln.split("|")[3]]
+    return {"id": rid, "log": log, "uploadtime": uploadtime, "players": players,
+            "file": os.path.relpath(path, ROOT).replace(os.sep, "/")}
 
 
 def fetch(rid, offline):
@@ -140,8 +176,8 @@ def main():
 
     # ---- parse every replay -------------------------------------------------
     games = []
-    for rid, week_override in links.items():
-        rep = fetch(rid, offline)
+    for rid, (week_override, file) in links.items():
+        rep = read_html_replay(file) if file else fetch(rid, offline)
         g = parse_replay(rep)
         names = {}
         for side in ("p1", "p2"):
@@ -199,7 +235,7 @@ def main():
         date = datetime.datetime.fromtimestamp(g["rep"]["uploadtime"], datetime.timezone.utc).strftime("%Y-%m-%d")
         out_games.append(OrderedDict([
             ("id", gid),
-            ("replay", "https://replay.pokemonshowdown.com/" + g["id"]),
+            ("replay", g["rep"]["file"] if g["rep"].get("file") else "https://replay.pokemonshowdown.com/" + g["id"]),
             ("date", date), ("week", g["week"]), ("game", g["game"]),
             ("matchup", "%s vs %s" % (r["p1"], r["p2"])),
             ("player1", r["p1"]), ("player2", r["p2"]),
@@ -303,6 +339,7 @@ def main():
             row.update(status="Upcoming", winner=None, score=None)
         for n in range(1, 4):
             row["game%d" % n] = gl[n - 1]["id"] if len(gl) >= n else None
+            row["game%d_url" % n] = gl[n - 1]["replay"] if len(gl) >= n else None
         sched.append(row)
 
     # ---- teams ---------------------------------------------------------------

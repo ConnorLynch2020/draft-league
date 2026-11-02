@@ -1328,7 +1328,7 @@ function draw(T) {
       } else if (c.vs && r.player1 && r.player2) {
         td.appendChild(plink(r.player1)); td.appendChild(document.createTextNode(' vs ')); td.appendChild(plink(r.player2));
       } else if (c.base && v != null) {
-        const a = document.createElement('a'); a.href = c.base + v; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Game ' + c.f.slice(-1); td.appendChild(a);
+        const a = document.createElement('a'); a.href = r[c.f + '_url'] || c.base + v; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Game ' + c.f.slice(-1); td.appendChild(a);
       } else if (c.link && v != null) {
         const a = document.createElement('a'); a.href = r[c.link]; a.target = '_blank'; a.rel = 'noopener'; a.textContent = String(v); td.appendChild(a);
       } else td.textContent = v == null ? '–' : fv(c.t, v);

@@ -7,6 +7,7 @@ on:
     branches: [main]
     paths:
       - replays.txt
+      - replays/**
       - config/**
       - scripts/**
       - index.html
@@ -49,6 +50,7 @@ jobs:
           mkdir _site
           cp index.html dash-shim.js sprites1.js sprites2.js _site/
           cp -r data _site/data
+          if [ -d replays ]; then cp -r replays _site/replays; fi
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
