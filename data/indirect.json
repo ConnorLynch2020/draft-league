@@ -1,8 +1,8 @@
 [
  {
   "source": "Sandstorm",
-  "hits": 362,
-  "damage": 21.66,
+  "hits": 367,
+  "damage": 21.96,
   "faints": 15
  },
  {
@@ -19,14 +19,14 @@
  },
  {
   "source": "Stealth Rock",
-  "hits": 96,
-  "damage": 11.69,
+  "hits": 98,
+  "damage": 11.94,
   "faints": 2
  },
  {
   "source": "Life Orb recoil",
-  "hits": 113,
-  "damage": 10.86,
+  "hits": 115,
+  "damage": 11.06,
   "faints": 5
  },
  {
