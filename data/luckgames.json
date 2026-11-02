@@ -722,6 +722,25 @@
   "events": 39
  },
  {
+  "id": "2708015115",
+  "replay": "https://replay.pokemonshowdown.com/gen5doublescustomgame-2708015115",
+  "week": 4,
+  "game": 1,
+  "matchup": "Alex vs Bo",
+  "player1": "Alex",
+  "player2": "Bo",
+  "winner": "Alex",
+  "turns": 11,
+  "luckier": "Bo",
+  "edge": 0.55,
+  "edge_score": 0.27,
+  "swing": "",
+  "luckier_won": "No",
+  "crits1": 0,
+  "crits2": 0,
+  "events": 50
+ },
+ {
   "id": "2706590747",
   "replay": "https://replay.pokemonshowdown.com/gen5doublescustomgame-2706590747",
   "week": 4,
