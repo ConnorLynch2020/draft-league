@@ -15,6 +15,17 @@ doesn't fit (a rematch, a make-up game), put the week after the link: `<link> 4`
 
 Replays have to be uploaded as **public** on Showdown (the "Upload and share replay" button).
 
+### No link? Use the downloaded replay file
+
+If nobody saved the link but someone has the replay `.html` file (Showdown's "Download replay"
+button), that works too:
+
+1. On github.com open the `replays` folder (or create it), click **Add file → Upload files** and
+   upload the `.html` file.
+2. Add a line to `replays.txt` with the file's path, e.g. `replays/week4-game2.html` (a week number
+   after it works the same as for links).
+3. Commit. The site's replay link for that game opens the uploaded file.
+
 ## If the action fails
 
 Open the failed run and read the last lines. The usual causes:
@@ -24,6 +35,7 @@ Open the failed run and read the last lines. The usual causes:
 | `Showdown account 'xyz' isn't in config/players.json` | Add `"xyz": "Player Name"` to `config/players.json`. Players can have several accounts. |
 | `isn't on the schedule` | Add the week number after the link, or fix `config/schedule.json`. |
 | `Couldn't fetch ...` | The replay is private or the link is wrong. |
+| `Replay file ... doesn't exist` / `has no battle log` | Check the path in `replays.txt`, and that the file is the one Showdown's Download replay button saved. |
 | `has no winner recorded` | The game wasn't finished. Add it once it is. |
 
 Fix the file and commit again; the action re-runs.
