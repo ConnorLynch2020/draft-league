@@ -1,6 +1,6 @@
 # Plan: a fuller Pokémon value stat (HP Impact)
 
-Status: proposal, nothing built yet.
+Status: plan approved, not built yet.
 
 ## The idea
 
@@ -155,9 +155,10 @@ Luck (crits, misses) isn't removed here. The Luck tab covers it.
    with Intimidate and screens). Assert in the build that HP Added (attributed damage plus what
    nobody caused) equals the total HP lost in each game.
 
-## Decisions for you
+## Decisions (settled)
 
-1. Starting heuristic shares: `SPEED_SHARE` 25%, `REDIRECT_SHARE` 50%. Good starting points,
-   or would you rather they were more or less generous to support?
-2. Show Life Orb / recoil next to damage, or subtract it? Recommendation: show it, don't
-   subtract, to be consistent with not subtracting damage taken.
+1. Heuristic shares start at `SPEED_SHARE` = 25% and `REDIRECT_SHARE` = 50%. Revisit after the
+   tuning check.
+2. Life Orb / recoil damage is shown next to damage dealt, not subtracted.
+3. Protect earns credit only for attacks that targeted the user and were blocked.
+4. Damage taken is shown but never subtracted.
