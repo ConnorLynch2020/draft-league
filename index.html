@@ -489,33 +489,18 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
     </div>
     <div class="lx-card" id="lx-detail"></div>
     <div class="lx-card">
-      <h2>Most Impact</h2>
-      <p class="lx-note">Season total of Impact in HP bars: OFF + DEF. Hover a bar for the breakdown, including Impact+. See <a class="lx-deflink" href="#defs">how Impact works</a>.</p>
-      <div class="lx-chart dash-skeleton" id="lx-c-imp" data-source="mons"></div>
-    </div>
-    <div class="lx-grid">
-      <div class="lx-card">
-        <h2>Most OFF</h2>
-        <p class="lx-note">Season total of HP taken off opponents: damage, set-up damage and shares.</p>
-        <div class="lx-chart dash-skeleton" id="lx-c-off" data-source="mons"></div>
+      <h2 id="lx-g-title">Top Pokémon by Impact</h2>
+      <div class="lx-controls">
+        <label>Stat <select id="lx-g-stat" aria-label="Stat"></select></label>
+        <label>Show <select id="lx-g-mode" aria-label="Total or per game"><option value="total" selected>Season total</option><option value="pg">Per game brought</option></select></label>
+        <label>Player <select id="lx-g-p" aria-label="Player"><option value="">All players</option></select></label>
+        <label>Weeks <select id="lx-g-wf" aria-label="From week"></select></label>
+        <label>to <select id="lx-g-wt" aria-label="To week"></select></label>
+        <label>Order <select id="lx-g-ord" aria-label="Order"><option value="desc" selected>Highest first</option><option value="asc">Lowest first</option></select></label>
+        <label>Top <select id="lx-g-n" aria-label="Number of Pokémon"><option>10</option><option selected>15</option><option>25</option><option>50</option></select></label>
       </div>
-      <div class="lx-card">
-        <h2>Most DEF</h2>
-        <p class="lx-note">Season total of HP kept on its own side: healing and prevented damage.</p>
-        <div class="lx-chart dash-skeleton" id="lx-c-def" data-source="mons"></div>
-      </div>
-    </div>
-    <div class="lx-grid">
-      <div class="lx-card">
-        <h2>Most KOs</h2>
-        <p class="lx-note">KOs credited to the last attack that hit the fainted Pokémon.</p>
-        <div class="lx-chart dash-skeleton" id="lx-c-kos" data-source="mons"></div>
-      </div>
-      <div class="lx-card">
-        <h2>Most damage dealt</h2>
-        <p class="lx-note">Full HP bars taken from opponents by this Pokémon's attacks.</p>
-        <div class="lx-chart dash-skeleton" id="lx-c-dmg" data-source="mons"></div>
-      </div>
+      <p class="lx-note" id="lx-g-note">Pick any stat from the table above. Player and weeks here are the same filters as at the top of the page, and the Min. games and search filters apply too. See <a class="lx-deflink" href="#defs">how Impact works</a>.</p>
+      <div class="lx-chart dash-skeleton" id="lx-c-stat" data-source="mons"></div>
     </div>
     <div class="lx-grid">
       <div class="lx-card">
@@ -1479,6 +1464,13 @@ T_LLEADS.limit = 15;
 const T_WX = mkTable('lx-t-weather', [{ f: 'weather', t: 'text' }, { f: 'games', t: 'int' }], { f: 'games', dir: -1 }, 'weather');
 
 let selMon = null;
+// ---- Stat chart on the Pokémon tab: any numeric column of the table, as a season total or per game brought ----
+// Rates (percentages, per-game columns, the 100-is-average + columns) and Brought itself have no per-game version.
+const G_STATS = T_MONS.cols.filter((c) => c.t !== 'text').map((c) => {
+  const th = T_MONS.el.querySelector('th[data-field="' + c.f + '"]');
+  return { f: c.f, t: c.t, label: th ? th.textContent.trim() : c.f, rate: c.t === 'pct' || /_per_app$|_plus$/.test(c.f) || c.f === 'brought' };
+});
+G_STATS.forEach((c) => $('#lx-g-stat').appendChild(new Option(c.label, c.f, c.f === 'impact', c.f === 'impact')));
 T_MONS.onPick = (r) => { selMon = r.id; renderDetail(r); syncHash(); };
 T_MONS.sel = null;
 
@@ -1821,25 +1813,56 @@ function renderScout() {
 }
 $('#lx-ll-more').addEventListener('click', () => { T_LLEADS.limit = T_LLEADS.limit ? null : 15; renderScout(); });
 
+// The chart's Player and Weeks selects mirror the page filters (#lx-team, #lx-wf, #lx-wt), so both stay in step.
+const G_MIRROR = [['lx-g-p', 'lx-team'], ['lx-g-wf', 'lx-wf'], ['lx-g-wt', 'lx-wt']];
+function syncGraphFilters() {
+  G_MIRROR.forEach(([m, o]) => {
+    const me = $('#' + m), oe = $('#' + o);
+    if (me.options.length !== oe.options.length) { me.textContent = ''; [...oe.options].forEach((x) => me.appendChild(new Option(x.text, x.value))); }
+    me.value = oe.value;
+    me.disabled = oe.options.length < 2;
+  });
+}
+G_MIRROR.forEach(([m, o]) => $('#' + m).addEventListener('change', () => {
+  const oe = $('#' + o);
+  oe.value = $('#' + m).value;
+  if (o !== 'lx-team') wkClamp(oe);
+  render();
+}));
+
+function renderStatChart(el, rows) {
+  const c = G_STATS.find((x) => x.f === $('#lx-g-stat').value) || G_STATS.find((x) => x.f === 'impact');
+  const modeSel = $('#lx-g-mode');
+  modeSel.querySelector('option[value="pg"]').disabled = c.rate;
+  if (c.rate) modeSel.value = 'total';
+  const pg = !c.rate && modeSel.value === 'pg';
+  const asc = $('#lx-g-ord').value === 'asc';
+  const n = +$('#lx-g-n').value || 15;
+  const val = (r) => (r[c.f] == null ? null : pg ? (r.brought ? r[c.f] / r.brought : null) : r[c.f]);
+  const data = rows.map((r) => Object.assign({}, r, { _v: val(r) })).filter((r) => r._v != null)
+    .sort((a, b) => (asc ? a._v - b._v : b._v - a._v) || (b.brought || 0) - (a.brought || 0)).slice(0, n);
+  const label = c.label + (pg ? ' per game' : c.rate ? '' : ' (season total)');
+  $('#lx-g-title').textContent = (asc ? 'Lowest' : 'Top') + ' Pokémon by ' + c.label + (pg ? ' per game' : '');
+  const f = pg ? fmt.d2 : fmt[c.t];
+  const imp = /^(impact|off|def|imp_)/.test(c.f);
+  hbar(el, data, {
+    sprite: (r) => r.pokemon, label: (r) => r.pokemon, fmt: f, note: (r) => r.player,
+    series: [{ key: '_v', label, color: dash.colors[imp ? 2 : 0] }],
+    tip: (r) => [label + ': ' + f(r._v), 'Brought in ' + fmt.int(r.brought || 0) + ' of ' + fmt.int(r.team_games || 0) + ' games']
+      .concat(pg ? [c.label + ' total: ' + fmt[c.t](r[c.f])] : [], imp ? impactLines(r).concat(preventedLines(r)) : []),
+  });
+}
+
 function renderPokemon() {
   const sel = $('#lx-team');
   fillSel(sel, okAll(['teams']) && players());
-  const kosC = $('#lx-c-kos'), dmgC = $('#lx-c-dmg'), impC = $('#lx-c-imp'), offC = $('#lx-c-off'), defC = $('#lx-c-def');
-  const gs = [kosC, dmgC, impC, offC, defC].map((c) => gate(c, need(['mons'])));
-  if (gs.some(Boolean)) return;
+  syncGraphFilters();
+  const statC = $('#lx-c-stat');
+  if (gate(statC, need(['mons']))) return;
   const rows = monFilter();
-  const lab = (r) => r.pokemon;
-  const impTip = (r) => ['Brought in ' + fmt.int(r.brought) + ' of ' + fmt.int(r.team_games) + ' games'].concat(impactLines(r), preventedLines(r));
-  const top = (k, n) => rows.filter((r) => r[k] != null).sort((a, b) => b[k] - a[k] || (b.impact || 0) - (a.impact || 0)).slice(0, n);
-  hbar(impC, top('impact', 12), { sprite: (r) => r.pokemon, label: lab, fmt: fmt.d1, series: [{ key: 'impact', label: 'Impact', color: dash.colors[2] }], note: (r) => r.player, tip: impTip });
-  hbar(offC, top('off', 10), { sprite: (r) => r.pokemon, label: lab, fmt: fmt.d1, series: [{ key: 'off', label: 'OFF', color: dash.colors[0] }], note: (r) => r.player, tip: impTip });
-  hbar(defC, top('def', 10), { sprite: (r) => r.pokemon, label: lab, fmt: fmt.d1, series: [{ key: 'def', label: 'DEF', color: dash.colors[1] }], note: (r) => r.player, tip: impTip });
-  const byKos = rows.slice().sort((a, b) => b.kos - a.kos || (b.kos_per_app || 0) - (a.kos_per_app || 0)).slice(0, 10);
-  hbar(kosC, byKos, { sprite: (r) => r.pokemon, label: lab, fmt: fmt.int, series: [{ key: 'kos', label: 'KOs', color: dash.colors[0] }], note: (r) => r.player, tip: (r) => [fmt.int(r.brought) + ' games', fmt.d2(r.kos_per_app || 0) + ' KOs per game'] });
-  const byDmg = rows.slice().sort((a, b) => b.damage - a.damage).slice(0, 10);
-  hbar(dmgC, byDmg, { sprite: (r) => r.pokemon, label: lab, fmt: fmt.d1, series: [{ key: 'damage', label: 'Damage dealt', color: dash.colors[1] }], note: (r) => r.player, tip: (r) => [fmt.int(r.brought) + ' games', fmt.d2(r.damage_per_app || 0) + ' per game'] });
+  renderStatChart(statC, rows);
   T_MONS.rows = rows;
-  const cur = rows.find((r) => r.id === selMon) || byKos[0] || null;
+  const cur = rows.find((r) => r.id === selMon) || rows.slice().sort((a, b) => b.kos - a.kos || (b.kos_per_app || 0) - (a.kos_per_app || 0))[0] || null;
   T_MONS.sel = cur ? cur.id : null;
   selMon = T_MONS.sel;
   draw(T_MONS);
@@ -2153,7 +2176,7 @@ const HASH_STATE = {
   teams: WKH,
   scout: Object.assign({ player: selField('lx-sc-p'), vs: selField('lx-sc-v'), types: { get: () => ($('#lx-sc-unb').checked ? 'all' : ''), set: (v) => { $('#lx-sc-unb').checked = v === 'all'; } } }, WKH),
   moves: Object.assign({ player: selField('lx-mp') }, WKH),
-  pokemon: Object.assign({ player: selField('lx-team'), min: defField('lx-min'), mon: { get: () => selMon || '', set: (v) => { selMon = v || null; } } }, WKH),
+  pokemon: Object.assign({ player: selField('lx-team'), min: defField('lx-min'), stat: defField('lx-g-stat'), per: defField('lx-g-mode'), order: defField('lx-g-ord'), top: defField('lx-g-n'), mon: { get: () => selMon || '', set: (v) => { selMon = v || null; } } }, WKH),
   luck: { player: selField('lx-lp') },
   schedule: { player: selField('lx-sp'), status: selField('lx-ss') },
 };
@@ -2188,7 +2211,7 @@ function setTab(name) {
 }
 
 document.querySelectorAll('.lx-tab').forEach((b) => b.addEventListener('click', () => setTab(b.dataset.tab)));
-['lx-sc-p', 'lx-sc-v', 'lx-sc-unb', 'lx-team', 'lx-min', 'lx-q-mons', 'lx-unused', 'lx-mp', 'lx-q-moves', 'lx-q-games', 'lx-sp', 'lx-ss', 'lx-lp'].forEach((id) => {
+['lx-sc-p', 'lx-sc-v', 'lx-sc-unb', 'lx-team', 'lx-min', 'lx-g-stat', 'lx-g-mode', 'lx-g-ord', 'lx-g-n', 'lx-q-mons', 'lx-unused', 'lx-mp', 'lx-q-moves', 'lx-q-games', 'lx-sp', 'lx-ss', 'lx-lp'].forEach((id) => {
   const el = $('#' + id);
   el.addEventListener(el.type === 'search' ? 'input' : 'change', render);
 });
