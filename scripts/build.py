@@ -166,6 +166,10 @@ def fetch(rid, offline):
 
 IMPACT_FIELDS = (("imp_damage", "dmg"), ("imp_setup", "setup"), ("imp_heal", "heal"),
                  ("imp_prevented", "prev"), ("imp_share", "share"), ("recoil", "recoil"))
+# The two sides of Impact. OFF is HP taken off the opponents (damage, set-up damage, and the
+# Helping Hand / speed-control shares of allies' hits); DEF is HP kept on its own side (healing
+# and damage prevented). Every component is on exactly one side, so OFF + DEF = Impact.
+IMPACT_SIDES = (("off", ("dmg", "setup", "share")), ("def", ("heal", "prev")))
 
 
 def impact_fields(v, side, sp):
@@ -173,17 +177,28 @@ def impact_fields(v, side, sp):
     c = v["rows"].get((side, sp), {})
     out = [(k, r6(c.get(src, 0.0))) for k, src in IMPACT_FIELDS]
     out.append(("impact", r6(sum(c.get(src, 0.0) for src in ("dmg", "setup", "heal", "prev", "share")))))
+    out += [(side_, r6(sum(c.get(src, 0.0) for src in srcs))) for side_, srcs in IMPACT_SIDES]
     pb = v["prev_by"].get((side, sp), {})
     out.append(("prevented_by", OrderedDict((k, r6(pb[k])) for k in sorted(pb) if r6(pb[k]))))
     return out
 
 
-def impact_totals(rows, team_games, brought):
+def impact_plus(per_app, league_per_app):
+    """HP Impact per game brought as a share of the league average, where 100 is average."""
+    return int(round(100 * per_app / league_per_app)) if per_app is not None and league_per_app else None
+
+
+def impact_totals(rows, team_games, brought, league):
     """Season HP Impact columns for mons.json, summed from the per-game rows in the same order the
-    page sums them, so the page's week filter reproduces these numbers exactly."""
+    page sums them, so the page's week filter reproduces these numbers exactly. `league` is the
+    league average per game brought of impact, off and def."""
     tot = sum(r["impact"] for r in rows)
-    out = [("impact", r2(tot)), ("impact_per_game", r2(tot / team_games) if team_games else 0),
+    out = [("impact_plus", impact_plus(tot / brought if brought else None, league["impact"])), ("impact", r2(tot)), ("impact_per_game", r2(tot / team_games) if team_games else 0),
            ("impact_per_app", r2(tot / brought) if brought else None)]
+    for k, _ in IMPACT_SIDES:
+        t = sum(r[k] for r in rows)
+        out += [(k + "_plus", impact_plus(t / brought if brought else None, league[k])), (k, r2(t)),
+                (k + "_per_app", r2(t / brought) if brought else None)]
     out += [(k, r2(sum(r[k] for r in rows))) for k, _ in IMPACT_FIELDS]
     pb = defaultdict(float)
     for r in rows:
@@ -194,9 +209,10 @@ def impact_totals(rows, team_games, brought):
 
 
 def impact_tuning(games, trackers, mons):
-    """Rank every brought Pokémon by HP Impact per team game with the heuristic shares at half,
-    default and double. Rows for Pokémon whose rank moves are flagged on the page."""
-    team_games = {m["id"]: m["team_games"] for m in mons if m["brought"]}
+    """Rank every brought Pokémon by HP Impact per game brought (the Impact+ order) with the
+    heuristic shares at half, default and double. Rows for Pokémon whose rank moves are flagged
+    on the page."""
+    brought = {m["id"]: m["brought"] for m in mons if m["brought"]}
     ranks = {}
     for f in (0.5, 1, 2):
         valued, _ = impact.evaluate(trackers, impact.SPEED_SHARE * f, impact.REDIRECT_SHARE * f)
@@ -204,10 +220,10 @@ def impact_tuning(games, trackers, mons):
         for g, v in zip(games, valued):
             for (side, sp), c in v["rows"].items():
                 tot["%s|%s" % (g["names"][side], sp)] += impact.impact_of(c)
-        order = sorted(team_games, key=lambda k: (-tot[k] / team_games[k], k))
+        order = sorted(brought, key=lambda k: (-tot[k] / brought[k], k))
         ranks[f] = {k: i + 1 for i, k in enumerate(order)}
     out = []
-    for k in sorted(team_games, key=lambda k: ranks[1][k]):
+    for k in sorted(brought, key=lambda k: ranks[1][k]):
         lo, mid, hi = ranks[0.5][k], ranks[1][k], ranks[2][k]
         out.append(OrderedDict([("id", k), ("rank_half", lo), ("rank", mid), ("rank_double", hi),
                                 ("moves", max(lo, mid, hi) - min(lo, mid, hi))]))
@@ -436,6 +452,8 @@ def main():
 
     # ---- mons ----------------------------------------------------------------
     imp_rows = defaultdict(list)
+    league_per_app = {k: sum(r[k] for r in gm_rows) / len(gm_rows) if gm_rows else 0
+                      for k in ("impact",) + tuple(k for k, _ in IMPACT_SIDES)}
     for r in gm_rows:
         imp_rows[(r["player"], r["pokemon"])].append(r)
     mons = []
@@ -460,7 +478,7 @@ def main():
             ("friendly_fire", r2(row["friendly_fire"])), ("crits", int(row["crits"])),
             ("super_effective", int(row["super_effective"])), ("misses", int(row["misses"])),
             ("statuses", int(row["statuses"])),
-        ] + impact_totals(imp_rows.get((p, sp), []), tg, b)))
+        ] + impact_totals(imp_rows.get((p, sp), []), tg, b, league_per_app)))
     mons.sort(key=lambda x: (x["player"], x["pokemon"]))
 
     # ---- moves ---------------------------------------------------------------
