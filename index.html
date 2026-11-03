@@ -2141,11 +2141,19 @@ const wkField = (id, last) => ({
   set: (v) => { const e = $('#' + id); e.dataset.want = v; if (e.options.length > 1) { e.value = v; if (e.selectedIndex < 0) e.selectedIndex = last ? e.options.length - 1 : 0; } },
 });
 const WKH = { from: wkField('lx-wf', false), to: wkField('lx-wt', true) };
+// A select with fixed options: an empty or unknown value falls back to the option marked selected in the HTML, which stays out of the URL.
+const defField = (id) => {
+  const def = () => { const e = $('#' + id); return ([...e.options].find((o) => o.defaultSelected) || e.options[0]).value; };
+  return {
+    get: () => { const v = $('#' + id).value; return v === def() ? '' : v; },
+    set: (v) => { const e = $('#' + id); e.value = v; if (e.selectedIndex < 0 || !v) e.value = def(); },
+  };
+};
 const HASH_STATE = {
   teams: WKH,
   scout: Object.assign({ player: selField('lx-sc-p'), vs: selField('lx-sc-v'), types: { get: () => ($('#lx-sc-unb').checked ? 'all' : ''), set: (v) => { $('#lx-sc-unb').checked = v === 'all'; } } }, WKH),
   moves: Object.assign({ player: selField('lx-mp') }, WKH),
-  pokemon: Object.assign({ player: selField('lx-team'), min: selField('lx-min'), mon: { get: () => selMon || '', set: (v) => { selMon = v || null; } } }, WKH),
+  pokemon: Object.assign({ player: selField('lx-team'), min: defField('lx-min'), mon: { get: () => selMon || '', set: (v) => { selMon = v || null; } } }, WKH),
   luck: { player: selField('lx-lp') },
   schedule: { player: selField('lx-sp'), status: selField('lx-ss') },
 };
