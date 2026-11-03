@@ -182,7 +182,7 @@ def impact_totals(rows, team_games, brought):
     """Season HP Impact columns for mons.json, summed from the per-game rows in the same order the
     page sums them, so the page's week filter reproduces these numbers exactly."""
     tot = sum(r["impact"] for r in rows)
-    out = [("impact", r2(tot)), ("impact_per_game", r2(tot / team_games) if team_games else 0),
+    out = [("war", r2(sum(r["war"] for r in rows))), ("impact", r2(tot)), ("impact_per_game", r2(tot / team_games) if team_games else 0),
            ("impact_per_app", r2(tot / brought) if brought else None)]
     out += [(k, r2(sum(r[k] for r in rows))) for k, _ in IMPACT_FIELDS]
     pb = defaultdict(float)
@@ -193,10 +193,10 @@ def impact_totals(rows, team_games, brought):
     return out
 
 
-def impact_tuning(games, trackers, mons):
-    """Rank every brought Pokémon by HP Impact per team game with the heuristic shares at half,
-    default and double. Rows for Pokémon whose rank moves are flagged on the page."""
-    team_games = {m["id"]: m["team_games"] for m in mons if m["brought"]}
+def impact_tuning(games, trackers, mons, replacement):
+    """Rank every brought Pokémon by WAR with the heuristic shares at half, default and double
+    (replacement level held fixed). Rows for Pokémon whose rank moves are flagged on the page."""
+    brought = {m["id"]: m["brought"] for m in mons if m["brought"]}
     ranks = {}
     for f in (0.5, 1, 2):
         valued, _ = impact.evaluate(trackers, impact.SPEED_SHARE * f, impact.REDIRECT_SHARE * f)
@@ -204,15 +204,15 @@ def impact_tuning(games, trackers, mons):
         for g, v in zip(games, valued):
             for (side, sp), c in v["rows"].items():
                 tot["%s|%s" % (g["names"][side], sp)] += impact.impact_of(c)
-        order = sorted(team_games, key=lambda k: (-tot[k] / team_games[k], k))
+        order = sorted(brought, key=lambda k: (-impact.war_of(tot[k], brought[k], replacement), k))
         ranks[f] = {k: i + 1 for i, k in enumerate(order)}
     out = []
-    for k in sorted(team_games, key=lambda k: ranks[1][k]):
+    for k in sorted(brought, key=lambda k: ranks[1][k]):
         lo, mid, hi = ranks[0.5][k], ranks[1][k], ranks[2][k]
         out.append(OrderedDict([("id", k), ("rank_half", lo), ("rank", mid), ("rank_double", hi),
                                 ("moves", max(lo, mid, hi) - min(lo, mid, hi))]))
     moved = [r for r in out if r["moves"] >= 3]
-    print("HP Impact tuning: %d of %d Pokémon move 3+ places when the heuristic shares are halved or doubled%s" % (
+    print("WAR tuning: %d of %d Pokémon move 3+ places when the heuristic shares are halved or doubled%s" % (
         len(moved), len(out), "".join("\n  %-28s %3d / %3d / %3d" % (r["id"], r["rank_half"], r["rank"],
                                                                      r["rank_double"]) for r in moved)))
     return out
@@ -434,6 +434,11 @@ def main():
         ]))
     teams.sort(key=lambda x: (-x["series_wins"], -x["wins"], x["player"]))
 
+    # ---- WAR: each brought game's HP Impact above replacement, in wins ----------
+    replacement = impact.replacement_level([r["impact"] for r in gm_rows])
+    for r in gm_rows:
+        r["war"] = r6(impact.war_of(r["impact"], 1, replacement))
+
     # ---- mons ----------------------------------------------------------------
     imp_rows = defaultdict(list)
     for r in gm_rows:
@@ -500,9 +505,10 @@ def main():
     save("weather", weather)
     for name, rows in aggregate_luck(games, out_games).items():
         save(name, rows)
-    save("impact", impact_tuning(games, trackers, mons))
+    save("impact", impact_tuning(games, trackers, mons, replacement))
     save("meta", {"updated": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-                  "games": len(out_games)})
+                  "games": len(out_games), "bars_per_win": impact.BARS_PER_WIN,
+                  "replacement_hp_per_game": r2(replacement)})
     print("Built %d games, %d players, %d Pokémon." % (len(out_games), len(teams), len(mons)))
 
 
