@@ -126,6 +126,14 @@ Luck (crits, misses) isn't removed here. The Luck tab covers it.
 - **Impact** (season total, in HP bars) sits next to it for volume, so a great Pokémon that's
   rarely brought can be told apart from a workhorse.
 - Impact per game brought (raw HP bars) stays in the full table and tooltips.
+- **OFF and DEF** are the two sides of Impact. OFF is HP taken off the opponents (damage,
+  set-up damage, Helping Hand and speed-control shares). DEF is HP kept on its own side (healing
+  and everything prevented, including speed-control KOs before the foe moved). Every component
+  is on exactly one side, so OFF + DEF = Impact.
+- **OFF+ and DEF+** scale each side like Impact+: per game brought ÷ the league average for that
+  side × 100. The league deals far more than it prevents (about 0.82 vs 0.31 HP bars per game
+  brought), so raw OFF and DEF aren't comparable, but 100 is average on both. High OFF+ / low
+  DEF+ reads as an attacker, the reverse as a support or wall.
 - **Breakdown** in tooltips and the Pokémon table: Damage · Set-up damage · Healing ·
   Prevented · Speed/support share · = Impact, plus Taken and recoil as information. Readers can tell a sweeper from a
   wall from a support at a glance.

@@ -50,7 +50,9 @@ Fix the file and commit again; the action re-runs.
 - `scripts/impact.py` works out **Impact**, the value stat on the Draft and Pokémon tabs: HP bars
   each Pokémon added (damage, set-up damage, healing) or kept off its team (Intimidate, screens,
   Protect, immunities, lost turns, speed control). **Impact+** is Impact per game brought against
-  the league average, where 100 is average. See `docs/war-plan.md`.
+  the league average, where 100 is average. Impact splits into **OFF** (HP taken off the
+  opponents) and **DEF** (HP kept on its own side), with **OFF+** and **DEF+** on the same 100 scale.
+  See `docs/war-plan.md`.
 - `index.html` + `dash-shim.js` render the page from `data/*.json`. Sprites for Pokémon that aren't
   in `sprites1.js` / `sprites2.js` load from Showdown's sprite server.
 - `scripts/ref/*.json` is move and type reference data (Gen 5), refreshed with

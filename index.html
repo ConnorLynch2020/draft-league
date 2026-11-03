@@ -416,7 +416,7 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
     </div>
     <div class="lx-card">
       <h2>Every Pokémon</h2>
-      <p class="lx-note">Bring % and lead % are out of that player's games. Impact+ is Impact per game brought, where 100 is average. Impact is the season total in HP bars; the columns after it are what it is made of. Hover Impact+, Impact, Prevented or Shares for the breakdown. Select a row to see its moves below the table.</p>
+      <p class="lx-note">Bring % and lead % are out of that player's games. Impact+ is Impact per game brought, where 100 is average. OFF+ and DEF+ do the same for its two sides: OFF is HP taken off the opponents (damage, set-up damage, shares), DEF is HP kept on its own side (healing, prevented), and OFF + DEF = Impact. Impact is the season total in HP bars; the columns after it are what it is made of. Hover Impact+, Impact, Prevented or Shares for the breakdown. Select a row to see its moves below the table.</p>
       <div class="lx-scroll">
         <table class="lx-table" id="lx-t-mons" data-source="mons" data-row-key="id">
           <thead><tr>
@@ -427,13 +427,17 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
             <th class="num" data-field="brought"><button class="lx-sort" type="button">Brought</button></th>
             <th class="num" data-field="led"><button class="lx-sort" type="button">Led</button></th>
             <th class="num" data-field="impact_plus"><button class="lx-sort" type="button">Impact+</button></th>
+            <th class="num" data-field="off_plus"><button class="lx-sort" type="button">OFF+</button></th>
+            <th class="num" data-field="def_plus"><button class="lx-sort" type="button">DEF+</button></th>
             <th class="num" data-field="impact"><button class="lx-sort" type="button">Impact</button></th>
+            <th class="num" data-field="off"><button class="lx-sort" type="button">OFF</button></th>
+            <th class="num" data-field="def"><button class="lx-sort" type="button">DEF</button></th>
             <th class="num" data-field="impact_per_app"><button class="lx-sort" type="button">Impact / game brought</button></th>
             <th class="num" data-field="imp_damage"><button class="lx-sort" type="button">Damage</button></th>
             <th class="num" data-field="imp_setup"><button class="lx-sort" type="button">Set-up damage</button></th>
+            <th class="num" data-field="imp_share"><button class="lx-sort" type="button">Shares</button></th>
             <th class="num" data-field="imp_heal"><button class="lx-sort" type="button">Healing</button></th>
             <th class="num" data-field="imp_prevented"><button class="lx-sort" type="button">Prevented</button></th>
-            <th class="num" data-field="imp_share"><button class="lx-sort" type="button">Shares</button></th>
             <th class="num" data-field="kos"><button class="lx-sort" type="button">KOs</button></th>
             <th class="num" data-field="kos_per_app"><button class="lx-sort" type="button">KOs / game</button></th>
             <th class="num" data-field="damage"><button class="lx-sort" type="button">Damage dealt</button></th>
@@ -791,13 +795,15 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
         <li><b>Sacrifices:</b> Final Gambit, Explosion and similar moves where the user faints on its own.</li>
         <li><b>Damage:</b> percent of HP removed from opposing Pokémon by the Pokémon's own attacks, in full HP bars. It is capped at the target's remaining HP, so overkill is not counted. Hits on a partner (spread moves) are tracked separately as friendly fire in the data.</li>
         <li><b>Impact+:</b> Impact per game brought divided by the league average, times 100. 100 is an average Pokémon, 150 is 50% more and 80 is 20% less, the same idea as OPS+ in baseball. It ignores how often a Pokémon is brought, so read it with games brought and the season total.</li>
+        <li><b>OFF and DEF:</b> the two sides of Impact. <b>OFF</b> is HP it took off the opponents: damage, set-up damage and shares. <b>DEF</b> is HP it kept on its own side: healing and prevented damage. Every part of Impact is on exactly one side, so OFF + DEF = Impact.</li>
+        <li><b>OFF+ and DEF+:</b> OFF and DEF per game brought against the league average, times 100, like Impact+. The league deals far more damage than it prevents, so the raw numbers aren't comparable, but 100 is average on both. High OFF+ with low DEF+ is an attacker, the reverse is a support or wall, and both high is an all-rounder.</li>
         <li><b>Impact:</b> everything is in HP bars, so it all adds up on one scale.
           <ul>
-            <li><b>Damage:</b> damage dealt to opponents, minus any done to its own partner.</li>
-            <li><b>Set-up damage:</b> burn and poison ticks (to whoever inflicted the status), sandstorm and hail on opponents (to the weather setter), Stealth Rock and Spikes (to the setter), Leech Seed, Rocky Helmet, Rough Skin, Iron Barbs and Pain Split.</li>
-            <li><b>Healing:</b> HP restored by Recover, Roost, Leftovers, Sitrus Berry, drain moves and absorbing abilities, Wish and Heal Pulse (to the healer) and Leech Seed (to the seeder). Heal Bell and Aromatherapy earn what an opponent's status of that kind cost on average this season.</li>
-            <li><b>Prevented:</b> damage it stopped. Intimidate: the extra physical damage the lowered Pokémon would have dealt (half again at −1). Burn: the burned Pokémon's physical damage again, since burn halves it. Reflect and Light Screen: half the damage allies took through them. Protect: the league-average damage of each attack that hit the Protect, so a Protect nobody attacked earns nothing. Wide Guard and Quick Guard: the same for every ally covered. Immunities and absorbing abilities: the league-average damage of the absorbed attack. Turns lost to flinching, paralysis, sleep, freeze, Taunt or Disable: the victim's average damage per move, to whoever caused it. Critical hits ignore Intimidate and screens, so they earn nothing there, and nothing is credited past the HP the target had left.</li>
-            <li><b>Shares:</b> Helping Hand takes a third of the boosted attack's damage from the attacker. Speed control (Trick Room, Tailwind, paralysis, Icy Wind-style drops) is checked against who moved first on turns without speed effects. When it lets an ally move before an opponent that is naturally faster, the setter takes 25% of that attack's damage, or the opponent's average damage per move if the ally knocked it out before it could move.</li>
+            <li><b>Damage (OFF):</b> damage dealt to opponents, minus any done to its own partner.</li>
+            <li><b>Set-up damage (OFF):</b> burn and poison ticks (to whoever inflicted the status), sandstorm and hail on opponents (to the weather setter), Stealth Rock and Spikes (to the setter), Leech Seed, Rocky Helmet, Rough Skin, Iron Barbs and Pain Split.</li>
+            <li><b>Healing (DEF):</b> HP restored by Recover, Roost, Leftovers, Sitrus Berry, drain moves and absorbing abilities, Wish and Heal Pulse (to the healer) and Leech Seed (to the seeder). Heal Bell and Aromatherapy earn what an opponent's status of that kind cost on average this season.</li>
+            <li><b>Prevented (DEF):</b> damage it stopped. Intimidate: the extra physical damage the lowered Pokémon would have dealt (half again at −1). Burn: the burned Pokémon's physical damage again, since burn halves it. Reflect and Light Screen: half the damage allies took through them. Protect: the league-average damage of each attack that hit the Protect, so a Protect nobody attacked earns nothing. Wide Guard and Quick Guard: the same for every ally covered. Immunities and absorbing abilities: the league-average damage of the absorbed attack. Turns lost to flinching, paralysis, sleep, freeze, Taunt or Disable: the victim's average damage per move, to whoever caused it. Critical hits ignore Intimidate and screens, so they earn nothing there, and nothing is credited past the HP the target had left.</li>
+            <li><b>Shares (OFF):</b> Helping Hand takes a third of the boosted attack's damage from the attacker. Speed control (Trick Room, Tailwind, paralysis, Icy Wind-style drops) is checked against who moved first on turns without speed effects. When it lets an ally move before an opponent that is naturally faster, the setter takes 25% of that attack's damage, or the opponent's average damage per move if the ally knocked it out before it could move (that one counts as prevented, so DEF).</li>
             <li><b>Follow Me and Rage Powder</b> earn half the league-average damage of each single-target attack they drew, since the log doesn't say what was aimed at the partner. This and the 25% speed share are the only judgment calls. The Draft tab says which rankings depend on them.</li>
             <li><b>Not subtracted:</b> damage taken and Life Orb or recoil damage. They are shown alongside. Luck (crits, misses) isn't removed; the Luck tab covers it.</li>
             <li>League averages need at least 3 uses. Rarer moves use the average for all physical or all special moves, and Pokémon with fewer than 3 moves use the league average per move.</li>
@@ -1046,6 +1052,8 @@ function wkAgg(D, from, to) {
   teams.forEach((t) => { tg[t.player] = t.games; });
   const byMon = grp(gm, (r) => r.player + '|' + r.pokemon);
   const leagueApp = gm.length ? sum(gm, (r) => r.impact) / gm.length : 0;
+  const leagueOff = gm.length ? sum(gm, (r) => r.off) / gm.length : 0, leagueDef = gm.length ? sum(gm, (r) => r.def) / gm.length : 0;
+  const plusOf = (tot, br, lg) => (br && lg ? Math.round(100 * tot / br / lg) : null);
   const mons = D.mons.map((b) => {
     const rs = byMon.get(b.id) || [], n = tg[b.player] || 0, br = rs.length, led = sum(rs, (r) => r.led);
     const s = (f) => sum(rs, (r) => r[f]), dmg = rd(s('damage'), 2);
@@ -1057,7 +1065,8 @@ function wkAgg(D, from, to) {
       taken: rd(s('taken'), 2), faints: s('faints'), survival_pct: br ? rd(1 - s('faints') / br, 3) : null,
       turns_on_field: s('turns_on_field'), sacrifices: s('sacrifices'), friendly_fire: rd(s('friendly_fire'), 2),
       crits: s('crits'), super_effective: s('super_effective'), misses: s('misses'), statuses: s('statuses'),
-      impact_plus: br && leagueApp ? Math.round(100 * s('impact') / br / leagueApp) : null,
+      impact_plus: plusOf(s('impact'), br, leagueApp), off_plus: plusOf(s('off'), br, leagueOff), def_plus: plusOf(s('def'), br, leagueDef),
+      off: rd(s('off'), 2), def: rd(s('def'), 2), off_per_app: br ? rd(s('off') / br, 2) : null, def_per_app: br ? rd(s('def') / br, 2) : null,
       impact: rd(s('impact'), 2), impact_per_game: n ? rd(s('impact') / n, 2) : 0, impact_per_app: br ? rd(s('impact') / br, 2) : null,
       imp_damage: rd(s('imp_damage'), 2), imp_setup: rd(s('imp_setup'), 2), imp_heal: rd(s('imp_heal'), 2),
       imp_prevented: rd(s('imp_prevented'), 2), imp_share: rd(s('imp_share'), 2), recoil: rd(s('recoil'), 2),
@@ -1383,8 +1392,9 @@ const T_TEAMS = mkTable('lx-t-teams', [
 ], { f: 'series_wins', dir: -1 }, 'player');
 const T_MONS = mkTable('lx-t-mons', [
   { f: 'pokemon', t: 'text', spr: true }, { f: 'player', t: 'text' }, { f: 'bring_pct', t: 'pct' }, { f: 'lead_pct', t: 'pct' }, { f: 'brought', t: 'int' }, { f: 'led', t: 'int' },
-  { f: 'impact_plus', t: 'int', tip: 'impact_tip' }, { f: 'impact', t: 'd1', tip: 'impact_tip' }, { f: 'impact_per_app', t: 'd2' }, { f: 'imp_damage', t: 'd1' }, { f: 'imp_setup', t: 'd1' }, { f: 'imp_heal', t: 'd1' },
-  { f: 'imp_prevented', t: 'd1', tip: 'prevented_tip' }, { f: 'imp_share', t: 's1', tip: 'share_tip' },
+  { f: 'impact_plus', t: 'int', tip: 'impact_tip' }, { f: 'off_plus', t: 'int', tip: 'impact_tip' }, { f: 'def_plus', t: 'int', tip: 'impact_tip' },
+  { f: 'impact', t: 'd1', tip: 'impact_tip' }, { f: 'off', t: 'd1', tip: 'impact_tip' }, { f: 'def', t: 'd1', tip: 'impact_tip' }, { f: 'impact_per_app', t: 'd2' },
+  { f: 'imp_damage', t: 'd1' }, { f: 'imp_setup', t: 'd1' }, { f: 'imp_share', t: 's1', tip: 'share_tip' }, { f: 'imp_heal', t: 'd1' }, { f: 'imp_prevented', t: 'd1', tip: 'prevented_tip' },
   { f: 'kos', t: 'int' }, { f: 'kos_per_app', t: 'd2' }, { f: 'damage', t: 'd1' }, { f: 'damage_per_app', t: 'd2' }, { f: 'taken', t: 'd1' }, { f: 'recoil', t: 'd1' },
   { f: 'faints', t: 'int' }, { f: 'survival_pct', t: 'pct' }, { f: 'win_pct_brought', t: 'pct' }, { f: 'turns_on_field', t: 'int' },
   { f: 'sacrifices', t: 'int' }, { f: 'crits', t: 'int' }, { f: 'super_effective', t: 'int' }, { f: 'misses', t: 'int' }, { f: 'statuses', t: 'int' },
@@ -1522,7 +1532,10 @@ const preventedLines = (r) => Object.entries(r.prevented_by || {}).filter(([, v]
 const plusText = (v) => (v == null ? '–' : fmt.int(v));
 const impactLines = (r) => [
   'Impact+ ' + plusText(r.impact_plus) + ' (100 = average): ' + fmt.d2(r.impact_per_app || 0) + ' HP bars per game brought, ' + fmt.int(r.brought || 0) + ' games brought',
-  'Impact ' + fmt.d2(r.impact || 0) + ' = damage ' + fmt.d2(r.imp_damage || 0) + ' + set-up ' + fmt.d2(r.imp_setup || 0) + ' + healing ' + fmt.d2(r.imp_heal || 0) + ' + prevented ' + fmt.d2(r.imp_prevented || 0) + ' + shares ' + fmt.s2(r.imp_share || 0),
+  'OFF+ ' + plusText(r.off_plus) + ', DEF+ ' + plusText(r.def_plus) + ' (100 = average)',
+  'Impact ' + fmt.d2(r.impact || 0) + ' = OFF ' + fmt.d2(r.off || 0) + ' + DEF ' + fmt.d2(r.def || 0),
+  'OFF ' + fmt.d2(r.off || 0) + ' = damage ' + fmt.d2(r.imp_damage || 0) + ' + set-up ' + fmt.d2(r.imp_setup || 0) + ' + shares ' + fmt.s2(r.imp_share || 0),
+  'DEF ' + fmt.d2(r.def || 0) + ' = healing ' + fmt.d2(r.imp_heal || 0) + ' + prevented ' + fmt.d2(r.imp_prevented || 0),
   'Taken ' + fmt.d1(r.taken || 0) + ', recoil ' + fmt.d2(r.recoil || 0) + ' (shown, not subtracted)',
 ];
 
@@ -1537,7 +1550,8 @@ function renderDetail(m) {
   const dim = spr(m.pokemon, 'lx-dspr');
   if (dim) head.appendChild(dim);
   head.appendChild(nm); head.appendChild(tm); head.appendChild(typeChips(m.types)); box.appendChild(head);
-  const stats = [['Impact+', 'impact_plus', 'int'], ['Impact', 'impact', 'd1'], ['Impact / game brought', 'impact_per_app', 'd2'], ['Prevented', 'imp_prevented', 'd1'], ['Healing', 'imp_heal', 'd1'],
+  const stats = [['Impact+', 'impact_plus', 'int'], ['OFF+', 'off_plus', 'int'], ['DEF+', 'def_plus', 'int'], ['Impact', 'impact', 'd1'], ['OFF', 'off', 'd1'], ['DEF', 'def', 'd1'],
+    ['Impact / game brought', 'impact_per_app', 'd2'], ['Prevented', 'imp_prevented', 'd1'], ['Healing', 'imp_heal', 'd1'],
     ['Bring %', 'bring_pct', 'pct'], ['Lead %', 'lead_pct', 'pct'], ['KOs', 'kos', 'int'], ['KOs / game', 'kos_per_app', 'd2'], ['Damage dealt', 'damage', 'd1'],
     ['Damage taken', 'taken', 'd1'], ['Survived %', 'survival_pct', 'pct'], ['Player win % when brought', 'win_pct_brought', 'pct'], ['Turns on field', 'turns_on_field', 'int']];
   const grid = document.createElement('div'); grid.className = 'lx-stats';
