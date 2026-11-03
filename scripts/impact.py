@@ -597,7 +597,8 @@ class GameTracker:
         self.mon_dmg[a_sp] += lost
         self.mid_dmg[mid] += lost
         self.mid_target_dmg[(mid, mon)] += lost
-        self.hit_this_turn[mon] = att
+        if any(x.get("kind") == "flinch" for x in (MOVES.get(move) or {}).get("sec", [])):
+            self.hit_this_turn[mon] = att  # the flinch source is the last hit that could flinch
         info = self.mid_info.get(mid, {})
         crit = mon in info.get("crit", ())
         cat = info.get("cat") or move_cat(move)
@@ -725,7 +726,7 @@ def speed_credits(tr, faster, turn_avg, speed_share):
             A = a["mon"]
             if a["prio"] or not a["mid"] or A not in mods:
                 continue
-            shared = False
+            denied, share = [], None
             for B, mb in mods.items():
                 if B[0] == A[0]:
                     continue
@@ -750,13 +751,16 @@ def speed_credits(tr, faster, turn_avg, speed_share):
                 if not setter or setter == "self" or setter[0] != A[0]:
                     continue  # the flip was the opponent's doing, or nobody's (Choice Scarf, a boost)
                 if ko_by.get(B) == a["mid"]:
-                    out.append((setter, "prev", "speed", turn_avg(B[1]), None))
-                elif not shared and setter != A:
-                    s = tr.mid_dmg.get(a["mid"], 0.0) * speed_share
-                    if s:
-                        out.append((setter, "share", kind, s, "speed"))
-                        out.append((A, "share", kind, -s, "speed"))
-                    shared = True
+                    denied.append((setter, "prev", "speed", turn_avg(B[1]), None))
+                elif not share and setter != A:
+                    share = (setter, kind)
+            if denied:
+                out += denied  # an attack that KO'd a faster foe earns the denied action, not a share
+            elif share:
+                s = tr.mid_dmg.get(a["mid"], 0.0) * speed_share
+                if s:
+                    out.append((share[0], "share", share[1], s, "speed"))
+                    out.append((A, "share", share[1], -s, "speed"))
     return out
 
 

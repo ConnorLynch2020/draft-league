@@ -181,3 +181,8 @@ Luck (crits, misses) isn't removed here. The Luck tab covers it.
   support").
 - The tuning check writes `data/impact.json` (rank at half / default / double shares) and the
   Draft tab lists the Pokémon that move 3+ places.
+- Hand-checked games: 2708015115 (Protect, Fake Out flinches, immunity), 2703157167 (Light
+  Screen, Trick Room denied action), 2695886997 (Trick Room, Follow Me, Intimidate) and
+  2699313017 (Trick Room shares, Rage Powder). Two fixes came out of it: a flinch is credited to
+  the last hit that could flinch, and an attack that KOs a faster foe earns the denied action
+  but no went-first share as well.
