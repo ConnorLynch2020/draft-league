@@ -120,13 +120,17 @@ Luck (crits, misses) isn't removed here. The Luck tab covers it.
 
 ## What's shown
 
-- **HP Impact per game** replaces value on the Draft tab. Rank by per *team* game (not being
-  brought counts as 0), with per *brought* game alongside.
+- **Impact+** is the headline: Impact per game brought ÷ the league average × 100, so 100 is an
+  average Pokémon and 150 is 50% more (like OPS+). It's a rate, so rankings need a minimum of
+  games brought (3 on the Draft tab, the Pokémon tab's filter defaults to 3).
+- **Impact** (season total, in HP bars) sits next to it for volume, so a great Pokémon that's
+  rarely brought can be told apart from a workhorse.
+- Impact per game brought (raw HP bars) stays in the full table and tooltips.
 - **Breakdown** in tooltips and the Pokémon table: Damage · Set-up damage · Healing ·
   Prevented · Speed/support share · = Impact, plus Taken and recoil as information. Readers can tell a sweeper from a
   wall from a support at a glance.
-- **Comparison:** vs league average per brought game, and vs the average for its draft round.
-  Both are plain averages, so no replacement level is needed.
+- **Comparison:** Impact+ is already against the league average. Steals and busts compare it
+  with the pooled Impact+ of the pick's draft round.
 - Games brought next to every number, as now.
 
 ## Implementation
@@ -163,6 +167,11 @@ Luck (crits, misses) isn't removed here. The Luck tab covers it.
 2. Life Orb / recoil damage is shown next to damage dealt, not subtracted.
 3. Protect earns credit only for attacks that targeted the user and were blocked.
 4. Damage taken is shown but never subtracted.
+5. Shown as Impact+ (100 = average) plus the season total, not converted to wins. A wins scale
+   was considered: about 10 HP bars per win from our games (not 6, since the loser still deals
+   about 4 bars and only the gap decides a game), but the estimates ranged from 6 to 12, and
+   a wins-above-replacement baseline can't come from late picks, which score as well as early
+   ones when brought. A plain index avoids both judgment calls and negative numbers.
 
 ## Implementation notes
 

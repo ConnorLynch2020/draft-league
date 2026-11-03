@@ -394,12 +394,12 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
     <div class="lx-controls">
       <select id="lx-team" aria-label="Player"><option value="">All players</option></select>
       <input id="lx-q-mons" type="search" placeholder="Search Pokémon" aria-label="Search Pokémon">
-      <label>Min. games <select id="lx-min" aria-label="Minimum games"><option>1</option><option>2</option><option>3</option><option>5</option></select></label>
+      <label>Min. games <select id="lx-min" aria-label="Minimum games"><option>1</option><option>2</option><option selected>3</option><option>5</option></select></label>
       <label><input id="lx-unused" type="checkbox"> Include Pokémon that never appeared</label>
     </div>
     <div class="lx-card">
-      <h2>Highest HP Impact per game</h2>
-      <p class="lx-note">HP bars added to the team or kept off it, per game the player played. Hover a bar for the breakdown. See <a href="#extras">how HP Impact works</a>.</p>
+      <h2>Highest Impact+</h2>
+      <p class="lx-note">Impact per game brought, where 100 is an average Pokémon and 150 is 50% more. Only Pokémon brought at least the minimum games above are shown, since a game or two swings a lot. Hover a bar for the breakdown. See <a href="#extras">how Impact works</a>.</p>
       <div class="lx-chart dash-skeleton" id="lx-c-imp" data-source="mons"></div>
     </div>
     <div class="lx-grid">
@@ -416,7 +416,7 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
     </div>
     <div class="lx-card">
       <h2>Every Pokémon</h2>
-      <p class="lx-note">Bring % and lead % are out of that player's games. HP Impact / game is out of the player's games too (not being brought counts as 0). Hover HP Impact, Prevented or Shares for the breakdown. Select a row to see its moves below the table.</p>
+      <p class="lx-note">Bring % and lead % are out of that player's games. Impact+ is Impact per game brought, where 100 is average. Impact is the season total in HP bars; the columns after it are what it is made of. Hover Impact+, Impact, Prevented or Shares for the breakdown. Select a row to see its moves below the table.</p>
       <div class="lx-scroll">
         <table class="lx-table" id="lx-t-mons" data-source="mons" data-row-key="id">
           <thead><tr>
@@ -426,14 +426,14 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
             <th class="num" data-field="lead_pct"><button class="lx-sort" type="button">Lead %</button></th>
             <th class="num" data-field="brought"><button class="lx-sort" type="button">Brought</button></th>
             <th class="num" data-field="led"><button class="lx-sort" type="button">Led</button></th>
-            <th class="num" data-field="impact_per_game"><button class="lx-sort" type="button">HP Impact / game</button></th>
-            <th class="num" data-field="impact_per_app"><button class="lx-sort" type="button">Per game brought</button></th>
+            <th class="num" data-field="impact_plus"><button class="lx-sort" type="button">Impact+</button></th>
+            <th class="num" data-field="impact"><button class="lx-sort" type="button">Impact</button></th>
+            <th class="num" data-field="impact_per_app"><button class="lx-sort" type="button">Impact / game brought</button></th>
             <th class="num" data-field="imp_damage"><button class="lx-sort" type="button">Damage</button></th>
             <th class="num" data-field="imp_setup"><button class="lx-sort" type="button">Set-up damage</button></th>
             <th class="num" data-field="imp_heal"><button class="lx-sort" type="button">Healing</button></th>
             <th class="num" data-field="imp_prevented"><button class="lx-sort" type="button">Prevented</button></th>
             <th class="num" data-field="imp_share"><button class="lx-sort" type="button">Shares</button></th>
-            <th class="num" data-field="impact"><button class="lx-sort" type="button">HP Impact</button></th>
             <th class="num" data-field="kos"><button class="lx-sort" type="button">KOs</button></th>
             <th class="num" data-field="kos_per_app"><button class="lx-sort" type="button">KOs / game</button></th>
             <th class="num" data-field="damage"><button class="lx-sort" type="button">Damage dealt</button></th>
@@ -502,32 +502,32 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
       <div class="lx-scroll lx-tall" id="lx-d-board"></div>
     </div>
     <div class="lx-card">
-      <h2>HP Impact by pick</h2>
-      <p class="lx-note">Each sprite is one pick. Later picks sit further right, and the shaded bands are rounds. Hover or tap a sprite for details. Pokémon that were never brought sit faded along the bottom.</p>
+      <h2>Impact+ by pick</h2>
+      <p class="lx-note">Each sprite is one pick. Later picks sit further right, and the shaded bands are rounds. Hover or tap a sprite for details. The dashed line is 100, an average Pokémon. Picks brought fewer than 3 times are faded, and picks never brought sit faded at 0.</p>
       <div class="lx-dlegend"><span class="lx-dt lx-dt-ou">OU</span><span class="lx-dt lx-dt-uu">UU</span><span class="lx-dt lx-dt-nfe">NFE</span></div>
       <div class="lx-chart" id="lx-d-plot"></div>
     </div>
     <div class="lx-card">
       <h2>Most valuable pick in each round</h2>
-      <p class="lx-note">HP Impact is the HP bars a Pokémon added to its team (damage, set-up damage like sand and burns, healing) plus the HP bars it kept off its team (Intimidate, screens, Protect blocks, immunities, turns it made opponents lose, speed control). It is per game the owner played, so not being brought counts as 0; per game brought is alongside. Damage taken is never subtracted. Pokémon that were never brought are not ranked and are listed on the right. Small samples swing a lot. <a href="#extras">How it works</a>.</p>
+      <p class="lx-note">Impact is the HP bars a Pokémon added to its team (damage, set-up damage like sand and burns, healing) plus the HP bars it kept off its team (Intimidate, screens, Protect blocks, immunities, turns it made opponents lose, speed control). Impact+ is Impact per game brought, where 100 is an average Pokémon and 150 is 50% more. Round Impact+ pools every pick in the round. Damage taken is never subtracted. Picks brought fewer than 3 times aren't ranked, since a game or two swings a lot; they and the picks never brought are listed on the right. <a href="#extras">How it works</a>.</p>
       <p class="lx-note" id="lx-d-tune"></p>
       <div class="lx-scroll lx-tall"><table class="lx-table" id="lx-d-rounds"></table></div>
     </div>
     <div class="lx-grid">
       <div class="lx-card">
-        <h2>HP Impact by tier</h2>
-        <p class="lx-note">Average HP Impact per game, per pick.</p>
+        <h2>Impact+ by tier</h2>
+        <p class="lx-note">Impact per game brought of every pick in the tier together, where 100 is average.</p>
         <div class="lx-scroll lx-tall"><table class="lx-table" id="lx-d-tiers"></table></div>
       </div>
       <div class="lx-card">
         <h2>Best draft classes</h2>
-        <p class="lx-note">Total HP Impact per game of each player's twelve picks.</p>
+        <p class="lx-note">Total Impact of each player's twelve picks this season, with their Impact+ together.</p>
         <div class="lx-scroll lx-tall"><table class="lx-table" id="lx-d-players"></table></div>
       </div>
     </div>
     <div class="lx-card">
       <h2>Steals and busts</h2>
-      <p class="lx-note">HP Impact per game compared with the average pick that played in the same round. Positive means a steal. The last column compares HP Impact per game brought with the league average per game brought.</p>
+      <p class="lx-note">Impact+ compared with the Impact+ of the whole round it was picked in. Positive means a steal. Only picks brought at least 3 times are included.</p>
       <div class="lx-grid">
         <div><h3 class="lx-sub">Biggest steals</h3><div class="lx-scroll lx-tall"><table class="lx-table" id="lx-d-steals"></table></div></div>
         <div><h3 class="lx-sub">Biggest busts</h3><div class="lx-scroll lx-tall"><table class="lx-table" id="lx-d-busts"></table></div></div>
@@ -790,7 +790,8 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
         <li><b>KOs:</b> credited to the last attack that damaged the Pokémon before it fainted. Burn, poison, sandstorm, Life Orb recoil, hazards and other indirect faints are not credited to anyone.</li>
         <li><b>Sacrifices:</b> Final Gambit, Explosion and similar moves where the user faints on its own.</li>
         <li><b>Damage:</b> percent of HP removed from opposing Pokémon by the Pokémon's own attacks, in full HP bars. It is capped at the target's remaining HP, so overkill is not counted. Hits on a partner (spread moves) are tracked separately as friendly fire in the data.</li>
-        <li><b>HP Impact:</b> everything is in HP bars, so it all adds up on one scale.
+        <li><b>Impact+:</b> Impact per game brought divided by the league average, times 100. 100 is an average Pokémon, 150 is 50% more and 80 is 20% less, the same idea as OPS+ in baseball. It ignores how often a Pokémon is brought, so read it with games brought and the season total.</li>
+        <li><b>Impact:</b> everything is in HP bars, so it all adds up on one scale.
           <ul>
             <li><b>Damage:</b> damage dealt to opponents, minus any done to its own partner.</li>
             <li><b>Set-up damage:</b> burn and poison ticks (to whoever inflicted the status), sandstorm and hail on opponents (to the weather setter), Stealth Rock and Spikes (to the setter), Leech Seed, Rocky Helmet, Rough Skin, Iron Barbs and Pain Split.</li>
@@ -1044,6 +1045,7 @@ function wkAgg(D, from, to) {
   const tg = {};
   teams.forEach((t) => { tg[t.player] = t.games; });
   const byMon = grp(gm, (r) => r.player + '|' + r.pokemon);
+  const leagueApp = gm.length ? sum(gm, (r) => r.impact) / gm.length : 0;
   const mons = D.mons.map((b) => {
     const rs = byMon.get(b.id) || [], n = tg[b.player] || 0, br = rs.length, led = sum(rs, (r) => r.led);
     const s = (f) => sum(rs, (r) => r[f]), dmg = rd(s('damage'), 2);
@@ -1055,6 +1057,7 @@ function wkAgg(D, from, to) {
       taken: rd(s('taken'), 2), faints: s('faints'), survival_pct: br ? rd(1 - s('faints') / br, 3) : null,
       turns_on_field: s('turns_on_field'), sacrifices: s('sacrifices'), friendly_fire: rd(s('friendly_fire'), 2),
       crits: s('crits'), super_effective: s('super_effective'), misses: s('misses'), statuses: s('statuses'),
+      impact_plus: br && leagueApp ? Math.round(100 * s('impact') / br / leagueApp) : null,
       impact: rd(s('impact'), 2), impact_per_game: n ? rd(s('impact') / n, 2) : 0, impact_per_app: br ? rd(s('impact') / br, 2) : null,
       imp_damage: rd(s('imp_damage'), 2), imp_setup: rd(s('imp_setup'), 2), imp_heal: rd(s('imp_heal'), 2),
       imp_prevented: rd(s('imp_prevented'), 2), imp_share: rd(s('imp_share'), 2), recoil: rd(s('recoil'), 2),
@@ -1380,12 +1383,12 @@ const T_TEAMS = mkTable('lx-t-teams', [
 ], { f: 'series_wins', dir: -1 }, 'player');
 const T_MONS = mkTable('lx-t-mons', [
   { f: 'pokemon', t: 'text', spr: true }, { f: 'player', t: 'text' }, { f: 'bring_pct', t: 'pct' }, { f: 'lead_pct', t: 'pct' }, { f: 'brought', t: 'int' }, { f: 'led', t: 'int' },
-  { f: 'impact_per_game', t: 'd2', tip: 'impact_tip' }, { f: 'impact_per_app', t: 'd2' }, { f: 'imp_damage', t: 'd1' }, { f: 'imp_setup', t: 'd1' }, { f: 'imp_heal', t: 'd1' },
-  { f: 'imp_prevented', t: 'd1', tip: 'prevented_tip' }, { f: 'imp_share', t: 's1', tip: 'share_tip' }, { f: 'impact', t: 'd1', tip: 'impact_tip' },
+  { f: 'impact_plus', t: 'int', tip: 'impact_tip' }, { f: 'impact', t: 'd1', tip: 'impact_tip' }, { f: 'impact_per_app', t: 'd2' }, { f: 'imp_damage', t: 'd1' }, { f: 'imp_setup', t: 'd1' }, { f: 'imp_heal', t: 'd1' },
+  { f: 'imp_prevented', t: 'd1', tip: 'prevented_tip' }, { f: 'imp_share', t: 's1', tip: 'share_tip' },
   { f: 'kos', t: 'int' }, { f: 'kos_per_app', t: 'd2' }, { f: 'damage', t: 'd1' }, { f: 'damage_per_app', t: 'd2' }, { f: 'taken', t: 'd1' }, { f: 'recoil', t: 'd1' },
   { f: 'faints', t: 'int' }, { f: 'survival_pct', t: 'pct' }, { f: 'win_pct_brought', t: 'pct' }, { f: 'turns_on_field', t: 'int' },
   { f: 'sacrifices', t: 'int' }, { f: 'crits', t: 'int' }, { f: 'super_effective', t: 'int' }, { f: 'misses', t: 'int' }, { f: 'statuses', t: 'int' },
-], { f: 'impact_per_game', dir: -1 }, 'id');
+], { f: 'impact_plus', dir: -1 }, 'id');
 const T_MOVES = mkTable('lx-t-moves', [
   { f: 'move', t: 'text' }, { f: 'uses', t: 'int' }, { f: 'kos', t: 'int' }, { f: 'damage', t: 'd1' }, { f: 'damage_per_use', t: 'd2' }, { f: 'kos_per_10_uses', t: 'd2' }, { f: 'used_by', t: 'text', tip: 'used_by_full' },
 ], { f: 'uses', dir: -1 }, 'move');
@@ -1512,12 +1515,14 @@ function monFilter() {
   return monsF().filter((r) => (unused || r.brought >= min) && (!team || r.player === team) && (!q || (r.pokemon + ' ' + r.player).toLowerCase().includes(q)))
     .map((r) => Object.assign({}, r, { impact_tip: impactLines(r).join('\n'), prevented_tip: preventedLines(r).join('\n') || 'Nothing prevented', share_tip: SHARE_NOTE }));
 }
-// ---- HP Impact helpers (shared by the Pokémon and Draft tabs) ----
+// ---- Impact helpers (shared by the Pokémon and Draft tabs) ----
 const PREV_LABEL = { intimidate: 'Intimidate', screens: 'Reflect / Light Screen', burn: 'Burns (halved Attack)', protect: 'Protect blocks', guard: 'Wide Guard / Quick Guard', immunity: 'Immunities and absorbs', redirect: 'Follow Me / Rage Powder', lost_turns: 'Turns opponents lost', speed: 'KOs before a faster foe moved' };
 const SHARE_NOTE = 'Helping Hand and speed control: the helper or speed setter takes a share of the ally\'s damage, so one Pokémon\'s plus is its partner\'s minus.';
 const preventedLines = (r) => Object.entries(r.prevented_by || {}).filter(([, v]) => v).sort((a, b) => b[1] - a[1]).map(([k, v]) => (PREV_LABEL[k] || k) + ': ' + fmt.d2(v));
+const plusText = (v) => (v == null ? '–' : fmt.int(v));
 const impactLines = (r) => [
-  'HP Impact ' + fmt.d2(r.impact || 0) + ' = damage ' + fmt.d2(r.imp_damage || 0) + ' + set-up ' + fmt.d2(r.imp_setup || 0) + ' + healing ' + fmt.d2(r.imp_heal || 0) + ' + prevented ' + fmt.d2(r.imp_prevented || 0) + ' + shares ' + fmt.s2(r.imp_share || 0),
+  'Impact+ ' + plusText(r.impact_plus) + ' (100 = average): ' + fmt.d2(r.impact_per_app || 0) + ' HP bars per game brought, ' + fmt.int(r.brought || 0) + ' games brought',
+  'Impact ' + fmt.d2(r.impact || 0) + ' = damage ' + fmt.d2(r.imp_damage || 0) + ' + set-up ' + fmt.d2(r.imp_setup || 0) + ' + healing ' + fmt.d2(r.imp_heal || 0) + ' + prevented ' + fmt.d2(r.imp_prevented || 0) + ' + shares ' + fmt.s2(r.imp_share || 0),
   'Taken ' + fmt.d1(r.taken || 0) + ', recoil ' + fmt.d2(r.recoil || 0) + ' (shown, not subtracted)',
 ];
 
@@ -1532,7 +1537,7 @@ function renderDetail(m) {
   const dim = spr(m.pokemon, 'lx-dspr');
   if (dim) head.appendChild(dim);
   head.appendChild(nm); head.appendChild(tm); head.appendChild(typeChips(m.types)); box.appendChild(head);
-  const stats = [['HP Impact / game', 'impact_per_game', 'd2'], ['Per game brought', 'impact_per_app', 'd2'], ['Prevented', 'imp_prevented', 'd1'], ['Healing', 'imp_heal', 'd1'],
+  const stats = [['Impact+', 'impact_plus', 'int'], ['Impact', 'impact', 'd1'], ['Impact / game brought', 'impact_per_app', 'd2'], ['Prevented', 'imp_prevented', 'd1'], ['Healing', 'imp_heal', 'd1'],
     ['Bring %', 'bring_pct', 'pct'], ['Lead %', 'lead_pct', 'pct'], ['KOs', 'kos', 'int'], ['KOs / game', 'kos_per_app', 'd2'], ['Damage dealt', 'damage', 'd1'],
     ['Damage taken', 'taken', 'd1'], ['Survived %', 'survival_pct', 'pct'], ['Player win % when brought', 'win_pct_brought', 'pct'], ['Turns on field', 'turns_on_field', 'int']];
   const grid = document.createElement('div'); grid.className = 'lx-stats';
@@ -1781,8 +1786,9 @@ function renderPokemon() {
   if (g1 || g2 || g3) return;
   const rows = monFilter();
   const lab = (r) => r.pokemon;
-  const byImp = rows.slice().sort((a, b) => b.impact_per_game - a.impact_per_game || b.impact - a.impact).slice(0, 12);
-  hbar(impC, byImp, { sprite: (r) => r.pokemon, label: lab, fmt: fmt.d2, series: [{ key: 'impact_per_game', label: 'HP Impact per game', color: dash.colors[2] }], note: (r) => r.player, tip: (r) => ['Brought in ' + fmt.int(r.brought) + ' of ' + fmt.int(r.team_games) + ' games, ' + fmt.d2(r.impact_per_app || 0) + ' per game brought'].concat(impactLines(r), preventedLines(r)) });
+  const minG = +$('#lx-min').value || 1;
+  const byImp = rows.filter((r) => r.impact_plus != null && r.brought >= minG).sort((a, b) => b.impact_plus - a.impact_plus || b.impact - a.impact).slice(0, 12);
+  hbar(impC, byImp, { sprite: (r) => r.pokemon, label: lab, fmt: fmt.int, series: [{ key: 'impact_plus', label: 'Impact+', color: dash.colors[2] }], note: (r) => r.player, tip: (r) => ['Brought in ' + fmt.int(r.brought) + ' of ' + fmt.int(r.team_games) + ' games'].concat(impactLines(r), preventedLines(r)) });
   const byKos = rows.slice().sort((a, b) => b.kos - a.kos || (b.kos_per_app || 0) - (a.kos_per_app || 0)).slice(0, 10);
   hbar(kosC, byKos, { sprite: (r) => r.pokemon, label: lab, fmt: fmt.int, series: [{ key: 'kos', label: 'KOs', color: dash.colors[0] }], note: (r) => r.player, tip: (r) => [fmt.int(r.brought) + ' games', fmt.d2(r.kos_per_app || 0) + ' KOs per game'] });
   const byDmg = rows.slice().sort((a, b) => b.damage - a.damage).slice(0, 10);
@@ -1929,7 +1935,8 @@ function renderExtras() {
 const D_FWD = [1, 4, 6, 8, 10, 12];
 const D_TIERS = ['OU', 'UU', 'NFE'];
 const dTier = (t) => 'lx-dt-' + t.toLowerCase();
-let draftMemo = null;
+let draftMemo = null, draftPooled = () => null;
+const D_MIN = 3; // games brought before a pick is ranked on Impact+
 function draftRows() {
   const picks = rowsOf('draft'), mons = rowsOf('mons');
   if (draftMemo && draftMemo.n === mons.length && draftMemo.m === picks.length) return draftMemo.rows;
@@ -1937,14 +1944,16 @@ function draftRows() {
   const rows = picks.map((p) => {
     const m = by.get(p.player + '|' + p.pokemon) || {};
     const g = m.team_games || 0;
-    return Object.assign({}, m, p, { games: g, brought: m.brought || 0, kos: m.kos || 0, damage: m.damage || 0, winPct: m.win_pct_brought, turns: m.turns_on_field || 0, value: m.impact_per_game || 0, perApp: m.impact_per_app });
+    return Object.assign({}, m, p, { games: g, brought: m.brought || 0, kos: m.kos || 0, damage: m.damage || 0, winPct: m.win_pct_brought, turns: m.turns_on_field || 0, plus: m.impact_plus, total: m.impact || 0 });
   });
+  // Impact+ of a group of picks: their pooled Impact per game brought against the league's.
   const tot = mons.reduce((x, m) => x + (m.impact || 0), 0), apps = mons.reduce((x, m) => x + (m.brought || 0), 0);
   const leagueApp = apps ? tot / apps : 0;
-  rows.forEach((r) => { r.vsLeague = r.brought ? r.perApp - leagueApp : null; });
-  const avg = {};
-  rows.forEach((r) => { if (r.brought) (avg[r.round] = avg[r.round] || []).push(r.value); });
-  rows.forEach((r) => { const a = avg[r.round] || []; r.vsRound = r.brought && a.length ? r.value - a.reduce((x, y) => x + y, 0) / a.length : null; });
+  const pooled = (rs) => { const b = rs.reduce((x, r) => x + r.brought, 0); return b && leagueApp ? Math.round(100 * rs.reduce((x, r) => x + r.total, 0) / b / leagueApp) : null; };
+  const roundPlus = {};
+  [...new Set(rows.map((r) => r.round))].forEach((rd) => { roundPlus[rd] = pooled(rows.filter((r) => r.round === rd)); });
+  rows.forEach((r) => { r.ranked = r.brought >= D_MIN; r.roundPlus = roundPlus[r.round]; r.vsRound = r.ranked && r.roundPlus != null ? r.plus - r.roundPlus : null; });
+  draftPooled = pooled;
   draftMemo = { n: mons.length, m: picks.length, rows };
   return rows;
 }
@@ -1970,11 +1979,12 @@ const svgEl = (tag, attrs, parent) => { const e = document.createElementNS(SVGNS
 function drawDraftPlot(el, rows) {
   el.textContent = '';
   const w = 900, h = 440, m = { l: 44, r: 16, t: 14, b: 34 }, R = 15;
-  const maxPick = Math.max(...rows.map((r) => r.pick)), maxV = Math.max(...rows.map((r) => r.value));
-  const step = maxV > 4 ? 1 : 0.5, yMax = Math.ceil((maxV * 1.06) / step) * step;
+  const yv = (r) => (r.plus == null ? 0 : r.plus);
+  const maxPick = Math.max(...rows.map((r) => r.pick)), maxV = Math.max(100, ...rows.map(yv)), minV = Math.min(0, ...rows.map(yv));
+  const step = 50, yMax = Math.ceil((maxV * 1.04) / step) * step, yMin = Math.floor(minV / step) * step;
   const X = (p) => m.l + R + ((p - 0.5) / maxPick) * (w - m.l - m.r - 2 * R);
-  const Y = (v) => h - m.b - R - (v / yMax) * (h - m.t - m.b - 2 * R);
-  const svg = svgEl('svg', { viewBox: '0 0 ' + w + ' ' + h, width: '100%', role: 'img', 'aria-label': 'Draft pick number against HP Impact per game' }, el);
+  const Y = (v) => h - m.b - R - ((v - yMin) / (yMax - yMin)) * (h - m.t - m.b - 2 * R);
+  const svg = svgEl('svg', { viewBox: '0 0 ' + w + ' ' + h, width: '100%', role: 'img', 'aria-label': 'Draft pick number against Impact+' }, el);
   svg.style.display = 'block';
   const perRound = rows.filter((r) => r.round === 1).length;
   const rounds = Math.ceil(maxPick / perRound);
@@ -1984,19 +1994,20 @@ function drawDraftPlot(el, rows) {
     if (rd % 2) svgEl('rect', { class: 'lx-dp-band', x: x0, y: m.t, width: x1 - x0, height: h - m.t - m.b }, svg);
     label({ x: (x0 + x1) / 2, y: h - m.b + 18, 'text-anchor': 'middle' }, 'R' + rd);
   }
-  for (let v = 0; v <= yMax + 1e-9; v += step) {
-    svgEl('line', { class: 'lx-dp-grid', x1: m.l, x2: w - m.r, y1: Y(v), y2: Y(v) }, svg);
-    label({ x: m.l - 6, y: Y(v) + 4, 'text-anchor': 'end' }, fmt.d1(v));
+  for (let v = yMin; v <= yMax + 1e-9; v += step) {
+    const ln = svgEl('line', { class: 'lx-dp-grid', x1: m.l, x2: w - m.r, y1: Y(v), y2: Y(v) }, svg);
+    if (v === 100) ln.style.strokeDasharray = '4 3';
+    label({ x: m.l - 6, y: Y(v) + 4, 'text-anchor': 'end' }, fmt.int(v));
   }
   const cy = (m.t + h - m.b) / 2;
-  label({ x: 12, y: cy, 'text-anchor': 'middle', transform: 'rotate(-90 12 ' + cy + ')' }, 'HP Impact per game');
+  label({ x: 12, y: cy, 'text-anchor': 'middle', transform: 'rotate(-90 12 ' + cy + ')' }, 'Impact+ (100 = average)');
   label({ x: (m.l + w - m.r) / 2, y: h - 2, 'text-anchor': 'middle' }, 'Pick number');
-  rows.slice().sort((a, b) => a.value - b.value).forEach((r) => {
-    const g = svgEl('g', { class: 'lx-dp-pt' + (r.brought ? '' : ' lx-dp-off'), tabindex: 0, transform: 'translate(' + X(r.pick) + ' ' + Y(r.value) + ')' }, svg);
+  rows.slice().sort((a, b) => a.ranked - b.ranked || yv(a) - yv(b)).forEach((r) => {
+    const g = svgEl('g', { class: 'lx-dp-pt' + (r.ranked ? '' : ' lx-dp-off'), tabindex: 0, transform: 'translate(' + X(r.pick) + ' ' + Y(yv(r)) + ')' }, svg);
     svgEl('circle', { class: 'lx-dp-dot ' + dTier(r.tier), r: R }, g);
     const u = sprUrl(r.pokemon);
     if (u) { const im = svgEl('image', { x: -R, y: -R, width: 2 * R, height: 2 * R, href: u }, g); im.addEventListener('error', () => { im.style.visibility = 'hidden'; }); }
-    const lines = () => [r.pokemon + ' (' + r.tier + ')', r.player + ' · pick ' + r.pick + ', round ' + r.round, 'HP Impact ' + fmt.d2(r.value) + ' per game' + (r.brought ? ', ' + fmt.d2(r.perApp) + ' per game brought (' + fmt.s2(r.vsLeague) + ' vs league)' : '')].concat(r.brought ? impactLines(r) : [], [r.brought ? 'Brought in ' + r.brought + ' of ' + r.games + ' games' + (r.winPct != null ? ', won ' + fmt.pct(r.winPct) : '') : 'Never brought']);
+    const lines = () => [r.pokemon + ' (' + r.tier + ')', r.player + ' · pick ' + r.pick + ', round ' + r.round].concat(r.brought ? impactLines(r) : [], [r.brought ? 'Brought in ' + r.brought + ' of ' + r.games + ' games' + (r.winPct != null ? ', won ' + fmt.pct(r.winPct) : '') + (r.ranked ? '' : ' (too few to rank)') : 'Never brought']);
     tipOn(g, el, lines);
     g.addEventListener('focus', () => { const b = g.getBoundingClientRect(); showTip(el, { clientX: b.right, clientY: b.top }, lines()); });
     g.addEventListener('blur', () => hideTip(el));
@@ -2020,7 +2031,7 @@ function renderDraft() {
       const r = cell.get(rd + '|' + p);
       const td = monCell(r, 'lx-dc ' + dTier(r.tier));
       td.appendChild(node('small', null, '#' + r.pick));
-      td.title = r.pokemon + ' (' + r.tier + '), pick ' + r.pick + '\n' + r.brought + ' of ' + r.games + ' games brought\nHP Impact ' + fmt.d2(r.value) + ' per game' + (r.brought ? '\n' + impactLines(r).join('\n') : '');
+      td.title = r.pokemon + ' (' + r.tier + '), pick ' + r.pick + '\n' + r.brought + ' of ' + r.games + ' games brought' + (r.brought ?'\n' + impactLines(r).join('\n') : '');
       tr.appendChild(td);
     });
     tb.appendChild(tr);
@@ -2031,32 +2042,33 @@ function renderDraft() {
 
   const best = rounds.map((rd) => {
     const all = rows.filter((r) => r.round === rd);
-    const rs = all.filter((r) => r.brought).sort((a, b) => b.value - a.value || (b.perApp || 0) - (a.perApp || 0));
-    return { rd, best: rs[0], worst: rs[rs.length - 1], avg: rs.reduce((x, r) => x + r.value, 0) / (rs.length || 1), unused: all.filter((r) => !r.brought).map((r) => r.pokemon).join(', ') };
+    const rs = all.filter((r) => r.ranked).sort((a, b) => b.plus - a.plus || b.total - a.total);
+    return { rd, best: rs[0], worst: rs[rs.length - 1], avg: all[0] ? all[0].roundPlus : null, few: all.filter((r) => r.brought && !r.ranked).map((r) => r.pokemon).join(', '), unused: all.filter((r) => !r.brought).map((r) => r.pokemon).join(', ') };
   });
-  dTable($('#lx-d-rounds'), ['Round', 'Best pick', 'HP Impact', 'Per game brought', 'Prevented', 'Round avg', 'Weakest pick', 'HP Impact', 'Not brought'], best, (b) => [
-    node('td', 'lx-dr', 'Round ' + b.rd), dPick(b.best), dNum(fmt.d2(b.best.value)), dNum(fmt.d2(b.best.perApp)), dNum(fmt.d1(b.best.imp_prevented || 0)),
-    dNum(fmt.d2(b.avg)), dPick(b.worst), dNum(fmt.d2(b.worst.value)), node('td', 'lx-muted', b.unused || '–'),
-  ], [0, 1, 6, 8]);
+  const pickOr = (r) => (r ? dPick(r) : node('td', 'lx-muted', '–')), plusOr = (r) => dNum(r ? plusText(r.plus) : '–');
+  dTable($('#lx-d-rounds'), ['Round', 'Best pick', 'Impact+', 'Impact', 'Round Impact+', 'Weakest pick', 'Impact+', 'Too few games', 'Not brought'], best, (b) => [
+    node('td', 'lx-dr', 'Round ' + b.rd), pickOr(b.best), plusOr(b.best), dNum(b.best ? fmt.d1(b.best.total) : '–'),
+    dNum(plusText(b.avg)), pickOr(b.worst), plusOr(b.worst), node('td', 'lx-muted', b.few || '–'), node('td', 'lx-muted', b.unused || '–'),
+  ], [0, 1, 5, 7, 8]);
 
-  const tiers = D_TIERS.map((t) => { const rs = rows.filter((r) => r.tier === t); return { t, n: rs.length, v: rs.reduce((x, r) => x + r.value, 0) / (rs.length || 1), br: rs.reduce((x, r) => x + (r.games ? r.brought / r.games : 0), 0) / (rs.length || 1) }; });
-  dTable($('#lx-d-tiers'), ['Tier', 'Picks', 'Avg HP Impact', 'Avg bring %'], tiers, (t) => {
+  const tiers = D_TIERS.map((t) => { const rs = rows.filter((r) => r.tier === t); return { t, n: rs.length, v: draftPooled(rs), br: rs.reduce((x, r) => x + (r.games ? r.brought / r.games : 0), 0) / (rs.length || 1) }; });
+  dTable($('#lx-d-tiers'), ['Tier', 'Picks', 'Impact+', 'Avg bring %'], tiers, (t) => {
     const td = node('td', 'lx-dc ' + dTier(t.t), t.t);
-    return [td, dNum(String(t.n)), dNum(fmt.d2(t.v)), dNum(fmt.pct(t.br))];
+    return [td, dNum(String(t.n)), dNum(plusText(t.v)), dNum(fmt.pct(t.br))];
   });
 
   const cls = ps.map((p) => {
     const rs = rows.filter((r) => r.player === p);
-    return { p, v: rs.reduce((x, r) => x + r.value, 0), best: rs.slice().sort((a, b) => b.value - a.value)[0] };
+    return { p, v: rs.reduce((x, r) => x + r.total, 0), plus: draftPooled(rs), best: rs.slice().sort((a, b) => b.total - a.total)[0] };
   }).sort((a, b) => b.v - a.v);
-  dTable($('#lx-d-players'), ['Player', 'Total HP Impact', 'Best pick'], cls, (c) => {
+  dTable($('#lx-d-players'), ['Player', 'Impact', 'Impact+', 'Most Impact'], cls, (c) => {
     const td = node('td'); td.appendChild(plink(c.p));
-    return [td, dNum(fmt.d2(c.v)), monCell(c.best)];
-  }, [0, 2]);
+    return [td, dNum(fmt.d1(c.v)), dNum(plusText(c.plus)), monCell(c.best)];
+  }, [0, 3]);
 
-  const mk = (el, list) => dTable(el, ['Pick', 'Round', 'HP Impact', 'vs round', 'vs league'], list, (r) => [dPick(r), dNum(String(r.round)), dNum(fmt.d2(r.value)), dNum(fmt.s2(r.vsRound)), dNum(fmt.s2(r.vsLeague))], [0]);
+  const mk = (el, list) => dTable(el, ['Pick', 'Round', 'Impact+', 'vs round', 'Games'], list, (r) => [dPick(r), dNum(String(r.round)), dNum(plusText(r.plus)), dNum(d3.format('+,')(r.vsRound)), dNum(String(r.brought))], [0]);
   const tune = $('#lx-d-tune'), tr = rowsOf('impact'), moved = tr.filter((x) => x.moves >= 3);
-  tune.textContent = moved.length ? 'Sensitivity check: with the speed-control and redirection shares halved or doubled, ' + moved.length + ' of ' + tr.length + ' brought Pokémon move 3 or more places in the HP Impact ranking, so treat close calls involving them as ties. Biggest movers (rank at half / default / double): ' +
+  tune.textContent = moved.length ? 'Sensitivity check: with the speed-control and redirection shares halved or doubled, ' + moved.length + ' of ' + tr.length + ' brought Pokémon move 3 or more places in the Impact+ ranking, so treat close calls involving them as ties. Biggest movers (rank at half / default / double): ' +
     moved.slice().sort((a, b) => b.moves - a.moves || a.rank - b.rank).slice(0, 8).map((x) => x.id.split('|')[1] + ' ' + x.rank_half + ' / ' + x.rank + ' / ' + x.rank_double).join(', ') + '.' : '';
   mk($('#lx-d-steals'), rows.filter((r) => r.vsRound != null).sort((a, b) => b.vsRound - a.vsRound).slice(0, 8));
   mk($('#lx-d-busts'), rows.filter((r) => r.vsRound != null).sort((a, b) => a.vsRound - b.vsRound).slice(0, 8));

@@ -1,5 +1,4 @@
-"""HP Impact: how many HP bars a Pokémon added to its team or stopped the other team taking,
-and WAR, the same thing in wins above a replacement-level Pokémon.
+"""HP Impact: how many HP bars a Pokémon added to its team or stopped the other team taking.
 
     HP Impact = HP Added      direct damage + set-up damage (status, weather, hazards, Leech Seed,
                               Rocky Helmet...) + healing given
@@ -37,16 +36,6 @@ except FileNotFoundError:  # pragma: no cover - refresh_refdata.py writes it
 SPEED_SHARE = 0.25     # share of a flipped ally attack's damage that goes to the speed setter
 REDIRECT_SHARE = 0.50  # share of a drawn attack's average damage that goes to the redirector
 MIN_SAMPLES = 3        # fewer uses than this and the league average for the category is used
-
-# ---- turning HP bars into wins (WAR) ---------------------------------------------------------
-# WAR = sum over games brought of (HP Impact - replacement HP Impact) / BARS_PER_WIN.
-# Not 6, though a win takes 6 bars: the loser still deals about 4, so what decides a game is the
-# difference. Both teams lose about 10 bars a game between them (baseball's runs-per-win rule of
-# thumb), and about a fifth of games are decided by under 2 bars, which also gives about 10.
-BARS_PER_WIN = 10.0
-# Replacement level: this share of the league-average HP Impact per game brought. Late-round
-# picks can't be used for it, because they score as well as early ones when they're brought.
-REPLACEMENT_SHARE = 0.8
 
 # ---- Gen 5 mechanics -------------------------------------------------------------------------
 SCREEN_EXTRA = 0.5     # doubles screens leave about 2/3 of the damage, so it would have been 1.5x
@@ -831,12 +820,3 @@ def evaluate(trackers, speed_share=SPEED_SHARE, redirect_share=REDIRECT_SHARE):
 
 def impact_of(c):
     return c["dmg"] + c["setup"] + c["heal"] + c["prev"] + c["share"]
-
-
-def replacement_level(impacts):
-    """Replacement HP Impact per game brought, from every brought Pokémon's per-game HP Impact."""
-    return REPLACEMENT_SHARE * sum(impacts) / len(impacts) if impacts else 0.0
-
-
-def war_of(impact_total, brought, replacement):
-    return (impact_total - replacement * brought) / BARS_PER_WIN

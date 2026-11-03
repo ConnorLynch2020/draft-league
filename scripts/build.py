@@ -178,11 +178,16 @@ def impact_fields(v, side, sp):
     return out
 
 
-def impact_totals(rows, team_games, brought):
+def impact_plus(per_app, league_per_app):
+    """HP Impact per game brought as a share of the league average, where 100 is average."""
+    return int(round(100 * per_app / league_per_app)) if per_app is not None and league_per_app else None
+
+
+def impact_totals(rows, team_games, brought, league_per_app):
     """Season HP Impact columns for mons.json, summed from the per-game rows in the same order the
     page sums them, so the page's week filter reproduces these numbers exactly."""
     tot = sum(r["impact"] for r in rows)
-    out = [("war", r2(sum(r["war"] for r in rows))), ("impact", r2(tot)), ("impact_per_game", r2(tot / team_games) if team_games else 0),
+    out = [("impact_plus", impact_plus(tot / brought if brought else None, league_per_app)), ("impact", r2(tot)), ("impact_per_game", r2(tot / team_games) if team_games else 0),
            ("impact_per_app", r2(tot / brought) if brought else None)]
     out += [(k, r2(sum(r[k] for r in rows))) for k, _ in IMPACT_FIELDS]
     pb = defaultdict(float)
@@ -193,9 +198,10 @@ def impact_totals(rows, team_games, brought):
     return out
 
 
-def impact_tuning(games, trackers, mons, replacement):
-    """Rank every brought Pokémon by WAR with the heuristic shares at half, default and double
-    (replacement level held fixed). Rows for Pokémon whose rank moves are flagged on the page."""
+def impact_tuning(games, trackers, mons):
+    """Rank every brought Pokémon by HP Impact per game brought (the Impact+ order) with the
+    heuristic shares at half, default and double. Rows for Pokémon whose rank moves are flagged
+    on the page."""
     brought = {m["id"]: m["brought"] for m in mons if m["brought"]}
     ranks = {}
     for f in (0.5, 1, 2):
@@ -204,7 +210,7 @@ def impact_tuning(games, trackers, mons, replacement):
         for g, v in zip(games, valued):
             for (side, sp), c in v["rows"].items():
                 tot["%s|%s" % (g["names"][side], sp)] += impact.impact_of(c)
-        order = sorted(brought, key=lambda k: (-impact.war_of(tot[k], brought[k], replacement), k))
+        order = sorted(brought, key=lambda k: (-tot[k] / brought[k], k))
         ranks[f] = {k: i + 1 for i, k in enumerate(order)}
     out = []
     for k in sorted(brought, key=lambda k: ranks[1][k]):
@@ -212,7 +218,7 @@ def impact_tuning(games, trackers, mons, replacement):
         out.append(OrderedDict([("id", k), ("rank_half", lo), ("rank", mid), ("rank_double", hi),
                                 ("moves", max(lo, mid, hi) - min(lo, mid, hi))]))
     moved = [r for r in out if r["moves"] >= 3]
-    print("WAR tuning: %d of %d Pokémon move 3+ places when the heuristic shares are halved or doubled%s" % (
+    print("HP Impact tuning: %d of %d Pokémon move 3+ places when the heuristic shares are halved or doubled%s" % (
         len(moved), len(out), "".join("\n  %-28s %3d / %3d / %3d" % (r["id"], r["rank_half"], r["rank"],
                                                                      r["rank_double"]) for r in moved)))
     return out
@@ -434,13 +440,9 @@ def main():
         ]))
     teams.sort(key=lambda x: (-x["series_wins"], -x["wins"], x["player"]))
 
-    # ---- WAR: each brought game's HP Impact above replacement, in wins ----------
-    replacement = impact.replacement_level([r["impact"] for r in gm_rows])
-    for r in gm_rows:
-        r["war"] = r6(impact.war_of(r["impact"], 1, replacement))
-
     # ---- mons ----------------------------------------------------------------
     imp_rows = defaultdict(list)
+    league_per_app = sum(r["impact"] for r in gm_rows) / len(gm_rows) if gm_rows else 0
     for r in gm_rows:
         imp_rows[(r["player"], r["pokemon"])].append(r)
     mons = []
@@ -465,7 +467,7 @@ def main():
             ("friendly_fire", r2(row["friendly_fire"])), ("crits", int(row["crits"])),
             ("super_effective", int(row["super_effective"])), ("misses", int(row["misses"])),
             ("statuses", int(row["statuses"])),
-        ] + impact_totals(imp_rows.get((p, sp), []), tg, b)))
+        ] + impact_totals(imp_rows.get((p, sp), []), tg, b, league_per_app)))
     mons.sort(key=lambda x: (x["player"], x["pokemon"]))
 
     # ---- moves ---------------------------------------------------------------
@@ -505,10 +507,9 @@ def main():
     save("weather", weather)
     for name, rows in aggregate_luck(games, out_games).items():
         save(name, rows)
-    save("impact", impact_tuning(games, trackers, mons, replacement))
+    save("impact", impact_tuning(games, trackers, mons))
     save("meta", {"updated": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-                  "games": len(out_games), "bars_per_win": impact.BARS_PER_WIN,
-                  "replacement_hp_per_game": r2(replacement)})
+                  "games": len(out_games)})
     print("Built %d games, %d players, %d Pokémon." % (len(out_games), len(teams), len(mons)))
 
 
