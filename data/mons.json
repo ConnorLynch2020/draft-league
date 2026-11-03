@@ -27,7 +27,17 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 0.0,
+  "impact_per_game": 0.0,
+  "impact_per_app": 0.0,
+  "imp_damage": 0.0,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.0,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {}
  },
  {
   "id": "Alex|Crobat",
@@ -57,7 +67,20 @@
   "crits": 0,
   "super_effective": 2,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 6.0,
+  "impact_per_game": 0.6,
+  "impact_per_app": 0.6,
+  "imp_damage": 4.16,
+  "imp_setup": 0.0,
+  "imp_heal": 0.73,
+  "imp_prevented": 0.65,
+  "imp_share": 0.46,
+  "recoil": 0.66,
+  "prevented_by": {
+   "lost_turns": 0.33,
+   "speed": 0.32
+  }
  },
  {
   "id": "Alex|Gothitelle",
@@ -86,7 +109,17 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 0,
+  "impact_per_game": 0.0,
+  "impact_per_app": null,
+  "imp_damage": 0,
+  "imp_setup": 0,
+  "imp_heal": 0,
+  "imp_prevented": 0,
+  "imp_share": 0,
+  "recoil": 0,
+  "prevented_by": {}
  },
  {
   "id": "Alex|Gurdurr",
@@ -115,7 +148,19 @@
   "crits": 0,
   "super_effective": 2,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 3.46,
+  "impact_per_game": 0.35,
+  "impact_per_app": 1.15,
+  "imp_damage": 1.62,
+  "imp_setup": 0.0,
+  "imp_heal": 0.12,
+  "imp_prevented": 1.71,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "guard": 1.71
+  }
  },
  {
   "id": "Alex|Kangaskhan",
@@ -144,7 +189,20 @@
   "crits": 0,
   "super_effective": 7,
   "misses": 2,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 5.85,
+  "impact_per_game": 0.59,
+  "impact_per_app": 1.17,
+  "imp_damage": 3.43,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 2.63,
+  "imp_share": -0.21,
+  "recoil": 0.0,
+  "prevented_by": {
+   "lost_turns": 0.93,
+   "protect": 1.7
+  }
  },
  {
   "id": "Alex|Keldeo",
@@ -174,7 +232,17 @@
   "crits": 1,
   "super_effective": 9,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 6.47,
+  "impact_per_game": 0.65,
+  "impact_per_app": 0.72,
+  "imp_damage": 6.47,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.0,
+  "imp_share": 0.0,
+  "recoil": 1.15,
+  "prevented_by": {}
  },
  {
   "id": "Alex|Metagross",
@@ -204,7 +272,19 @@
   "crits": 0,
   "super_effective": 3,
   "misses": 2,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 7.2,
+  "impact_per_game": 0.72,
+  "impact_per_app": 0.8,
+  "imp_damage": 6.01,
+  "imp_setup": 0.0,
+  "imp_heal": 0.18,
+  "imp_prevented": 1.01,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "protect": 1.01
+  }
  },
  {
   "id": "Alex|Piloswine",
@@ -234,7 +314,17 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 0,
+  "impact_per_game": 0.0,
+  "impact_per_app": null,
+  "imp_damage": 0,
+  "imp_setup": 0,
+  "imp_heal": 0,
+  "imp_prevented": 0,
+  "imp_share": 0,
+  "recoil": 0,
+  "prevented_by": {}
  },
  {
   "id": "Alex|Rotom-Wash",
@@ -264,7 +354,19 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 2
+  "statuses": 2,
+  "impact": 1.59,
+  "impact_per_game": 0.16,
+  "impact_per_app": 0.32,
+  "imp_damage": 1.01,
+  "imp_setup": 0.0,
+  "imp_heal": 0.5,
+  "imp_prevented": 0.09,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "lost_turns": 0.09
+  }
  },
  {
   "id": "Alex|Stoutland",
@@ -293,7 +395,20 @@
   "crits": 4,
   "super_effective": 13,
   "misses": 0,
-  "statuses": 1
+  "statuses": 1,
+  "impact": 11.92,
+  "impact_per_game": 1.19,
+  "impact_per_app": 1.49,
+  "imp_damage": 10.21,
+  "imp_setup": 0.0,
+  "imp_heal": 0.49,
+  "imp_prevented": 1.22,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "lost_turns": 0.74,
+   "protect": 0.47
+  }
  },
  {
   "id": "Alex|Tangrowth",
@@ -322,7 +437,20 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 2.42,
+  "impact_per_game": 0.24,
+  "impact_per_app": 2.42,
+  "imp_damage": 0.0,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 2.42,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "lost_turns": 0.18,
+   "protect": 2.24
+  }
  },
  {
   "id": "Alex|Tyranitar",
@@ -352,7 +480,19 @@
   "crits": 3,
   "super_effective": 13,
   "misses": 1,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 16.03,
+  "impact_per_game": 1.6,
+  "impact_per_app": 2.0,
+  "imp_damage": 11.13,
+  "imp_setup": 4.12,
+  "imp_heal": 0.0,
+  "imp_prevented": 1.02,
+  "imp_share": -0.25,
+  "recoil": 0.0,
+  "prevented_by": {
+   "protect": 1.02
+  }
  },
  {
   "id": "Bo|Arceus",
@@ -381,7 +521,17 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 0,
+  "impact_per_game": 0.0,
+  "impact_per_app": null,
+  "imp_damage": 0,
+  "imp_setup": 0,
+  "imp_heal": 0,
+  "imp_prevented": 0,
+  "imp_share": 0,
+  "recoil": 0,
+  "prevented_by": {}
  },
  {
   "id": "Bo|Chandelure",
@@ -411,7 +561,20 @@
   "crits": 0,
   "super_effective": 4,
   "misses": 1,
-  "statuses": 1
+  "statuses": 1,
+  "impact": 5.94,
+  "impact_per_game": 0.66,
+  "impact_per_app": 0.74,
+  "imp_damage": 4.13,
+  "imp_setup": 0.12,
+  "imp_heal": 0.0,
+  "imp_prevented": 1.62,
+  "imp_share": 0.06,
+  "recoil": 0.0,
+  "prevented_by": {
+   "immunity": 0.5,
+   "protect": 1.12
+  }
  },
  {
   "id": "Bo|Darmanitan",
@@ -440,7 +603,17 @@
   "crits": 0,
   "super_effective": 1,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 1.28,
+  "impact_per_game": 0.14,
+  "impact_per_app": 0.18,
+  "imp_damage": 1.28,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.0,
+  "imp_share": 0.0,
+  "recoil": 0.3,
+  "prevented_by": {}
  },
  {
   "id": "Bo|Eelektrik",
@@ -469,7 +642,19 @@
   "crits": 0,
   "super_effective": 2,
   "misses": 1,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 3.2,
+  "impact_per_game": 0.36,
+  "impact_per_app": 3.2,
+  "imp_damage": 1.24,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 1.96,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "immunity": 1.96
+  }
  },
  {
   "id": "Bo|Galvantula",
@@ -499,7 +684,17 @@
   "crits": 2,
   "super_effective": 8,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 5.6,
+  "impact_per_game": 0.62,
+  "impact_per_app": 1.87,
+  "imp_damage": 5.66,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.0,
+  "imp_share": -0.06,
+  "recoil": 0.0,
+  "prevented_by": {}
  },
  {
   "id": "Bo|Haxorus",
@@ -528,7 +723,17 @@
   "crits": 1,
   "super_effective": 2,
   "misses": 2,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 4.34,
+  "impact_per_game": 0.48,
+  "impact_per_app": 0.62,
+  "imp_damage": 4.34,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.0,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {}
  },
  {
   "id": "Bo|Hydreigon",
@@ -558,7 +763,20 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 1,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 5.74,
+  "impact_per_game": 0.64,
+  "impact_per_app": 0.82,
+  "imp_damage": 3.92,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 1.82,
+  "imp_share": 0.0,
+  "recoil": 0.79,
+  "prevented_by": {
+   "immunity": 0.63,
+   "protect": 1.19
+  }
  },
  {
   "id": "Bo|Lucario",
@@ -588,7 +806,17 @@
   "crits": 0,
   "super_effective": 3,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 2.93,
+  "impact_per_game": 0.33,
+  "impact_per_app": 0.42,
+  "imp_damage": 2.98,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.0,
+  "imp_share": -0.05,
+  "recoil": 0.5,
+  "prevented_by": {}
  },
  {
   "id": "Bo|Mandibuzz",
@@ -618,7 +846,19 @@
   "crits": 1,
   "super_effective": 1,
   "misses": 0,
-  "statuses": 2
+  "statuses": 2,
+  "impact": 5.39,
+  "impact_per_game": 0.6,
+  "impact_per_app": 1.35,
+  "imp_damage": 2.51,
+  "imp_setup": 0.44,
+  "imp_heal": 2.04,
+  "imp_prevented": 0.35,
+  "imp_share": 0.05,
+  "recoil": 0.0,
+  "prevented_by": {
+   "immunity": 0.35
+  }
  },
  {
   "id": "Bo|Pikachu",
@@ -647,7 +887,19 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 0.71,
+  "impact_per_game": 0.08,
+  "impact_per_app": 0.71,
+  "imp_damage": 0.0,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.71,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "protect": 0.71
+  }
  },
  {
   "id": "Bo|Scolipede",
@@ -677,7 +929,17 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 0,
+  "impact_per_game": 0.0,
+  "impact_per_app": null,
+  "imp_damage": 0,
+  "imp_setup": 0,
+  "imp_heal": 0,
+  "imp_prevented": 0,
+  "imp_share": 0,
+  "recoil": 0,
+  "prevented_by": {}
  },
  {
   "id": "Bo|Seismitoad",
@@ -707,7 +969,19 @@
   "crits": 1,
   "super_effective": 8,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 6.73,
+  "impact_per_game": 0.75,
+  "impact_per_app": 0.75,
+  "imp_damage": 5.52,
+  "imp_setup": 0.25,
+  "imp_heal": 0.42,
+  "imp_prevented": 0.54,
+  "imp_share": 0.0,
+  "recoil": 0.96,
+  "prevented_by": {
+   "protect": 0.54
+  }
  },
  {
   "id": "Bo|Sigilyph",
@@ -737,7 +1011,17 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 0,
+  "impact_per_game": 0.0,
+  "impact_per_app": null,
+  "imp_damage": 0,
+  "imp_setup": 0,
+  "imp_heal": 0,
+  "imp_prevented": 0,
+  "imp_share": 0,
+  "recoil": 0,
+  "prevented_by": {}
  },
  {
   "id": "Brayden|Celebi",
@@ -767,7 +1051,17 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 0.12,
+  "impact_per_game": 0.01,
+  "impact_per_app": 0.06,
+  "imp_damage": 0.0,
+  "imp_setup": 0.0,
+  "imp_heal": 0.12,
+  "imp_prevented": 0.0,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {}
  },
  {
   "id": "Brayden|Entei",
@@ -796,7 +1090,17 @@
   "crits": 0,
   "super_effective": 1,
   "misses": 0,
-  "statuses": 1
+  "statuses": 1,
+  "impact": 1.63,
+  "impact_per_game": 0.16,
+  "impact_per_app": 0.81,
+  "imp_damage": 0.58,
+  "imp_setup": 0.5,
+  "imp_heal": 0.56,
+  "imp_prevented": 0.0,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {}
  },
  {
   "id": "Brayden|Excadrill",
@@ -826,7 +1130,19 @@
   "crits": 2,
   "super_effective": 6,
   "misses": 1,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 6.31,
+  "impact_per_game": 0.63,
+  "impact_per_app": 0.9,
+  "imp_damage": 4.64,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 1.67,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "protect": 1.67
+  }
  },
  {
   "id": "Brayden|Gligar",
@@ -856,7 +1172,17 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 0,
+  "impact_per_game": 0.0,
+  "impact_per_app": null,
+  "imp_damage": 0,
+  "imp_setup": 0,
+  "imp_heal": 0,
+  "imp_prevented": 0,
+  "imp_share": 0,
+  "recoil": 0,
+  "prevented_by": {}
  },
  {
   "id": "Brayden|Hippowdon",
@@ -885,7 +1211,20 @@
   "crits": 2,
   "super_effective": 16,
   "misses": 0,
-  "statuses": 4
+  "statuses": 4,
+  "impact": 23.34,
+  "impact_per_game": 2.33,
+  "impact_per_app": 2.33,
+  "imp_damage": 11.22,
+  "imp_setup": 8.25,
+  "imp_heal": 1.5,
+  "imp_prevented": 2.37,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "lost_turns": 1.31,
+   "protect": 1.06
+  }
  },
  {
   "id": "Brayden|Honchkrow",
@@ -915,7 +1254,19 @@
   "crits": 2,
   "super_effective": 7,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 6.2,
+  "impact_per_game": 0.62,
+  "impact_per_app": 1.55,
+  "imp_damage": 5.61,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.59,
+  "imp_share": 0.0,
+  "recoil": 0.52,
+  "prevented_by": {
+   "protect": 0.59
+  }
  },
  {
   "id": "Brayden|Mienshao",
@@ -944,7 +1295,20 @@
   "crits": 2,
   "super_effective": 6,
   "misses": 1,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 8.4,
+  "impact_per_game": 0.84,
+  "impact_per_app": 1.05,
+  "imp_damage": 3.97,
+  "imp_setup": 0.0,
+  "imp_heal": 0.71,
+  "imp_prevented": 3.71,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "guard": 1.55,
+   "lost_turns": 2.16
+  }
  },
  {
   "id": "Brayden|Milotic",
@@ -973,7 +1337,17 @@
   "crits": 0,
   "super_effective": 5,
   "misses": 0,
-  "statuses": 2
+  "statuses": 2,
+  "impact": 10.18,
+  "impact_per_game": 1.02,
+  "impact_per_app": 1.27,
+  "imp_damage": 5.6,
+  "imp_setup": 0.62,
+  "imp_heal": 3.96,
+  "imp_prevented": 0.0,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {}
  },
  {
   "id": "Brayden|Salamence",
@@ -1003,7 +1377,20 @@
   "crits": 0,
   "super_effective": 2,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 3.43,
+  "impact_per_game": 0.34,
+  "impact_per_app": 0.69,
+  "imp_damage": 2.51,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.92,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "immunity": 0.71,
+   "intimidate": 0.22
+  }
  },
  {
   "id": "Brayden|Thundurus-Therian",
@@ -1033,7 +1420,19 @@
   "crits": 1,
   "super_effective": 2,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 8.61,
+  "impact_per_game": 0.86,
+  "impact_per_app": 1.23,
+  "imp_damage": 6.15,
+  "imp_setup": 0.0,
+  "imp_heal": 0.25,
+  "imp_prevented": 2.22,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "immunity": 2.22
+  }
  },
  {
   "id": "Brayden|Uxie",
@@ -1062,7 +1461,20 @@
   "crits": 1,
   "super_effective": 3,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 6.19,
+  "impact_per_game": 0.62,
+  "impact_per_app": 1.55,
+  "imp_damage": 2.83,
+  "imp_setup": 0.0,
+  "imp_heal": 0.75,
+  "imp_prevented": 2.61,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "immunity": 0.35,
+   "protect": 2.25
+  }
  },
  {
   "id": "Brayden|Vulpix",
@@ -1091,7 +1503,17 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 0,
+  "impact_per_game": 0.0,
+  "impact_per_app": null,
+  "imp_damage": 0,
+  "imp_setup": 0,
+  "imp_heal": 0,
+  "imp_prevented": 0,
+  "imp_share": 0,
+  "recoil": 0,
+  "prevented_by": {}
  },
  {
   "id": "Connor|Beartic",
@@ -1120,7 +1542,17 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 0,
+  "impact_per_game": 0.0,
+  "impact_per_app": null,
+  "imp_damage": 0,
+  "imp_setup": 0,
+  "imp_heal": 0,
+  "imp_prevented": 0,
+  "imp_share": 0,
+  "recoil": 0,
+  "prevented_by": {}
  },
  {
   "id": "Connor|Chansey",
@@ -1149,7 +1581,17 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 8
+  "statuses": 8,
+  "impact": 8.26,
+  "impact_per_game": 0.75,
+  "impact_per_app": 1.65,
+  "imp_damage": 0.3,
+  "imp_setup": 3.05,
+  "imp_heal": 4.91,
+  "imp_prevented": 0.0,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {}
  },
  {
   "id": "Connor|Dusclops",
@@ -1178,7 +1620,21 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 3,
-  "statuses": 3
+  "statuses": 3,
+  "impact": 8.14,
+  "impact_per_game": 0.74,
+  "impact_per_app": 1.63,
+  "imp_damage": 1.92,
+  "imp_setup": 1.48,
+  "imp_heal": 1.84,
+  "imp_prevented": 2.34,
+  "imp_share": 0.57,
+  "recoil": 0.0,
+  "prevented_by": {
+   "burn": 0.83,
+   "immunity": 0.1,
+   "speed": 1.4
+  }
  },
  {
   "id": "Connor|Eelektross",
@@ -1207,7 +1663,19 @@
   "crits": 0,
   "super_effective": 2,
   "misses": 1,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 1.74,
+  "impact_per_game": 0.16,
+  "impact_per_app": 0.43,
+  "imp_damage": 0.79,
+  "imp_setup": 0.0,
+  "imp_heal": 0.22,
+  "imp_prevented": 0.84,
+  "imp_share": -0.11,
+  "recoil": 0.0,
+  "prevented_by": {
+   "protect": 0.84
+  }
  },
  {
   "id": "Connor|Genesect",
@@ -1237,7 +1705,17 @@
   "crits": 2,
   "super_effective": 3,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 7.7,
+  "impact_per_game": 0.7,
+  "impact_per_app": 1.28,
+  "imp_damage": 7.7,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.0,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {}
  },
  {
   "id": "Connor|Landorus-Therian",
@@ -1267,7 +1745,21 @@
   "crits": 2,
   "super_effective": 4,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 8.97,
+  "impact_per_game": 0.82,
+  "impact_per_app": 1.5,
+  "imp_damage": 5.46,
+  "imp_setup": 0.56,
+  "imp_heal": 0.25,
+  "imp_prevented": 2.7,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "immunity": 1.25,
+   "intimidate": 1.2,
+   "protect": 0.26
+  }
  },
  {
   "id": "Connor|Latios",
@@ -1297,7 +1789,19 @@
   "crits": 0,
   "super_effective": 4,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 4.7,
+  "impact_per_game": 0.43,
+  "impact_per_app": 0.59,
+  "imp_damage": 4.74,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.29,
+  "imp_share": -0.33,
+  "recoil": 0.49,
+  "prevented_by": {
+   "speed": 0.29
+  }
  },
  {
   "id": "Connor|Machamp",
@@ -1326,7 +1830,17 @@
   "crits": 1,
   "super_effective": 1,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 3.89,
+  "impact_per_game": 0.35,
+  "impact_per_app": 1.95,
+  "imp_damage": 3.89,
+  "imp_setup": 0.0,
+  "imp_heal": 0.25,
+  "imp_prevented": 0.0,
+  "imp_share": -0.25,
+  "recoil": 0.0,
+  "prevented_by": {}
  },
  {
   "id": "Connor|Magmar",
@@ -1355,7 +1869,20 @@
   "crits": 1,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 2.17,
+  "impact_per_game": 0.2,
+  "impact_per_app": 0.43,
+  "imp_damage": 0.76,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.8,
+  "imp_share": 0.61,
+  "recoil": 0.0,
+  "prevented_by": {
+   "protect": 0.17,
+   "redirect": 0.63
+  }
  },
  {
   "id": "Connor|Rotom-Heat",
@@ -1385,7 +1912,19 @@
   "crits": 0,
   "super_effective": 8,
   "misses": 1,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 8.57,
+  "impact_per_game": 0.78,
+  "impact_per_app": 1.07,
+  "imp_damage": 8.22,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.35,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "immunity": 0.35
+  }
  },
  {
   "id": "Connor|Scrafty",
@@ -1415,7 +1954,21 @@
   "crits": 1,
   "super_effective": 5,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 10.37,
+  "impact_per_game": 0.94,
+  "impact_per_app": 1.48,
+  "imp_damage": 5.12,
+  "imp_setup": 0.0,
+  "imp_heal": 2.3,
+  "imp_prevented": 3.44,
+  "imp_share": -0.5,
+  "recoil": 0.34,
+  "prevented_by": {
+   "intimidate": 1.81,
+   "lost_turns": 1.07,
+   "protect": 0.57
+  }
  },
  {
   "id": "Connor|Suicune",
@@ -1444,7 +1997,19 @@
   "crits": 0,
   "super_effective": 4,
   "misses": 0,
-  "statuses": 4
+  "statuses": 4,
+  "impact": 10.4,
+  "impact_per_game": 0.95,
+  "impact_per_app": 1.3,
+  "imp_damage": 3.5,
+  "imp_setup": 1.96,
+  "imp_heal": 2.67,
+  "imp_prevented": 2.29,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "protect": 2.29
+  }
  },
  {
   "id": "Danny|Cobalion",
@@ -1474,7 +2039,17 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 0,
+  "impact_per_game": 0.0,
+  "impact_per_app": null,
+  "imp_damage": 0,
+  "imp_setup": 0,
+  "imp_heal": 0,
+  "imp_prevented": 0,
+  "imp_share": 0,
+  "recoil": 0,
+  "prevented_by": {}
  },
  {
   "id": "Danny|Golbat",
@@ -1504,7 +2079,17 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 0.87,
+  "impact_per_game": 0.11,
+  "impact_per_app": 0.87,
+  "imp_damage": 0.87,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.0,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {}
  },
  {
   "id": "Danny|Heatran",
@@ -1534,7 +2119,17 @@
   "crits": 5,
   "super_effective": 7,
   "misses": 3,
-  "statuses": 3
+  "statuses": 3,
+  "impact": 9.19,
+  "impact_per_game": 1.15,
+  "impact_per_app": 2.3,
+  "imp_damage": 7.57,
+  "imp_setup": 0.49,
+  "imp_heal": 1.13,
+  "imp_prevented": 0.0,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {}
  },
  {
   "id": "Danny|Hitmonlee",
@@ -1563,7 +2158,19 @@
   "crits": 0,
   "super_effective": 1,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 1.84,
+  "impact_per_game": 0.23,
+  "impact_per_app": 0.46,
+  "imp_damage": 1.65,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.19,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "lost_turns": 0.19
+  }
  },
  {
   "id": "Danny|Kyurem-Black",
@@ -1593,7 +2200,19 @@
   "crits": 1,
   "super_effective": 5,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 8.39,
+  "impact_per_game": 1.05,
+  "impact_per_app": 1.4,
+  "imp_damage": 7.8,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.95,
+  "imp_share": -0.36,
+  "recoil": 0.7,
+  "prevented_by": {
+   "protect": 0.95
+  }
  },
  {
   "id": "Danny|Latias",
@@ -1623,7 +2242,20 @@
   "crits": 0,
   "super_effective": 2,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 3.93,
+  "impact_per_game": 0.49,
+  "impact_per_app": 0.66,
+  "imp_damage": 3.42,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.51,
+  "imp_share": 0.0,
+  "recoil": 0.1,
+  "prevented_by": {
+   "protect": 0.33,
+   "speed": 0.17
+  }
  },
  {
   "id": "Danny|Manaphy",
@@ -1652,7 +2284,19 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 4.34,
+  "impact_per_game": 0.54,
+  "impact_per_app": 1.45,
+  "imp_damage": 3.09,
+  "imp_setup": 0.0,
+  "imp_heal": 0.25,
+  "imp_prevented": 1.0,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "protect": 1.0
+  }
  },
  {
   "id": "Danny|Rhydon",
@@ -1682,7 +2326,20 @@
   "crits": 0,
   "super_effective": 4,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 5.48,
+  "impact_per_game": 0.68,
+  "impact_per_app": 2.74,
+  "imp_damage": 3.08,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 2.4,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "immunity": 1.63,
+   "protect": 0.77
+  }
  },
  {
   "id": "Danny|Slowbro",
@@ -1712,7 +2369,21 @@
   "crits": 0,
   "super_effective": 1,
   "misses": 0,
-  "statuses": 1
+  "statuses": 1,
+  "impact": 3.29,
+  "impact_per_game": 0.41,
+  "impact_per_app": 1.64,
+  "imp_damage": 1.21,
+  "imp_setup": 0.37,
+  "imp_heal": 0.31,
+  "imp_prevented": 1.4,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "burn": 0.47,
+   "protect": 0.65,
+   "speed": 0.28
+  }
  },
  {
   "id": "Danny|Staraptor",
@@ -1742,7 +2413,20 @@
   "crits": 0,
   "super_effective": 1,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 6.87,
+  "impact_per_game": 0.86,
+  "impact_per_app": 1.14,
+  "imp_damage": 5.7,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.81,
+  "imp_share": 0.36,
+  "recoil": 0.36,
+  "prevented_by": {
+   "intimidate": 0.69,
+   "speed": 0.12
+  }
  },
  {
   "id": "Danny|Thundurus",
@@ -1772,7 +2456,21 @@
   "crits": 1,
   "super_effective": 4,
   "misses": 0,
-  "statuses": 6
+  "statuses": 6,
+  "impact": 5.88,
+  "impact_per_game": 0.73,
+  "impact_per_app": 1.18,
+  "imp_damage": 4.03,
+  "imp_setup": 0.0,
+  "imp_heal": 0.75,
+  "imp_prevented": 1.1,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "lost_turns": 0.42,
+   "protect": 0.39,
+   "speed": 0.29
+  }
  },
  {
   "id": "Danny|Virizion",
@@ -1802,7 +2500,17 @@
   "crits": 1,
   "super_effective": 4,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 5.51,
+  "impact_per_game": 0.69,
+  "impact_per_app": 1.1,
+  "imp_damage": 5.51,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.0,
+  "imp_share": 0.0,
+  "recoil": 0.2,
+  "prevented_by": {}
  },
  {
   "id": "David Kim|Blastoise",
@@ -1831,7 +2539,20 @@
   "crits": 3,
   "super_effective": 1,
   "misses": 2,
-  "statuses": 1
+  "statuses": 1,
+  "impact": 7.65,
+  "impact_per_game": 0.7,
+  "impact_per_app": 0.85,
+  "imp_damage": 4.23,
+  "imp_setup": 0.25,
+  "imp_heal": 1.17,
+  "imp_prevented": 2.08,
+  "imp_share": -0.08,
+  "recoil": 0.0,
+  "prevented_by": {
+   "lost_turns": 1.64,
+   "protect": 0.44
+  }
  },
  {
   "id": "David Kim|Escavalier",
@@ -1861,7 +2582,17 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 1,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 1.39,
+  "impact_per_game": 0.13,
+  "impact_per_app": 0.46,
+  "imp_damage": 1.39,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.0,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {}
  },
  {
   "id": "David Kim|Ferrothorn",
@@ -1891,7 +2622,20 @@
   "crits": 1,
   "super_effective": 4,
   "misses": 5,
-  "statuses": 5
+  "statuses": 5,
+  "impact": 22.63,
+  "impact_per_game": 2.06,
+  "impact_per_app": 2.51,
+  "imp_damage": 8.5,
+  "imp_setup": 7.81,
+  "imp_heal": 4.96,
+  "imp_prevented": 2.07,
+  "imp_share": -0.71,
+  "recoil": 0.0,
+  "prevented_by": {
+   "lost_turns": 0.05,
+   "protect": 2.02
+  }
  },
  {
   "id": "David Kim|Kingdra",
@@ -1921,7 +2665,19 @@
   "crits": 3,
   "super_effective": 2,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 10.45,
+  "impact_per_game": 0.95,
+  "impact_per_app": 1.16,
+  "imp_damage": 10.11,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 1.26,
+  "imp_share": -0.92,
+  "recoil": 1.32,
+  "prevented_by": {
+   "protect": 1.26
+  }
  },
  {
   "id": "David Kim|Lapras",
@@ -1951,7 +2707,17 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 0,
+  "impact_per_game": 0.0,
+  "impact_per_app": null,
+  "imp_damage": 0,
+  "imp_setup": 0,
+  "imp_heal": 0,
+  "imp_prevented": 0,
+  "imp_share": 0,
+  "recoil": 0,
+  "prevented_by": {}
  },
  {
   "id": "David Kim|Magneton",
@@ -1981,7 +2747,19 @@
   "crits": 0,
   "super_effective": 2,
   "misses": 0,
-  "statuses": 2
+  "statuses": 2,
+  "impact": 3.5,
+  "impact_per_game": 0.32,
+  "impact_per_app": 1.75,
+  "imp_damage": 3.22,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.27,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "speed": 0.27
+  }
  },
  {
   "id": "David Kim|Politoed",
@@ -2010,7 +2788,19 @@
   "crits": 1,
   "super_effective": 8,
   "misses": 0,
-  "statuses": 9
+  "statuses": 9,
+  "impact": 12.09,
+  "impact_per_game": 1.1,
+  "impact_per_app": 1.1,
+  "imp_damage": 3.82,
+  "imp_setup": 2.1,
+  "imp_heal": 1.25,
+  "imp_prevented": 3.28,
+  "imp_share": 1.64,
+  "recoil": 0.0,
+  "prevented_by": {
+   "protect": 3.28
+  }
  },
  {
   "id": "David Kim|Quagsire",
@@ -2040,7 +2830,19 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 2
+  "statuses": 2,
+  "impact": 0.79,
+  "impact_per_game": 0.07,
+  "impact_per_app": 0.79,
+  "imp_damage": 0.15,
+  "imp_setup": 0.12,
+  "imp_heal": 0.25,
+  "imp_prevented": 0.27,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "protect": 0.27
+  }
  },
  {
   "id": "David Kim|Raikou",
@@ -2069,7 +2871,20 @@
   "crits": 1,
   "super_effective": 10,
   "misses": 0,
-  "statuses": 1
+  "statuses": 1,
+  "impact": 12.86,
+  "impact_per_game": 1.17,
+  "impact_per_app": 1.43,
+  "imp_damage": 10.85,
+  "imp_setup": 0.0,
+  "imp_heal": 0.56,
+  "imp_prevented": 1.45,
+  "imp_share": 0.0,
+  "recoil": 0.7,
+  "prevented_by": {
+   "protect": 1.33,
+   "screens": 0.12
+  }
  },
  {
   "id": "David Kim|Rhyperior",
@@ -2099,7 +2914,17 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": -0.12,
+  "impact_per_game": -0.01,
+  "impact_per_app": -0.12,
+  "imp_damage": -0.25,
+  "imp_setup": 0.0,
+  "imp_heal": 0.12,
+  "imp_prevented": 0.0,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {}
  },
  {
   "id": "David Kim|Tangela",
@@ -2128,7 +2953,19 @@
   "crits": 0,
   "super_effective": 2,
   "misses": 0,
-  "statuses": 3
+  "statuses": 3,
+  "impact": 4.02,
+  "impact_per_game": 0.37,
+  "impact_per_app": 1.34,
+  "imp_damage": 1.61,
+  "imp_setup": 1.97,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.45,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "redirect": 0.45
+  }
  },
  {
   "id": "David Kim|Tornadus",
@@ -2157,7 +2994,21 @@
   "crits": 0,
   "super_effective": 3,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 3.49,
+  "impact_per_game": 0.32,
+  "impact_per_app": 0.39,
+  "imp_damage": 2.99,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.43,
+  "imp_share": 0.08,
+  "recoil": 0.0,
+  "prevented_by": {
+   "immunity": 0.17,
+   "lost_turns": 0.01,
+   "speed": 0.25
+  }
  },
  {
   "id": "Dennis|Cresselia",
@@ -2186,7 +3037,21 @@
   "crits": 2,
   "super_effective": 9,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 12.09,
+  "impact_per_game": 1.51,
+  "impact_per_app": 2.02,
+  "imp_damage": 6.83,
+  "imp_setup": 0.0,
+  "imp_heal": 3.0,
+  "imp_prevented": 2.02,
+  "imp_share": 0.24,
+  "recoil": 0.0,
+  "prevented_by": {
+   "immunity": 0.35,
+   "protect": 1.04,
+   "speed": 0.63
+  }
  },
  {
   "id": "Dennis|Darkrai",
@@ -2215,7 +3080,19 @@
   "crits": 1,
   "super_effective": 5,
   "misses": 1,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 4.87,
+  "impact_per_game": 0.61,
+  "impact_per_app": 0.7,
+  "imp_damage": 4.68,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.18,
+  "imp_share": 0.0,
+  "recoil": 0.2,
+  "prevented_by": {
+   "lost_turns": 0.18
+  }
  },
  {
   "id": "Dennis|Dusknoir",
@@ -2244,7 +3121,19 @@
   "crits": 1,
   "super_effective": 1,
   "misses": 1,
-  "statuses": 3
+  "statuses": 3,
+  "impact": 5.35,
+  "impact_per_game": 0.67,
+  "impact_per_app": 1.78,
+  "imp_damage": 0.76,
+  "imp_setup": 2.36,
+  "imp_heal": 1.84,
+  "imp_prevented": 0.25,
+  "imp_share": 0.14,
+  "recoil": 0.0,
+  "prevented_by": {
+   "burn": 0.25
+  }
  },
  {
   "id": "Dennis|Hitmontop",
@@ -2273,7 +3162,21 @@
   "crits": 1,
   "super_effective": 4,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 5.54,
+  "impact_per_game": 0.69,
+  "impact_per_app": 0.69,
+  "imp_damage": 3.66,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 2.03,
+  "imp_share": -0.15,
+  "recoil": 0.0,
+  "prevented_by": {
+   "guard": 0.65,
+   "intimidate": 0.64,
+   "lost_turns": 0.74
+  }
  },
  {
   "id": "Dennis|Lampent",
@@ -2303,7 +3206,17 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 0,
+  "impact_per_game": 0.0,
+  "impact_per_app": null,
+  "imp_damage": 0,
+  "imp_setup": 0,
+  "imp_heal": 0,
+  "imp_prevented": 0,
+  "imp_share": 0,
+  "recoil": 0,
+  "prevented_by": {}
  },
  {
   "id": "Dennis|Landorus",
@@ -2333,7 +3246,19 @@
   "crits": 1,
   "super_effective": 3,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 3.47,
+  "impact_per_game": 0.43,
+  "impact_per_app": 0.5,
+  "imp_damage": 3.26,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.21,
+  "imp_share": 0.0,
+  "recoil": 0.2,
+  "prevented_by": {
+   "immunity": 0.21
+  }
  },
  {
   "id": "Dennis|Lanturn",
@@ -2363,7 +3288,17 @@
   "crits": 0,
   "super_effective": 3,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 1.34,
+  "impact_per_game": 0.17,
+  "impact_per_app": 1.34,
+  "imp_damage": 1.15,
+  "imp_setup": 0.0,
+  "imp_heal": 0.43,
+  "imp_prevented": 0.0,
+  "imp_share": -0.24,
+  "recoil": 0.0,
+  "prevented_by": {}
  },
  {
   "id": "Dennis|Moltres",
@@ -2393,7 +3328,17 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 0,
+  "impact_per_game": 0.0,
+  "impact_per_app": null,
+  "imp_damage": 0,
+  "imp_setup": 0,
+  "imp_heal": 0,
+  "imp_prevented": 0,
+  "imp_share": 0,
+  "recoil": 0,
+  "prevented_by": {}
  },
  {
   "id": "Dennis|Scizor",
@@ -2423,7 +3368,19 @@
   "crits": 1,
   "super_effective": 1,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 6.11,
+  "impact_per_game": 0.76,
+  "impact_per_app": 1.02,
+  "imp_damage": 3.53,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 2.62,
+  "imp_share": -0.04,
+  "recoil": 0.0,
+  "prevented_by": {
+   "protect": 2.62
+  }
  },
  {
   "id": "Dennis|Snorlax",
@@ -2452,7 +3409,17 @@
   "crits": 1,
   "super_effective": 3,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 1.02,
+  "impact_per_game": 0.13,
+  "impact_per_app": 0.51,
+  "imp_damage": 1.24,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.0,
+  "imp_share": -0.23,
+  "recoil": 0.0,
+  "prevented_by": {}
  },
  {
   "id": "Dennis|Togetic",
@@ -2482,7 +3449,19 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 2.78,
+  "impact_per_game": 0.35,
+  "impact_per_app": 0.93,
+  "imp_damage": 0.24,
+  "imp_setup": 0.0,
+  "imp_heal": 1.19,
+  "imp_prevented": 0.27,
+  "imp_share": 1.08,
+  "recoil": 0.0,
+  "prevented_by": {
+   "redirect": 0.27
+  }
  },
  {
   "id": "Dennis|Tornadus-Therian",
@@ -2511,7 +3490,20 @@
   "crits": 1,
   "super_effective": 5,
   "misses": 2,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 4.03,
+  "impact_per_game": 0.5,
+  "impact_per_app": 1.34,
+  "imp_damage": 4.34,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.49,
+  "imp_share": -0.8,
+  "recoil": 0.6,
+  "prevented_by": {
+   "immunity": 0.35,
+   "lost_turns": 0.14
+  }
  },
  {
   "id": "Dzzy|Amoonguss",
@@ -2541,7 +3533,21 @@
   "crits": 1,
   "super_effective": 3,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 4.17,
+  "impact_per_game": 0.42,
+  "impact_per_app": 1.04,
+  "imp_damage": 1.09,
+  "imp_setup": 0.0,
+  "imp_heal": 1.45,
+  "imp_prevented": 1.67,
+  "imp_share": -0.03,
+  "recoil": 0.0,
+  "prevented_by": {
+   "lost_turns": 0.06,
+   "protect": 0.77,
+   "redirect": 0.84
+  }
  },
  {
   "id": "Dzzy|Bisharp",
@@ -2571,7 +3577,19 @@
   "crits": 1,
   "super_effective": 5,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 6.21,
+  "impact_per_game": 0.62,
+  "impact_per_app": 1.55,
+  "imp_damage": 5.9,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.64,
+  "imp_share": -0.33,
+  "recoil": 0.59,
+  "prevented_by": {
+   "protect": 0.64
+  }
  },
  {
   "id": "Dzzy|Boldore",
@@ -2600,7 +3618,19 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 1,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 2.83,
+  "impact_per_game": 0.28,
+  "impact_per_app": 0.94,
+  "imp_damage": 2.32,
+  "imp_setup": 0.96,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.13,
+  "imp_share": -0.58,
+  "recoil": 0.0,
+  "prevented_by": {
+   "protect": 0.13
+  }
  },
  {
   "id": "Dzzy|Clefairy",
@@ -2629,7 +3659,19 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 2.32,
+  "impact_per_game": 0.23,
+  "impact_per_app": 0.77,
+  "imp_damage": 1.31,
+  "imp_setup": 0.25,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.43,
+  "imp_share": 0.33,
+  "recoil": 0.0,
+  "prevented_by": {
+   "redirect": 0.43
+  }
  },
  {
   "id": "Dzzy|Drifblim",
@@ -2659,7 +3701,19 @@
   "crits": 1,
   "super_effective": 2,
   "misses": 0,
-  "statuses": 2
+  "statuses": 2,
+  "impact": 2.75,
+  "impact_per_game": 0.27,
+  "impact_per_app": 0.92,
+  "imp_damage": 1.52,
+  "imp_setup": 0.25,
+  "imp_heal": 0.0,
+  "imp_prevented": 1.04,
+  "imp_share": -0.06,
+  "recoil": 0.0,
+  "prevented_by": {
+   "protect": 1.04
+  }
  },
  {
   "id": "Dzzy|Jellicent",
@@ -2689,7 +3743,21 @@
   "crits": 1,
   "super_effective": 1,
   "misses": 4,
-  "statuses": 6
+  "statuses": 6,
+  "impact": 11.31,
+  "impact_per_game": 1.13,
+  "impact_per_app": 1.13,
+  "imp_damage": 3.99,
+  "imp_setup": 1.82,
+  "imp_heal": 2.04,
+  "imp_prevented": 2.69,
+  "imp_share": 0.76,
+  "recoil": 0.0,
+  "prevented_by": {
+   "burn": 1.2,
+   "immunity": 1.0,
+   "speed": 0.49
+  }
  },
  {
   "id": "Dzzy|Krookodile",
@@ -2719,7 +3787,17 @@
   "crits": 0,
   "super_effective": 1,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": -0.46,
+  "impact_per_game": -0.05,
+  "impact_per_app": -0.15,
+  "imp_damage": -0.46,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.0,
+  "imp_share": 0.0,
+  "recoil": 0.2,
+  "prevented_by": {}
  },
  {
   "id": "Dzzy|Kyurem",
@@ -2749,7 +3827,19 @@
   "crits": 1,
   "super_effective": 7,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 9.39,
+  "impact_per_game": 0.94,
+  "impact_per_app": 1.57,
+  "imp_damage": 8.45,
+  "imp_setup": 0.0,
+  "imp_heal": 0.68,
+  "imp_prevented": 0.26,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "protect": 0.26
+  }
  },
  {
   "id": "Dzzy|Lickilicky",
@@ -2778,7 +3868,21 @@
   "crits": 2,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 5
+  "statuses": 5,
+  "impact": 13.64,
+  "impact_per_game": 1.36,
+  "impact_per_app": 2.27,
+  "imp_damage": 7.67,
+  "imp_setup": 0.0,
+  "imp_heal": 4.12,
+  "imp_prevented": 1.94,
+  "imp_share": -0.09,
+  "recoil": 0.0,
+  "prevented_by": {
+   "lost_turns": 0.84,
+   "protect": 1.04,
+   "speed": 0.06
+  }
  },
  {
   "id": "Dzzy|Manectric",
@@ -2807,7 +3911,19 @@
   "crits": 0,
   "super_effective": 6,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 5.08,
+  "impact_per_game": 0.51,
+  "impact_per_app": 1.27,
+  "imp_damage": 4.54,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.54,
+  "imp_share": 0.0,
+  "recoil": 0.4,
+  "prevented_by": {
+   "protect": 0.54
+  }
  },
  {
   "id": "Dzzy|Mew",
@@ -2836,7 +3952,19 @@
   "crits": 4,
   "super_effective": 4,
   "misses": 1,
-  "statuses": 1
+  "statuses": 1,
+  "impact": 1.15,
+  "impact_per_game": 0.12,
+  "impact_per_app": 0.19,
+  "imp_damage": 0.86,
+  "imp_setup": 0.0,
+  "imp_heal": 0.19,
+  "imp_prevented": 0.11,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "lost_turns": 0.11
+  }
  },
  {
   "id": "Dzzy|Terrakion",
@@ -2866,7 +3994,19 @@
   "crits": 0,
   "super_effective": 5,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 6.79,
+  "impact_per_game": 0.68,
+  "impact_per_app": 2.26,
+  "imp_damage": 6.33,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.46,
+  "imp_share": 0.0,
+  "recoil": 0.69,
+  "prevented_by": {
+   "protect": 0.46
+  }
  },
  {
   "id": "Ethan|Alakazam",
@@ -2895,7 +4035,19 @@
   "crits": 0,
   "super_effective": 3,
   "misses": 0,
-  "statuses": 1
+  "statuses": 1,
+  "impact": 5.18,
+  "impact_per_game": 0.52,
+  "impact_per_app": 1.04,
+  "imp_damage": 4.63,
+  "imp_setup": 0.19,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.62,
+  "imp_share": -0.26,
+  "recoil": 0.0,
+  "prevented_by": {
+   "protect": 0.62
+  }
  },
  {
   "id": "Ethan|Blissey",
@@ -2924,7 +4076,21 @@
   "crits": 0,
   "super_effective": 7,
   "misses": 0,
-  "statuses": 4
+  "statuses": 4,
+  "impact": 9.52,
+  "impact_per_game": 0.95,
+  "impact_per_app": 1.36,
+  "imp_damage": 2.99,
+  "imp_setup": 0.0,
+  "imp_heal": 3.74,
+  "imp_prevented": 1.21,
+  "imp_share": 1.58,
+  "recoil": 0.0,
+  "prevented_by": {
+   "lost_turns": 0.46,
+   "protect": 0.69,
+   "speed": 0.07
+  }
  },
  {
   "id": "Ethan|Deoxys-Speed",
@@ -2953,7 +4119,21 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 2
+  "statuses": 2,
+  "impact": 4.81,
+  "impact_per_game": 0.48,
+  "impact_per_app": 0.8,
+  "imp_damage": 0.32,
+  "imp_setup": 2.61,
+  "imp_heal": 0.0,
+  "imp_prevented": 1.64,
+  "imp_share": 0.24,
+  "recoil": 0.0,
+  "prevented_by": {
+   "lost_turns": 0.71,
+   "protect": 0.69,
+   "screens": 0.24
+  }
  },
  {
   "id": "Ethan|Emboar",
@@ -2983,7 +4163,19 @@
   "crits": 0,
   "super_effective": 6,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 5.85,
+  "impact_per_game": 0.58,
+  "impact_per_app": 0.84,
+  "imp_damage": 5.19,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 1.16,
+  "imp_share": -0.5,
+  "recoil": 0.78,
+  "prevented_by": {
+   "protect": 1.16
+  }
  },
  {
   "id": "Ethan|Garchomp",
@@ -3013,7 +4205,19 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 1.19,
+  "impact_per_game": 0.12,
+  "impact_per_app": 0.4,
+  "imp_damage": 0.48,
+  "imp_setup": 0.37,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.34,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "protect": 0.34
+  }
  },
  {
   "id": "Ethan|Gastrodon",
@@ -3043,7 +4247,20 @@
   "crits": 0,
   "super_effective": 5,
   "misses": 0,
-  "statuses": 3
+  "statuses": 3,
+  "impact": 8.96,
+  "impact_per_game": 0.9,
+  "impact_per_app": 1.12,
+  "imp_damage": 3.07,
+  "imp_setup": 3.51,
+  "imp_heal": 1.12,
+  "imp_prevented": 1.54,
+  "imp_share": -0.28,
+  "recoil": 0.0,
+  "prevented_by": {
+   "immunity": 0.86,
+   "protect": 0.68
+  }
  },
  {
   "id": "Ethan|Haunter",
@@ -3073,7 +4290,17 @@
   "crits": 0,
   "super_effective": 1,
   "misses": 0,
-  "statuses": 1
+  "statuses": 1,
+  "impact": 0.63,
+  "impact_per_game": 0.06,
+  "impact_per_app": 0.63,
+  "imp_damage": 0.04,
+  "imp_setup": 0.59,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.0,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {}
  },
  {
   "id": "Ethan|Magnezone",
@@ -3103,7 +4330,19 @@
   "crits": 0,
   "super_effective": 6,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 5.45,
+  "impact_per_game": 0.55,
+  "impact_per_app": 0.78,
+  "imp_damage": 4.95,
+  "imp_setup": 0.0,
+  "imp_heal": 0.3,
+  "imp_prevented": 0.99,
+  "imp_share": -0.79,
+  "recoil": 0.5,
+  "prevented_by": {
+   "protect": 0.99
+  }
  },
  {
   "id": "Ethan|Starmie",
@@ -3133,7 +4372,19 @@
   "crits": 3,
   "super_effective": 7,
   "misses": 1,
-  "statuses": 1
+  "statuses": 1,
+  "impact": 5.83,
+  "impact_per_game": 0.58,
+  "impact_per_app": 0.97,
+  "imp_damage": 5.82,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.25,
+  "imp_share": -0.24,
+  "recoil": 0.1,
+  "prevented_by": {
+   "protect": 0.25
+  }
  },
  {
   "id": "Ethan|Yanma",
@@ -3163,7 +4414,17 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 0,
+  "impact_per_game": 0.0,
+  "impact_per_app": null,
+  "imp_damage": 0,
+  "imp_setup": 0,
+  "imp_heal": 0,
+  "imp_prevented": 0,
+  "imp_share": 0,
+  "recoil": 0,
+  "prevented_by": {}
  },
  {
   "id": "Ethan|Zapdos",
@@ -3193,7 +4454,21 @@
   "crits": 3,
   "super_effective": 11,
   "misses": 1,
-  "statuses": 3
+  "statuses": 3,
+  "impact": 19.64,
+  "impact_per_game": 1.96,
+  "impact_per_app": 1.96,
+  "imp_damage": 13.14,
+  "imp_setup": 0.0,
+  "imp_heal": 3.31,
+  "imp_prevented": 2.95,
+  "imp_share": 0.24,
+  "recoil": 0.3,
+  "prevented_by": {
+   "immunity": 0.83,
+   "protect": 1.95,
+   "speed": 0.17
+  }
  },
  {
   "id": "Ethan|Zoroark",
@@ -3222,7 +4497,17 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 0,
+  "impact_per_game": 0.0,
+  "impact_per_app": null,
+  "imp_damage": 0,
+  "imp_setup": 0,
+  "imp_heal": 0,
+  "imp_prevented": 0,
+  "imp_share": 0,
+  "recoil": 0,
+  "prevented_by": {}
  },
  {
   "id": "Max|Alomomola",
@@ -3251,7 +4536,17 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 0.11,
+  "impact_per_game": 0.01,
+  "impact_per_app": 0.11,
+  "imp_damage": 0.11,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.0,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {}
  },
  {
   "id": "Max|Bronzong",
@@ -3281,7 +4576,22 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 2
+  "statuses": 2,
+  "impact": 11.75,
+  "impact_per_game": 1.07,
+  "impact_per_app": 1.07,
+  "imp_damage": 3.57,
+  "imp_setup": 4.16,
+  "imp_heal": 0.0,
+  "imp_prevented": 2.97,
+  "imp_share": 1.04,
+  "recoil": 0.0,
+  "prevented_by": {
+   "immunity": 1.41,
+   "protect": 0.59,
+   "screens": 0.12,
+   "speed": 0.86
+  }
  },
  {
   "id": "Max|Camerupt",
@@ -3311,7 +4621,19 @@
   "crits": 0,
   "super_effective": 1,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 3.8,
+  "impact_per_game": 0.35,
+  "impact_per_app": 1.9,
+  "imp_damage": 4.09,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.28,
+  "imp_share": -0.58,
+  "recoil": 0.0,
+  "prevented_by": {
+   "protect": 0.28
+  }
  },
  {
   "id": "Max|Hariyama",
@@ -3340,7 +4662,20 @@
   "crits": 0,
   "super_effective": 3,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 9.72,
+  "impact_per_game": 0.88,
+  "impact_per_app": 1.08,
+  "imp_damage": 5.55,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 4.31,
+  "imp_share": -0.13,
+  "recoil": 0.0,
+  "prevented_by": {
+   "lost_turns": 1.04,
+   "protect": 3.27
+  }
  },
  {
   "id": "Max|Ninetales",
@@ -3369,7 +4704,19 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 0.74,
+  "impact_per_game": 0.07,
+  "impact_per_app": 0.25,
+  "imp_damage": 0.27,
+  "imp_setup": 0.0,
+  "imp_heal": 0.12,
+  "imp_prevented": 0.35,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "protect": 0.35
+  }
  },
  {
   "id": "Max|Porygon2",
@@ -3398,7 +4745,19 @@
   "crits": 4,
   "super_effective": 18,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 16.52,
+  "impact_per_game": 1.5,
+  "impact_per_app": 1.5,
+  "imp_damage": 12.54,
+  "imp_setup": 0.0,
+  "imp_heal": 2.78,
+  "imp_prevented": 0.95,
+  "imp_share": 0.25,
+  "recoil": 0.0,
+  "prevented_by": {
+   "speed": 0.95
+  }
  },
  {
   "id": "Max|Rampardos",
@@ -3427,7 +4786,17 @@
   "crits": 0,
   "super_effective": 3,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 0.35,
+  "impact_per_game": 0.03,
+  "impact_per_app": 0.12,
+  "imp_damage": 0.35,
+  "imp_setup": 0.0,
+  "imp_heal": 0.0,
+  "imp_prevented": 0.0,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {}
  },
  {
   "id": "Max|Shaymin",
@@ -3456,7 +4825,20 @@
   "crits": 1,
   "super_effective": 6,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 12.72,
+  "impact_per_game": 1.16,
+  "impact_per_app": 1.82,
+  "imp_damage": 5.76,
+  "imp_setup": 1.24,
+  "imp_heal": 2.68,
+  "imp_prevented": 3.04,
+  "imp_share": 0.0,
+  "recoil": 0.2,
+  "prevented_by": {
+   "lost_turns": 0.25,
+   "protect": 2.79
+  }
  },
  {
   "id": "Max|Swampert",
@@ -3486,7 +4868,19 @@
   "crits": 0,
   "super_effective": 7,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 10.75,
+  "impact_per_game": 0.98,
+  "impact_per_app": 1.08,
+  "imp_damage": 8.45,
+  "imp_setup": 0.93,
+  "imp_heal": 0.0,
+  "imp_prevented": 1.94,
+  "imp_share": -0.58,
+  "recoil": 0.0,
+  "prevented_by": {
+   "protect": 1.94
+  }
  },
  {
   "id": "Max|Vileplume",
@@ -3516,7 +4910,17 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 0,
+  "impact_per_game": 0.0,
+  "impact_per_app": null,
+  "imp_damage": 0,
+  "imp_setup": 0,
+  "imp_heal": 0,
+  "imp_prevented": 0,
+  "imp_share": 0,
+  "recoil": 0,
+  "prevented_by": {}
  },
  {
   "id": "Max|Volcarona",
@@ -3546,7 +4950,21 @@
   "crits": 0,
   "super_effective": 6,
   "misses": 0,
-  "statuses": 1
+  "statuses": 1,
+  "impact": 6.3,
+  "impact_per_game": 0.57,
+  "impact_per_app": 1.26,
+  "imp_damage": 3.94,
+  "imp_setup": 0.5,
+  "imp_heal": 0.96,
+  "imp_prevented": 0.9,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "burn": 0.05,
+   "protect": 0.42,
+   "redirect": 0.44
+  }
  },
  {
   "id": "Max|Wartortle",
@@ -3575,6 +4993,20 @@
   "crits": 0,
   "super_effective": 0,
   "misses": 0,
-  "statuses": 0
+  "statuses": 0,
+  "impact": 1.8,
+  "impact_per_game": 0.16,
+  "impact_per_app": 0.9,
+  "imp_damage": 0.39,
+  "imp_setup": 0.0,
+  "imp_heal": 0.12,
+  "imp_prevented": 1.28,
+  "imp_share": 0.0,
+  "recoil": 0.0,
+  "prevented_by": {
+   "lost_turns": 0.39,
+   "protect": 0.17,
+   "redirect": 0.72
+  }
  }
 ]

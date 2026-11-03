@@ -1,7 +1,7 @@
 /* Minimal stand-in for the `dash` data API the page was written against: loads data/*.json and
    serves it through dash.data / dash.calc / dash.onData. */
 (function () {
-  var IDS = ['gamemons', 'draft', 'gamemoves', 'games', 'indirect', 'luck', 'luckdetail', 'luckgames', 'luckmoments', 'mons', 'moves',
+  var IDS = ['gamemons', 'draft', 'gamemoves', 'games', 'impact', 'indirect', 'luck', 'luckdetail', 'luckgames', 'luckmoments', 'mons', 'moves',
     'schedule', 'teammoves', 'teams', 'weather'];
   var raw = {}, failed = {}, calcs = {}, subs = [];
   var colors = [0, 1, 2, 3, 4, 5, 6, 7].map(function (n) { return 'var(--dash-' + n + ')'; });
