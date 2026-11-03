@@ -1,96 +1,128 @@
-# Plan: a fuller Pokémon value stat (Net HP)
+# Plan: a fuller Pokémon value stat (HP Impact)
 
 Status: proposal, nothing built yet.
 
 ## The idea
 
-Every game is decided by HP bars: a team that removes all six of the opponent's wins. So the
-natural unit is the HP bar, and a Pokémon's value is the **HP it swung in its team's favour**:
+A Pokémon helps its team in two ways, and both can be measured in HP bars:
 
 ```
-Net HP = HP removed from opponents   (direct damage + damage from things it set up)
-       + HP restored to its own side (its own healing and healing it gave allies)
-       − HP it lost                  (damage it took, including fainting)
+HP Impact = HP Added      damage it caused (direct + set-up damage) + healing it gave
+          + HP Prevented  damage it stopped or denied: screens, Intimidate, burns, Protect /
+                          Wide Guard blocks, immunities, Helping Hand boosts, and turns it
+                          made opponents lose (flinch, paralysis, sleep, freeze, Taunt)
 ```
 
-It has no fitted model, no weights and no replacement level. Every term is counted straight from
-the replay. Summed over a team in one game, it comes close to that game's HP margin, so team totals
-line up with results.
+**Damage taken is never subtracted.** Being targeted mostly reflects the opponent's choices, and
+soaking hits is often the job. Staying healthy already pays off on its own, because more turns
+in means more chances to add value. Damage taken is still shown as information.
+
+**No weights are invented.** Every number comes from one of three things:
+1. **What the replay shows**, such as HP lost or healed.
+2. **Gen 5 mechanics**, such as Intimidate (−1 Attack = ⅔ damage), burn (½ physical damage),
+   doubles screens (about ⅔ damage) and Helping Hand (1.5×).
+3. **League averages from our own games** for the value of a denied action: the average damage
+   per use of a move, or the average damage per move of a Pokémon. These are averages, not a
+   fitted model, so the small sample doesn't cause trouble.
 
 ## What's wrong with the current "value"
 
 `value = (direct damage dealt + 0.1 × turns on field) / team games`
 
-- **Indirect damage gets no credit.** In the 49 games so far, about 80 HP bars came from
-  sand, burn, poison, Stealth Rock, Leech Seed and similar, against 421 bars of direct damage, so
-  about 16% of all damage goes uncredited.
-- **Healing gets no credit.** That's 500+ heal events: Wish, Recover, drain, Leftovers, Leech Seed.
-- **Bulk gets no credit.** A Pokémon that faints turn 1 and one that tanks four hits score
-  nearly the same.
-- **The 0.1 per turn is a made-up weight** that rewards staying in whether or not it helped.
+- **Indirect damage gets no credit.** In the 49 games so far, about 80 HP bars of sand, burn,
+  poison, Stealth Rock and Leech Seed damage are credited to nobody (about 16% of all damage).
+- **Healing gets no credit**, across 500+ heal events.
+- **Support gets no credit**, apart from the arbitrary 0.1 per turn on the field.
 
-## Who gets credit
+## HP Added (direct, from the log)
 
-Each HP change in the log goes to the Pokémon that caused it:
+| Event | Credited to |
+| --- | --- |
+| Direct move damage to opponents | Attacker (minus any it does to its own ally) |
+| Burn / poison ticks | Pokémon that inflicted the status (Toxic Spikes: setter) |
+| Sandstorm / hail ticks on opponents | Weather setter |
+| Stealth Rock / Spikes | Setter |
+| Leech Seed drain and heal | Seeder |
+| Rocky Helmet, Rough Skin, Iron Barbs | Holder |
+| Recover, Roost, Rest, Leftovers, Sitrus, drain moves | The Pokémon itself |
+| Wish, Heal Pulse, Healing Wish, Lunar Dance | The healer |
 
-| Event | Credited to | Charged to |
+Self-inflicted damage (Life Orb, recoil) isn't subtracted, for the same reason damage taken isn't.
+It's shown alongside so heavy Life Orb users can be spotted.
+
+## HP Prevented (support, valued with mechanics and league averages)
+
+"Average damage" below always means the league average from our own replays: per use of that
+move, split across its targets for spread moves, or per move for that Pokémon.
+
+| Effect (log line) | How much HP it's worth | Credited to |
 | --- | --- | --- |
-| Direct move damage | Attacker | Target |
-| Hitting your own ally (spread moves) | — (counts against the attacker) | Ally |
-| Burn / poison ticks | Pokémon that inflicted the status (Toxic Spikes: setter; Flame/Toxic Orb: nobody) | Victim |
-| Sandstorm / hail ticks | Weather setter (Sand Stream / Snow Warning holder or Sandstorm/Hail user) | Victim |
-| Stealth Rock / Spikes | Setter | Pokémon switching in |
-| Leech Seed | Seeder, for both the drain and the heal | Victim |
-| Rocky Helmet, Rough Skin, Iron Barbs | Holder | Attacker |
-| Life Orb, recoil, confusion, Substitute, Belly Drum | Nobody | The Pokémon itself |
-| Recover / Roost / Rest, Leftovers, Black Sludge, Sitrus, drain moves | The Pokémon itself | — |
-| Wish, Heal Pulse, Healing Wish / Lunar Dance | The healer | — |
-| Explosion / Memento-style self-KOs | Damage dealt as normal | Its own HP lost |
+| **Intimidate** (`-ability … Intimidate`, `-unboost atk`) | While the drop lasts: the physical damage that Pokémon dealt × ½ (−1 Attack leaves ⅔ of the damage, so it would have done half again as much) | Intimidator |
+| **Reflect / Light Screen** | Physical or special damage allies took while it was up × ½ (doubles screens leave about ⅔) | Setter |
+| **Burn** (on top of the ticks) | The burned Pokémon's physical damage while burned × 1 (halved, so it would have done the same again) | Burner |
+| **Protect / Detect** (`-activate … Protect`) | Average damage of each attack it blocked | User |
+| **Wide Guard / Quick Guard** | Average damage of each attack blocked, on every ally it covered | User |
+| **Immunity on a switch-in or ability** (`-immune`, Levitate, Lightning Rod, Storm Drain, Volt/Water Absorb) | Average damage of the absorbed attack | Immune Pokémon |
+| **Follow Me / Rage Powder** | Attacks drawn into immunity or Protect earn the full average damage. Attacks it takes on are not charged (damage taken is never subtracted), so its job never counts against it | Redirector |
+| **Lost turns** (`cant` from flinch, paralysis, sleep, freeze, Taunt, Encore, Disable) | The victim's average damage per move (or the move it was locked into) | Whoever caused it (Fake Out user, paralyzer, sleeper, Taunter…) |
+| **Helping Hand** | ⅓ of the boosted attack's damage (1.5× → the extra half) | Helper |
 
-Damage is already capped at the HP the target had left, so overkill doesn't inflate anything.
+Healing on top of these:
+- **Heal Bell / Aromatherapy**: each status cured earns its expected remaining cost (the burn
+  ticks and halving, or the paralysis lost turns, at the league average rates).
+
+## Still a gap: speed control
+
+Tailwind, Trick Room, Icy Wind and the speed part of Thunder Wave change *who moves first*. The
+replay can't show what would have happened in the other order, and any credit would be a guess.
+Plan: don't count it in HP Impact. Show an **"Enabled"** number next to it instead: HP Added by
+allies during turns the setter's Tailwind or Trick Room was active. Readers can judge it, but it
+isn't summed in, which would double-count the allies' work.
+
+Luck (crits, misses) isn't removed here. The Luck tab covers it.
 
 ## What's shown
 
-- **Net HP per game** is the headline on the Draft tab, replacing value. Rank by per *team*
-  game, as now (not being brought counts as 0), and also show per *brought* game.
-- **Breakdown** in tooltips and the Pokémon table: Direct, Indirect, Healed, Taken, = Net.
-  People can see *why* a Pokémon scores what it does, and anyone who disagrees with charging
-  damage taken can read the first three columns on their own.
-- **Comparison:** "vs average" (league average per brought game) and the existing "vs round".
+- **HP Impact per game** replaces value on the Draft tab. Rank by per *team* game (not being
+  brought counts as 0), with per *brought* game alongside.
+- **Breakdown** in tooltips and the Pokémon table: Damage · Set-up damage · Healing ·
+  Prevented · = Impact, plus Enabled and Taken as information. Readers can tell a sweeper from a
+  wall from a support at a glance.
+- **Comparison:** vs league average per brought game, and vs the average for its draft round.
   Both are plain averages, so no replacement level is needed.
-- Show games brought next to every number, as now. With these sample sizes, that's more honest
-  than shrinking or adding error bars.
-
-## Known gaps (stated in the methodology note, not patched with weights)
-
-- **Support that doesn't move HP** (Tailwind, Trick Room, Follow Me, Intimidate, screens,
-  Fake Out, paralysis/sleep) only shows up indirectly, through teammates doing more and taking less.
-  Redirectors are actually *charged* for the hits they soak. Rather than invent a weight, list
-  these alongside: a "support" count (Tailwind/Trick Room set, attacks redirected, status
-  inflicted) and the existing win % when brought.
-- **Luck** (crits, misses) isn't removed. The Luck tab already covers it.
+- Games brought next to every number, as now.
 
 ## Implementation
 
-1. **`scripts/replay.py`**: record *who caused* each HP change.
-   - Remember the status source per Pokémon (from `-status` after a move, or Toxic Spikes).
-   - Remember the weather setter (`-weather … [of]`, or the last Sandstorm/Hail user), the
-     hazard setters per side and the Leech Seed seeder per target.
-   - Handle `-heal`: credit the healer (self, Wish user, drain attacker, seeder).
-   - Add `indirect_dealt`, `healed` and `ff` (friendly fire) counters per Pokémon. `damage`,
-     `taken` and the other existing counters stay as they are, so other tabs don't change.
-2. **`scripts/build.py`**: add the new counters to `gamemons.json` and `mons.json`, along with
-   `net_hp` and `net_hp_per_game`.
-3. **`index.html`**: swap `value` for Net HP/game in the Draft tab (plot, rounds, tiers,
+1. **`scripts/replay.py`**: track who caused each HP change and each effect.
+   - Status sources (who burned, poisoned, paralyzed or slept whom), the weather setter, hazard
+     setters per side, the Leech Seed seeder.
+   - Effects with durations: Intimidate drops (until switch-out or reset), screens (turns),
+     burns, Tailwind and Trick Room (for Enabled).
+   - Blocked and absorbed attacks (`-activate` Protect / Wide Guard, `-immune`, redirect
+     abilities), and the move and target that were blocked.
+   - `cant` lines and their cause, Helping Hand (`-singleturn`) linked to the next ally attack.
+   - Healing (`-heal`) with the healer.
+   - Write a per-game event list. Existing counters stay as they are, so other tabs don't move.
+2. **`scripts/impact.py`** (new): two passes over the season.
+   - Pass 1: league averages (damage per use of each move per target, damage per move of
+     each Pokémon). Fall back to the league average for that move's category when a move or
+     Pokémon has too few uses (fewer than 3).
+   - Pass 2: value every prevented effect with those averages and add up each Pokémon's
+     components per game and per season.
+3. **`scripts/build.py`**: write components and `impact` into `gamemons.json` and `mons.json`.
+4. **`index.html`**: swap value for HP Impact/game across the Draft tab (plot, rounds, tiers,
    classes, steals/busts). Add the breakdown columns and tooltips to the Pokémon tab, remove
    `D_TURN_W`, and rewrite the methodology note.
-4. **Check**: hand-verify credits for two or three games (one sand game, one with Wish/Leech
-   Seed). Assert in the build that each game's credited + uncredited HP equals total HP lost.
+5. **Check**: hand-verify two or three games (a sand game, a Trick Room or Follow Me game, one
+   with Intimidate and screens). Assert in the build that HP Added (attributed damage plus what
+   nobody caused) equals the total HP lost in each game.
 
 ## Decisions for you
 
-1. Should the headline subtract damage taken (Net), or show only HP added (Direct + Indirect +
-   Healed) with Taken as a separate column? Recommendation: Net, because bulk matters and the
-   breakdown covers anyone who disagrees.
-2. Healing to full: Leftovers on a full-HP Pokémon logs nothing, so it isn't counted. That
-   needs no decision, just a note.
+1. Count Protect on *itself*? It's real (it wasted an attack), but Protect-spam could pad it.
+   Recommendation: count it. A wasted attack is a wasted attack, and the opponent chose to attack.
+2. Speed control: keep it as the separate "Enabled" number (recommended), or add a share of it
+   into Impact?
+3. Show Life Orb / recoil next to damage, or subtract it? Recommendation: show it, don't
+   subtract, to be consistent with not subtracting damage taken.
