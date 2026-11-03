@@ -82,7 +82,13 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
 @media (max-width: 900px) { .lx-board { table-layout: auto; } }
 .lx-table td.lx-dc small { display: block; font-size: 0.6875rem; opacity: .7; }
 .lx-table td.lx-dr { color: var(--color-fg-muted); }
-.lx-tabs { display: flex; gap: var(--cds-gap-xs); flex-wrap: wrap; border-bottom: 1px solid var(--color-border-line); margin-bottom: var(--cds-gap-lg); }
+.lx-tabs { display: flex; gap: var(--cds-gap-xs); flex-wrap: wrap; align-items: flex-end; border-bottom: 1px solid var(--color-border-line); margin-bottom: var(--cds-gap-lg); }
+.lx-tablist { display: flex; gap: var(--cds-gap-xs); flex-wrap: wrap; }
+.lx-defnav { margin-left: auto; align-self: center; font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); padding: var(--cds-pad-sm) var(--cds-pad-md); }
+.lx-defnav:hover { color: var(--color-fg); }
+.lx-defsbox > summary { cursor: pointer; list-style-position: inside; }
+.lx-defsbox > summary h2 { display: inline; }
+.lx-defsbox[open] > summary { margin-bottom: var(--cds-gap-sm); }
 .lx-tab { font: inherit; font-size: var(--cds-font-size-body); background: none; border: 0; border-bottom: 2px solid transparent; color: var(--color-fg-muted); padding: var(--cds-pad-sm) var(--cds-pad-md); cursor: pointer; margin-bottom: -1px; }
 .lx-tab[aria-selected="true"] { color: var(--color-fg); border-bottom-color: var(--color-fg); font-weight: var(--cds-font-weight-medium); }
 .lx-page[hidden] { display: none; }
@@ -258,17 +264,16 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
     </div>
   </div>
 
-  <div class="lx-tabs" role="tablist">
-    <button class="lx-tab" role="tab" data-tab="teams" aria-selected="true">Players</button>
-    <button class="lx-tab" role="tab" data-tab="scout" aria-selected="false">Scout</button>
-    <button class="lx-tab" role="tab" data-tab="pokemon" aria-selected="false">Pokémon</button>
-    <button class="lx-tab" role="tab" data-tab="moves" aria-selected="false">Moves</button>
-    <button class="lx-tab" role="tab" data-tab="draft" aria-selected="false">Draft</button>
-    <button class="lx-tab" role="tab" data-tab="luck" aria-selected="false">Luck</button>
-    <button class="lx-tab" role="tab" data-tab="schedule" aria-selected="false">Schedule</button>
-    <button class="lx-tab" role="tab" data-tab="playoffs" aria-selected="false">Playoffs</button>
-    <button class="lx-tab" role="tab" data-tab="games" aria-selected="false">Games</button>
-    <button class="lx-tab" role="tab" data-tab="extras" aria-selected="false">Extras and definitions</button>
+  <div class="lx-tabs">
+    <div class="lx-tablist" role="tablist">
+      <button class="lx-tab" role="tab" data-tab="teams" aria-selected="true">Standings</button>
+      <button class="lx-tab" role="tab" data-tab="schedule" aria-selected="false">Schedule</button>
+      <button class="lx-tab" role="tab" data-tab="pokemon" aria-selected="false">Pokémon</button>
+      <button class="lx-tab" role="tab" data-tab="draft" aria-selected="false">Draft</button>
+      <button class="lx-tab" role="tab" data-tab="scout" aria-selected="false">Scout</button>
+      <button class="lx-tab" role="tab" data-tab="luck" aria-selected="false">Luck</button>
+    </div>
+    <a class="lx-deflink lx-defnav" href="#defs">Definitions</a>
   </div>
 
   <div class="lx-weeks" id="lx-weeks" hidden>
@@ -308,6 +313,30 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
       </div>
     </div>
     <div class="lx-card">
+      <h2>Projected bracket</h2>
+      <p class="lx-note">If the season ended today. Seeds 1–2 get a bye; 3 plays 6 and 4 plays 5, then 1 plays the 4/5 winner and 2 plays the 3/6 winner. The bracket is fixed, with no reseeding.</p>
+      <div class="lx-chart" id="lx-c-bracket"><div class="lx-bscroll" id="lx-bracket"></div></div>
+    </div>
+    <div class="lx-card">
+      <h2>Playoff race</h2>
+      <p class="lx-note">Full season, whatever weeks are picked above. Seeds go by series wins. Ties are broken by head-to-head series win %, then game win %, then game differential, then name. Head-to-head only counts when all the tied players have played each other. After a tie splits, the smaller group starts again at head-to-head. A coin flip is not modelled.</p>
+      <div class="lx-scroll">
+        <table class="lx-table" id="lx-t-playoffs" data-source="playoffs" data-row-key="player">
+          <thead><tr>
+            <th class="num" data-field="seed"><button class="lx-sort" type="button">Seed</button></th>
+            <th data-field="player"><button class="lx-sort" type="button">Player</button></th>
+            <th data-field="series"><button class="lx-sort" type="button">Series</button></th>
+            <th data-field="games_wl"><button class="lx-sort" type="button">Games</button></th>
+            <th class="num" data-field="game_pct"><button class="lx-sort" type="button">Game win %</button></th>
+            <th class="num" data-field="left"><button class="lx-sort" type="button">Series left</button></th>
+            <th data-field="status"><button class="lx-sort" type="button">Status</button></th>
+            <th data-field="reason"><button class="lx-sort" type="button">Tiebreak</button></th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="lx-card">
       <h2>Rosters</h2>
       <p class="lx-note">Every Pokémon on each player's team. The number under each sprite is how often it was brought. Faded ones rarely were. Hover or tap for lead rate and KOs.</p>
       <div class="lx-chart dash-skeleton lx-rosters" id="lx-c-rosters" data-source="mons"></div>
@@ -322,6 +351,228 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
         <h2>Pokémon lost per game</h2>
         <p class="lx-note">Fewer is better.</p>
         <div class="lx-chart dash-skeleton" id="lx-c-lost" data-source="teams"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lx-page" id="lx-schedule" data-page="schedule" hidden>
+    <div class="lx-card">
+      <h2>Schedule</h2>
+      <p class="lx-note">Scores list the first player's game wins first, and each game link opens its Showdown replay. Upcoming matches are dimmed.</p>
+      <div class="lx-controls">
+        <select id="lx-sp" aria-label="Player"><option value="">All players</option></select>
+        <select id="lx-ss" aria-label="Status"><option value="">Played and upcoming</option><option value="Played">Played</option><option value="Upcoming">Upcoming</option></select>
+      </div>
+      <div class="lx-scroll">
+        <table class="lx-table" id="lx-t-sched" data-source="schedule" data-row-key="id">
+          <thead><tr>
+            <th data-field="matchup"><button class="lx-sort" type="button">Matchup</button></th>
+            <th class="num" data-field="week"><button class="lx-sort" type="button">Week</button></th>
+            <th data-field="status"><button class="lx-sort" type="button">Status</button></th>
+            <th data-field="winner"><button class="lx-sort" type="button">Winner</button></th>
+            <th data-field="score"><button class="lx-sort" type="button">Score</button></th>
+            <th data-field="game1"><button class="lx-sort" type="button">Game 1</button></th>
+            <th data-field="game2"><button class="lx-sort" type="button">Game 2</button></th>
+            <th data-field="game3"><button class="lx-sort" type="button">Game 3</button></th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="lx-card">
+      <h2>Game log</h2>
+      <p class="lx-note">The replay number opens the Showdown replay. Player 1 is the first player in the matchup.</p>
+      <div class="lx-controls"><input id="lx-q-games" type="search" placeholder="Search players, accounts or Pokémon" aria-label="Search games"></div>
+      <div class="lx-scroll">
+        <table class="lx-table" id="lx-t-games" data-source="games" data-row-key="id">
+          <thead><tr>
+            <th data-field="matchup"><button class="lx-sort" type="button">Matchup</button></th>
+            <th class="num" data-field="week"><button class="lx-sort" type="button">Week</button></th>
+            <th class="num" data-field="game"><button class="lx-sort" type="button">Game</button></th>
+            <th data-field="id"><button class="lx-sort" type="button">Replay</button></th>
+            <th data-field="date"><button class="lx-sort" type="button">Date</button></th>
+            <th data-field="winner"><button class="lx-sort" type="button">Winner</button></th>
+            <th class="num" data-field="turns"><button class="lx-sort" type="button">Turns</button></th>
+            <th data-field="leads1"><button class="lx-sort" type="button">Player 1 leads</button></th>
+            <th data-field="leads2"><button class="lx-sort" type="button">Player 2 leads</button></th>
+            <th class="num" data-field="lost1"><button class="lx-sort" type="button">Player 1 lost</button></th>
+            <th class="num" data-field="lost2"><button class="lx-sort" type="button">Player 2 lost</button></th>
+            <th data-field="first_blood"><button class="lx-sort" type="button">First KO</button></th>
+            <th class="num" data-field="damage1"><button class="lx-sort" type="button">Player 1 damage</button></th>
+            <th class="num" data-field="damage2"><button class="lx-sort" type="button">Player 2 damage</button></th>
+            <th class="num" data-field="winner_mons_left"><button class="lx-sort" type="button">Winner's Pokémon left</button></th>
+            <th data-field="weather"><button class="lx-sort" type="button">Weather</button></th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="lx-card">
+      <h2>Game length</h2>
+      <p class="lx-note">One bar per game in schedule order. Hover for the week, matchup and winner.</p>
+      <div class="lx-chart dash-skeleton" id="lx-c-len" data-source="games"></div>
+    </div>
+  </section>
+
+  <section class="lx-page" id="lx-pokemon" data-page="pokemon" hidden>
+    <div class="lx-controls">
+      <select id="lx-team" aria-label="Player"><option value="">All players</option></select>
+      <input id="lx-q-mons" type="search" placeholder="Search Pokémon" aria-label="Search Pokémon">
+      <label>Min. games <select id="lx-min" aria-label="Minimum games"><option>1</option><option>2</option><option selected>3</option><option>5</option></select></label>
+      <label><input id="lx-unused" type="checkbox"> Include Pokémon that never appeared</label>
+    </div>
+    <div class="lx-card">
+      <h2>Highest Impact+</h2>
+      <p class="lx-note">Impact per game brought, where 100 is an average Pokémon and 150 is 50% more. Only Pokémon brought at least the minimum games above are shown, since a game or two swings a lot. Hover a bar for the breakdown. See <a class="lx-deflink" href="#defs">how Impact works</a>.</p>
+      <div class="lx-chart dash-skeleton" id="lx-c-imp" data-source="mons"></div>
+    </div>
+    <div class="lx-grid">
+      <div class="lx-card">
+        <h2>Most KOs</h2>
+        <p class="lx-note">KOs credited to the last attack that hit the fainted Pokémon.</p>
+        <div class="lx-chart dash-skeleton" id="lx-c-kos" data-source="mons"></div>
+      </div>
+      <div class="lx-card">
+        <h2>Most damage dealt</h2>
+        <p class="lx-note">Full HP bars taken from opponents by this Pokémon's attacks.</p>
+        <div class="lx-chart dash-skeleton" id="lx-c-dmg" data-source="mons"></div>
+      </div>
+    </div>
+    <div class="lx-card">
+      <h2>Every Pokémon</h2>
+      <p class="lx-note">Bring % and lead % are out of that player's games. Impact+ is Impact per game brought, where 100 is average. OFF+ and DEF+ do the same for its two sides: OFF is HP taken off the opponents (damage, set-up damage, shares), DEF is HP kept on its own side (healing, prevented), and OFF + DEF = Impact. Impact is the season total in HP bars; the columns after it are what it is made of. Hover Impact+, Impact, Prevented or Shares for the breakdown. Select a row to see its moves below the table.</p>
+      <div class="lx-scroll">
+        <table class="lx-table" id="lx-t-mons" data-source="mons" data-row-key="id">
+          <thead><tr>
+            <th data-field="pokemon"><button class="lx-sort" type="button">Pokémon</button></th>
+            <th data-field="player"><button class="lx-sort" type="button">Player</button></th>
+            <th class="num" data-field="bring_pct"><button class="lx-sort" type="button">Bring %</button></th>
+            <th class="num" data-field="lead_pct"><button class="lx-sort" type="button">Lead %</button></th>
+            <th class="num" data-field="brought"><button class="lx-sort" type="button">Brought</button></th>
+            <th class="num" data-field="led"><button class="lx-sort" type="button">Led</button></th>
+            <th class="num" data-field="impact_plus"><button class="lx-sort" type="button">Impact+</button></th>
+            <th class="num" data-field="off_plus"><button class="lx-sort" type="button">OFF+</button></th>
+            <th class="num" data-field="def_plus"><button class="lx-sort" type="button">DEF+</button></th>
+            <th class="num" data-field="impact"><button class="lx-sort" type="button">Impact</button></th>
+            <th class="num" data-field="off"><button class="lx-sort" type="button">OFF</button></th>
+            <th class="num" data-field="def"><button class="lx-sort" type="button">DEF</button></th>
+            <th class="num" data-field="impact_per_app"><button class="lx-sort" type="button">Impact / game brought</button></th>
+            <th class="num" data-field="imp_damage"><button class="lx-sort" type="button">Damage</button></th>
+            <th class="num" data-field="imp_setup"><button class="lx-sort" type="button">Set-up damage</button></th>
+            <th class="num" data-field="imp_share"><button class="lx-sort" type="button">Shares</button></th>
+            <th class="num" data-field="imp_heal"><button class="lx-sort" type="button">Healing</button></th>
+            <th class="num" data-field="imp_prevented"><button class="lx-sort" type="button">Prevented</button></th>
+            <th class="num" data-field="kos"><button class="lx-sort" type="button">KOs</button></th>
+            <th class="num" data-field="kos_per_app"><button class="lx-sort" type="button">KOs / game</button></th>
+            <th class="num" data-field="damage"><button class="lx-sort" type="button">Damage dealt</button></th>
+            <th class="num" data-field="damage_per_app"><button class="lx-sort" type="button">Dealt / game</button></th>
+            <th class="num" data-field="taken"><button class="lx-sort" type="button">Damage taken</button></th>
+            <th class="num" data-field="recoil"><button class="lx-sort" type="button">Recoil</button></th>
+            <th class="num" data-field="faints"><button class="lx-sort" type="button">Fainted</button></th>
+            <th class="num" data-field="survival_pct"><button class="lx-sort" type="button">Survived %</button></th>
+            <th class="num" data-field="win_pct_brought"><button class="lx-sort" type="button">Player win % when brought</button></th>
+            <th class="num" data-field="turns_on_field"><button class="lx-sort" type="button">Turns on field</button></th>
+            <th class="num" data-field="sacrifices"><button class="lx-sort" type="button">Sacrifices</button></th>
+            <th class="num" data-field="crits"><button class="lx-sort" type="button">Crits</button></th>
+            <th class="num" data-field="super_effective"><button class="lx-sort" type="button">Super effective hits</button></th>
+            <th class="num" data-field="misses"><button class="lx-sort" type="button">Misses</button></th>
+            <th class="num" data-field="statuses"><button class="lx-sort" type="button">Statuses inflicted</button></th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="lx-card" id="lx-detail"></div>
+    <div class="lx-grid">
+      <div class="lx-card">
+        <h2>Most damage dealt by move</h2>
+        <p class="lx-note">Full HP bars dealt across all games, with KOs beside each bar. The player filter at the top of the tab applies to the move charts and table too.</p>
+        <div class="lx-chart dash-skeleton" id="lx-c-mdmg" data-source="moves"></div>
+      </div>
+      <div class="lx-card">
+        <h2>Most used moves</h2>
+        <p class="lx-note">Times used, including support moves like Protect.</p>
+        <div class="lx-chart dash-skeleton" id="lx-c-muse" data-source="moves"></div>
+      </div>
+    </div>
+    <div class="lx-card">
+      <h2>All moves</h2>
+      <p class="lx-note" id="lx-mnote" hidden>KOs and damage are not tracked per player, so only uses are shown for a single player.</p>
+      <div class="lx-controls"><input id="lx-q-moves" type="search" placeholder="Search moves" aria-label="Search moves"></div>
+      <div class="lx-scroll">
+        <table class="lx-table" id="lx-t-moves" data-source="moves" data-row-key="move">
+          <thead><tr>
+            <th data-field="move"><button class="lx-sort" type="button">Move</button></th>
+            <th class="num" data-field="uses"><button class="lx-sort" type="button">Uses</button></th>
+            <th class="num" data-field="kos"><button class="lx-sort" type="button">KOs</button></th>
+            <th class="num" data-field="damage"><button class="lx-sort" type="button">Damage dealt</button></th>
+            <th class="num" data-field="damage_per_use"><button class="lx-sort" type="button">Damage / use</button></th>
+            <th class="num" data-field="kos_per_10_uses"><button class="lx-sort" type="button">KOs per 10 uses</button></th>
+            <th data-field="used_by"><button class="lx-sort" type="button">Used by</button></th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="lx-grid">
+      <div class="lx-card">
+        <h2>Damage from sources other than attacks</h2>
+        <p class="lx-note">Full HP bars lost to status, weather, hazards and recoil, with the Pokémon each one fainted beside the bar.</p>
+        <div class="lx-chart dash-skeleton" id="lx-c-ind" data-source="indirect"></div>
+      </div>
+      <div class="lx-card">
+        <h2>Weather</h2>
+        <p class="lx-note">Games where each weather was active at some point.</p>
+        <div class="lx-scroll" style="max-height:none">
+          <table class="lx-table" id="lx-t-weather" data-source="weather" data-row-key="weather">
+            <thead><tr>
+              <th data-field="weather"><button class="lx-sort" type="button">Weather</button></th>
+              <th class="num" data-field="games"><button class="lx-sort" type="button">Games</button></th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lx-page" id="lx-draft" data-page="draft" hidden>
+    <div class="lx-card">
+      <h2>Draft results</h2>
+      <p class="lx-note">Snake draft, 12 rounds. Each player took 3 OU, 7 UU and 2 NFE Pokémon. Hover a Pokémon for its season stats.</p>
+      <div class="lx-dlegend"><span class="lx-dt lx-dt-ou">OU</span><span class="lx-dt lx-dt-uu">UU</span><span class="lx-dt lx-dt-nfe">NFE</span></div>
+      <div class="lx-scroll lx-tall" id="lx-d-board"></div>
+    </div>
+    <div class="lx-card">
+      <h2>Impact+ by pick</h2>
+      <p class="lx-note">Each sprite is one pick. Later picks sit further right, and the shaded bands are rounds. Hover or tap a sprite for details. The dashed line is 100, an average Pokémon. Picks brought fewer than 3 times are faded, and picks never brought sit faded at 0.</p>
+      <div class="lx-dlegend"><span class="lx-dt lx-dt-ou">OU</span><span class="lx-dt lx-dt-uu">UU</span><span class="lx-dt lx-dt-nfe">NFE</span></div>
+      <div class="lx-chart" id="lx-d-plot"></div>
+    </div>
+    <div class="lx-card">
+      <h2>Most valuable pick in each round</h2>
+      <p class="lx-note">Impact is the HP bars a Pokémon added to its team (damage, set-up damage like sand and burns, healing) plus the HP bars it kept off its team (Intimidate, screens, Protect blocks, immunities, turns it made opponents lose, speed control). Impact+ is Impact per game brought, where 100 is an average Pokémon and 150 is 50% more. Round Impact+ pools every pick in the round. Damage taken is never subtracted. Picks brought fewer than 3 times aren't ranked, since a game or two swings a lot; they and the picks never brought are listed on the right. <a class="lx-deflink" href="#defs">How it works</a>.</p>
+      <p class="lx-note" id="lx-d-tune"></p>
+      <div class="lx-scroll lx-tall"><table class="lx-table" id="lx-d-rounds"></table></div>
+    </div>
+    <div class="lx-grid">
+      <div class="lx-card">
+        <h2>Impact+ by tier</h2>
+        <p class="lx-note">Impact per game brought of every pick in the tier together, where 100 is average.</p>
+        <div class="lx-scroll lx-tall"><table class="lx-table" id="lx-d-tiers"></table></div>
+      </div>
+      <div class="lx-card">
+        <h2>Best draft classes</h2>
+        <p class="lx-note">Total Impact of each player's twelve picks this season, with their Impact+ together.</p>
+        <div class="lx-scroll lx-tall"><table class="lx-table" id="lx-d-players"></table></div>
+      </div>
+    </div>
+    <div class="lx-card">
+      <h2>Steals and busts</h2>
+      <p class="lx-note">Impact+ compared with the Impact+ of the whole round it was picked in. Positive means a steal. Only picks brought at least 3 times are included.</p>
+      <div class="lx-grid">
+        <div><h3 class="lx-sub">Biggest steals</h3><div class="lx-scroll lx-tall"><table class="lx-table" id="lx-d-steals"></table></div></div>
+        <div><h3 class="lx-sub">Biggest busts</h3><div class="lx-scroll lx-tall"><table class="lx-table" id="lx-d-busts"></table></div></div>
       </div>
     </div>
   </section>
@@ -387,155 +638,6 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
         </table>
       </div>
       <button class="lx-more" id="lx-ll-more" type="button" hidden></button>
-    </div>
-  </section>
-
-  <section class="lx-page" id="lx-pokemon" data-page="pokemon" hidden>
-    <div class="lx-controls">
-      <select id="lx-team" aria-label="Player"><option value="">All players</option></select>
-      <input id="lx-q-mons" type="search" placeholder="Search Pokémon" aria-label="Search Pokémon">
-      <label>Min. games <select id="lx-min" aria-label="Minimum games"><option>1</option><option>2</option><option selected>3</option><option>5</option></select></label>
-      <label><input id="lx-unused" type="checkbox"> Include Pokémon that never appeared</label>
-    </div>
-    <div class="lx-card">
-      <h2>Highest Impact+</h2>
-      <p class="lx-note">Impact per game brought, where 100 is an average Pokémon and 150 is 50% more. Only Pokémon brought at least the minimum games above are shown, since a game or two swings a lot. Hover a bar for the breakdown. See <a href="#extras">how Impact works</a>.</p>
-      <div class="lx-chart dash-skeleton" id="lx-c-imp" data-source="mons"></div>
-    </div>
-    <div class="lx-grid">
-      <div class="lx-card">
-        <h2>Most KOs</h2>
-        <p class="lx-note">KOs credited to the last attack that hit the fainted Pokémon.</p>
-        <div class="lx-chart dash-skeleton" id="lx-c-kos" data-source="mons"></div>
-      </div>
-      <div class="lx-card">
-        <h2>Most damage dealt</h2>
-        <p class="lx-note">Full HP bars taken from opponents by this Pokémon's attacks.</p>
-        <div class="lx-chart dash-skeleton" id="lx-c-dmg" data-source="mons"></div>
-      </div>
-    </div>
-    <div class="lx-card">
-      <h2>Every Pokémon</h2>
-      <p class="lx-note">Bring % and lead % are out of that player's games. Impact+ is Impact per game brought, where 100 is average. OFF+ and DEF+ do the same for its two sides: OFF is HP taken off the opponents (damage, set-up damage, shares), DEF is HP kept on its own side (healing, prevented), and OFF + DEF = Impact. Impact is the season total in HP bars; the columns after it are what it is made of. Hover Impact+, Impact, Prevented or Shares for the breakdown. Select a row to see its moves below the table.</p>
-      <div class="lx-scroll">
-        <table class="lx-table" id="lx-t-mons" data-source="mons" data-row-key="id">
-          <thead><tr>
-            <th data-field="pokemon"><button class="lx-sort" type="button">Pokémon</button></th>
-            <th data-field="player"><button class="lx-sort" type="button">Player</button></th>
-            <th class="num" data-field="bring_pct"><button class="lx-sort" type="button">Bring %</button></th>
-            <th class="num" data-field="lead_pct"><button class="lx-sort" type="button">Lead %</button></th>
-            <th class="num" data-field="brought"><button class="lx-sort" type="button">Brought</button></th>
-            <th class="num" data-field="led"><button class="lx-sort" type="button">Led</button></th>
-            <th class="num" data-field="impact_plus"><button class="lx-sort" type="button">Impact+</button></th>
-            <th class="num" data-field="off_plus"><button class="lx-sort" type="button">OFF+</button></th>
-            <th class="num" data-field="def_plus"><button class="lx-sort" type="button">DEF+</button></th>
-            <th class="num" data-field="impact"><button class="lx-sort" type="button">Impact</button></th>
-            <th class="num" data-field="off"><button class="lx-sort" type="button">OFF</button></th>
-            <th class="num" data-field="def"><button class="lx-sort" type="button">DEF</button></th>
-            <th class="num" data-field="impact_per_app"><button class="lx-sort" type="button">Impact / game brought</button></th>
-            <th class="num" data-field="imp_damage"><button class="lx-sort" type="button">Damage</button></th>
-            <th class="num" data-field="imp_setup"><button class="lx-sort" type="button">Set-up damage</button></th>
-            <th class="num" data-field="imp_share"><button class="lx-sort" type="button">Shares</button></th>
-            <th class="num" data-field="imp_heal"><button class="lx-sort" type="button">Healing</button></th>
-            <th class="num" data-field="imp_prevented"><button class="lx-sort" type="button">Prevented</button></th>
-            <th class="num" data-field="kos"><button class="lx-sort" type="button">KOs</button></th>
-            <th class="num" data-field="kos_per_app"><button class="lx-sort" type="button">KOs / game</button></th>
-            <th class="num" data-field="damage"><button class="lx-sort" type="button">Damage dealt</button></th>
-            <th class="num" data-field="damage_per_app"><button class="lx-sort" type="button">Dealt / game</button></th>
-            <th class="num" data-field="taken"><button class="lx-sort" type="button">Damage taken</button></th>
-            <th class="num" data-field="recoil"><button class="lx-sort" type="button">Recoil</button></th>
-            <th class="num" data-field="faints"><button class="lx-sort" type="button">Fainted</button></th>
-            <th class="num" data-field="survival_pct"><button class="lx-sort" type="button">Survived %</button></th>
-            <th class="num" data-field="win_pct_brought"><button class="lx-sort" type="button">Player win % when brought</button></th>
-            <th class="num" data-field="turns_on_field"><button class="lx-sort" type="button">Turns on field</button></th>
-            <th class="num" data-field="sacrifices"><button class="lx-sort" type="button">Sacrifices</button></th>
-            <th class="num" data-field="crits"><button class="lx-sort" type="button">Crits</button></th>
-            <th class="num" data-field="super_effective"><button class="lx-sort" type="button">Super effective hits</button></th>
-            <th class="num" data-field="misses"><button class="lx-sort" type="button">Misses</button></th>
-            <th class="num" data-field="statuses"><button class="lx-sort" type="button">Statuses inflicted</button></th>
-          </tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </div>
-    <div class="lx-card" id="lx-detail"></div>
-  </section>
-
-  <section class="lx-page" id="lx-moves" data-page="moves" hidden>
-    <div class="lx-controls">
-      <select id="lx-mp" aria-label="Player"><option value="">All players</option></select>
-    </div>
-    <div class="lx-grid">
-      <div class="lx-card">
-        <h2>Most damage dealt by move</h2>
-        <p class="lx-note">Full HP bars dealt across all games, with KOs beside each bar.</p>
-        <div class="lx-chart dash-skeleton" id="lx-c-mdmg" data-source="moves"></div>
-      </div>
-      <div class="lx-card">
-        <h2>Most used moves</h2>
-        <p class="lx-note">Times used, including support moves like Protect.</p>
-        <div class="lx-chart dash-skeleton" id="lx-c-muse" data-source="moves"></div>
-      </div>
-    </div>
-    <div class="lx-card">
-      <h2>All moves</h2>
-      <p class="lx-note" id="lx-mnote" hidden>KOs and damage are not tracked per player, so only uses are shown for a single player.</p>
-      <div class="lx-controls"><input id="lx-q-moves" type="search" placeholder="Search moves" aria-label="Search moves"></div>
-      <div class="lx-scroll">
-        <table class="lx-table" id="lx-t-moves" data-source="moves" data-row-key="move">
-          <thead><tr>
-            <th data-field="move"><button class="lx-sort" type="button">Move</button></th>
-            <th class="num" data-field="uses"><button class="lx-sort" type="button">Uses</button></th>
-            <th class="num" data-field="kos"><button class="lx-sort" type="button">KOs</button></th>
-            <th class="num" data-field="damage"><button class="lx-sort" type="button">Damage dealt</button></th>
-            <th class="num" data-field="damage_per_use"><button class="lx-sort" type="button">Damage / use</button></th>
-            <th class="num" data-field="kos_per_10_uses"><button class="lx-sort" type="button">KOs per 10 uses</button></th>
-            <th data-field="used_by"><button class="lx-sort" type="button">Used by</button></th>
-          </tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section class="lx-page" id="lx-draft" data-page="draft" hidden>
-    <div class="lx-card">
-      <h2>Draft results</h2>
-      <p class="lx-note">Snake draft, 12 rounds. Each player took 3 OU, 7 UU and 2 NFE Pokémon. Hover a Pokémon for its season stats.</p>
-      <div class="lx-dlegend"><span class="lx-dt lx-dt-ou">OU</span><span class="lx-dt lx-dt-uu">UU</span><span class="lx-dt lx-dt-nfe">NFE</span></div>
-      <div class="lx-scroll lx-tall" id="lx-d-board"></div>
-    </div>
-    <div class="lx-card">
-      <h2>Impact+ by pick</h2>
-      <p class="lx-note">Each sprite is one pick. Later picks sit further right, and the shaded bands are rounds. Hover or tap a sprite for details. The dashed line is 100, an average Pokémon. Picks brought fewer than 3 times are faded, and picks never brought sit faded at 0.</p>
-      <div class="lx-dlegend"><span class="lx-dt lx-dt-ou">OU</span><span class="lx-dt lx-dt-uu">UU</span><span class="lx-dt lx-dt-nfe">NFE</span></div>
-      <div class="lx-chart" id="lx-d-plot"></div>
-    </div>
-    <div class="lx-card">
-      <h2>Most valuable pick in each round</h2>
-      <p class="lx-note">Impact is the HP bars a Pokémon added to its team (damage, set-up damage like sand and burns, healing) plus the HP bars it kept off its team (Intimidate, screens, Protect blocks, immunities, turns it made opponents lose, speed control). Impact+ is Impact per game brought, where 100 is an average Pokémon and 150 is 50% more. Round Impact+ pools every pick in the round. Damage taken is never subtracted. Picks brought fewer than 3 times aren't ranked, since a game or two swings a lot; they and the picks never brought are listed on the right. <a href="#extras">How it works</a>.</p>
-      <p class="lx-note" id="lx-d-tune"></p>
-      <div class="lx-scroll lx-tall"><table class="lx-table" id="lx-d-rounds"></table></div>
-    </div>
-    <div class="lx-grid">
-      <div class="lx-card">
-        <h2>Impact+ by tier</h2>
-        <p class="lx-note">Impact per game brought of every pick in the tier together, where 100 is average.</p>
-        <div class="lx-scroll lx-tall"><table class="lx-table" id="lx-d-tiers"></table></div>
-      </div>
-      <div class="lx-card">
-        <h2>Best draft classes</h2>
-        <p class="lx-note">Total Impact of each player's twelve picks this season, with their Impact+ together.</p>
-        <div class="lx-scroll lx-tall"><table class="lx-table" id="lx-d-players"></table></div>
-      </div>
-    </div>
-    <div class="lx-card">
-      <h2>Steals and busts</h2>
-      <p class="lx-note">Impact+ compared with the Impact+ of the whole round it was picked in. Positive means a steal. Only picks brought at least 3 times are included.</p>
-      <div class="lx-grid">
-        <div><h3 class="lx-sub">Biggest steals</h3><div class="lx-scroll lx-tall"><table class="lx-table" id="lx-d-steals"></table></div></div>
-        <div><h3 class="lx-sub">Biggest busts</h3><div class="lx-scroll lx-tall"><table class="lx-table" id="lx-d-busts"></table></div></div>
-      </div>
     </div>
   </section>
 
@@ -676,118 +778,8 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
     </div>
   </section>
 
-  <section class="lx-page" id="lx-schedule" data-page="schedule" hidden>
-    <div class="lx-card">
-      <h2>Schedule</h2>
-      <p class="lx-note">Scores list the first player's game wins first, and each game link opens its Showdown replay. Upcoming matches are dimmed.</p>
-      <div class="lx-controls">
-        <select id="lx-sp" aria-label="Player"><option value="">All players</option></select>
-        <select id="lx-ss" aria-label="Status"><option value="">Played and upcoming</option><option value="Played">Played</option><option value="Upcoming">Upcoming</option></select>
-      </div>
-      <div class="lx-scroll">
-        <table class="lx-table" id="lx-t-sched" data-source="schedule" data-row-key="id">
-          <thead><tr>
-            <th data-field="matchup"><button class="lx-sort" type="button">Matchup</button></th>
-            <th class="num" data-field="week"><button class="lx-sort" type="button">Week</button></th>
-            <th data-field="status"><button class="lx-sort" type="button">Status</button></th>
-            <th data-field="winner"><button class="lx-sort" type="button">Winner</button></th>
-            <th data-field="score"><button class="lx-sort" type="button">Score</button></th>
-            <th data-field="game1"><button class="lx-sort" type="button">Game 1</button></th>
-            <th data-field="game2"><button class="lx-sort" type="button">Game 2</button></th>
-            <th data-field="game3"><button class="lx-sort" type="button">Game 3</button></th>
-          </tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section class="lx-page" id="lx-playoffs" data-page="playoffs" hidden>
-    <div class="lx-card">
-      <h2>Projected bracket</h2>
-      <p class="lx-note">If the season ended today. Seeds 1–2 get a bye; 3 plays 6 and 4 plays 5, then 1 plays the 4/5 winner and 2 plays the 3/6 winner. The bracket is fixed, with no reseeding.</p>
-      <div class="lx-chart" id="lx-c-bracket"><div class="lx-bscroll" id="lx-bracket"></div></div>
-    </div>
-    <div class="lx-card">
-      <h2>Playoff race</h2>
-      <p class="lx-note">Seeds go by series wins. Ties are broken by head-to-head series win %, then game win %, then game differential, then name. Head-to-head only counts when all the tied players have played each other. After a tie splits, the smaller group starts again at head-to-head. A coin flip is not modelled.</p>
-      <div class="lx-scroll">
-        <table class="lx-table" id="lx-t-playoffs" data-source="playoffs" data-row-key="player">
-          <thead><tr>
-            <th class="num" data-field="seed"><button class="lx-sort" type="button">Seed</button></th>
-            <th data-field="player"><button class="lx-sort" type="button">Player</button></th>
-            <th data-field="series"><button class="lx-sort" type="button">Series</button></th>
-            <th data-field="games_wl"><button class="lx-sort" type="button">Games</button></th>
-            <th class="num" data-field="game_pct"><button class="lx-sort" type="button">Game win %</button></th>
-            <th class="num" data-field="left"><button class="lx-sort" type="button">Series left</button></th>
-            <th data-field="status"><button class="lx-sort" type="button">Status</button></th>
-            <th data-field="reason"><button class="lx-sort" type="button">Tiebreak</button></th>
-          </tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section class="lx-page" id="lx-games" data-page="games" hidden>
-    <div class="lx-card">
-      <h2>Game length</h2>
-      <p class="lx-note">One bar per game in schedule order. Hover for the week, matchup and winner.</p>
-      <div class="lx-chart dash-skeleton" id="lx-c-len" data-source="games"></div>
-    </div>
-    <div class="lx-card">
-      <h2>Game log</h2>
-      <p class="lx-note">The replay number opens the Showdown replay. Player 1 is the first player in the matchup.</p>
-      <div class="lx-controls"><input id="lx-q-games" type="search" placeholder="Search players, accounts or Pokémon" aria-label="Search games"></div>
-      <div class="lx-scroll">
-        <table class="lx-table" id="lx-t-games" data-source="games" data-row-key="id">
-          <thead><tr>
-            <th data-field="matchup"><button class="lx-sort" type="button">Matchup</button></th>
-            <th class="num" data-field="week"><button class="lx-sort" type="button">Week</button></th>
-            <th class="num" data-field="game"><button class="lx-sort" type="button">Game</button></th>
-            <th data-field="id"><button class="lx-sort" type="button">Replay</button></th>
-            <th data-field="date"><button class="lx-sort" type="button">Date</button></th>
-            <th data-field="winner"><button class="lx-sort" type="button">Winner</button></th>
-            <th class="num" data-field="turns"><button class="lx-sort" type="button">Turns</button></th>
-            <th data-field="leads1"><button class="lx-sort" type="button">Player 1 leads</button></th>
-            <th data-field="leads2"><button class="lx-sort" type="button">Player 2 leads</button></th>
-            <th class="num" data-field="lost1"><button class="lx-sort" type="button">Player 1 lost</button></th>
-            <th class="num" data-field="lost2"><button class="lx-sort" type="button">Player 2 lost</button></th>
-            <th data-field="first_blood"><button class="lx-sort" type="button">First KO</button></th>
-            <th class="num" data-field="damage1"><button class="lx-sort" type="button">Player 1 damage</button></th>
-            <th class="num" data-field="damage2"><button class="lx-sort" type="button">Player 2 damage</button></th>
-            <th class="num" data-field="winner_mons_left"><button class="lx-sort" type="button">Winner's Pokémon left</button></th>
-            <th data-field="weather"><button class="lx-sort" type="button">Weather</button></th>
-          </tr></thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section class="lx-page" id="lx-extras" data-page="extras" hidden>
-    <div class="lx-grid">
-      <div class="lx-card">
-        <h2>Damage from sources other than attacks</h2>
-        <p class="lx-note">Full HP bars lost to status, weather, hazards and recoil, with the Pokémon each one fainted beside the bar.</p>
-        <div class="lx-chart dash-skeleton" id="lx-c-ind" data-source="indirect"></div>
-      </div>
-      <div class="lx-card">
-        <h2>Weather</h2>
-        <p class="lx-note">Games where each weather was active at some point.</p>
-        <div class="lx-scroll" style="max-height:none">
-          <table class="lx-table" id="lx-t-weather" data-source="weather" data-row-key="weather">
-            <thead><tr>
-              <th data-field="weather"><button class="lx-sort" type="button">Weather</button></th>
-              <th class="num" data-field="games"><button class="lx-sort" type="button">Games</button></th>
-            </tr></thead>
-            <tbody></tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    <div class="lx-card">
-      <h2>How the numbers are defined</h2>
+  <details class="lx-card lx-defsbox" id="lx-defs">
+    <summary><h2>How the numbers work</h2></summary>
       <ul class="lx-defs">
         <li><b>Brought:</b> the Pokémon appeared in battle at least once. A Pokémon that was picked but never sent out can't be seen in a replay, so it counts as not brought.</li>
         <li><b>Bring % and lead %:</b> out of the player's games. A lead is one of the two Pokémon on the field at the start.</li>
@@ -813,8 +805,7 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
         <li><b>Players and accounts:</b> every Pokémon belongs to a player's team. Players who used more than one Showdown account have their accounts combined.</li>
         <li><b>Source:</b> Pokémon Showdown replays of the Gen 5 Doubles Custom Game, parsed from each replay's battle log. Zoroark's Illusion can make its switch-ins show as another Pokémon.</li>
       </ul>
-    </div>
-  </section>
+  </details>
 </div>
 
 
@@ -1113,7 +1104,7 @@ function gate(el, ids) {
 const rowsOf = (id) => dash.data(id).data || [];
 const players = () => rowsOf('teams').map((t) => t.player).sort();
 
-const WK_TABS = ['teams', 'scout', 'pokemon', 'moves'];
+const WK_TABS = ['teams', 'scout', 'pokemon'];
 const WK_IDS = ['games', 'gamemons', 'gamemoves', 'mons', 'schedule'];
 function wkRange() {
   const f = $('#lx-wf'), t = $('#lx-wt'), n = f.options.length;
@@ -1817,8 +1808,7 @@ function renderPokemon() {
 
 function renderMoves() {
   const a = $('#lx-c-mdmg'), b = $('#lx-c-muse');
-  const sel = $('#lx-mp');
-  fillSel(sel, okAll(['teams']) && players());
+  const sel = $('#lx-team'); // shares the Pokémon tab's player filter
   const g1 = gate(a, need(['moves', 'teammoves'])), g2 = gate(b, need(['moves', 'teammoves']));
   if (g1 || g2) return;
   const p = sel.options.length > 1 ? sel.value : '';
@@ -2091,20 +2081,18 @@ function renderDraft() {
 function render() {
   renderHeader();
   renderWeeks();
-  if (tab === 'teams') renderTeams();
-  else if (tab === 'scout') renderScout();
-  else if (tab === 'pokemon') renderPokemon();
-  else if (tab === 'moves') renderMoves();
+  if (tab === 'teams') { renderTeams(); renderPlayoffs(); }
+  else if (tab === 'schedule') { renderSchedule(); renderGames(); }
+  else if (tab === 'pokemon') { renderPokemon(); renderMoves(); renderExtras(); }
   else if (tab === 'draft') renderDraft();
+  else if (tab === 'scout') renderScout();
   else if (tab === 'luck') renderLuck();
-  else if (tab === 'schedule') renderSchedule();
-  else if (tab === 'playoffs') renderPlayoffs();
-  else if (tab === 'games') renderGames();
-  else if (tab === 'extras') renderExtras();
   syncHash();
 }
 
-const TABS = ['teams', 'scout', 'pokemon', 'moves', 'draft', 'luck', 'schedule', 'playoffs', 'games', 'extras'];
+const TABS = ['teams', 'schedule', 'pokemon', 'draft', 'scout', 'luck'];
+// Tabs that were merged into others, so old links still land on the right content.
+const TAB_ALIAS = { players: 'teams', standings: 'teams', playoffs: 'teams', games: 'schedule', moves: 'pokemon', extras: 'pokemon' };
 const selField = (id) => ({ get: () => { const e = $('#' + id); return e.options.length > 1 || !e.dataset.want ? e.value : e.dataset.want; }, set: (v) => { const e = $('#' + id); e.dataset.want = v; e.value = v; } });
 const wkField = (id, last) => ({
   get: () => { const e = $('#' + id); return e.options.length < 2 ? e.dataset.want || '' : e.selectedIndex === (last ? e.options.length - 1 : 0) ? '' : e.value; },
@@ -2115,13 +2103,13 @@ const HASH_STATE = {
   teams: WKH,
   scout: Object.assign({ player: selField('lx-sc-p'), vs: selField('lx-sc-v'), types: { get: () => ($('#lx-sc-unb').checked ? 'all' : ''), set: (v) => { $('#lx-sc-unb').checked = v === 'all'; } } }, WKH),
   pokemon: Object.assign({ player: selField('lx-team'), min: selField('lx-min'), mon: { get: () => selMon || '', set: (v) => { selMon = v || null; } } }, WKH),
-  moves: Object.assign({ player: selField('lx-mp') }, WKH),
   luck: { player: selField('lx-lp') },
   schedule: { player: selField('lx-sp'), status: selField('lx-ss') },
 };
 function readHash() {
-  const [name, qs] = location.hash.replace(/^#(lx-)?/, '').split('?');
-  return { tab: TABS.includes(name) ? name : null, params: Object.fromEntries(new URLSearchParams(qs || '')) };
+  const [raw, qs] = location.hash.replace(/^#(lx-)?/, '').split('?');
+  const name = TAB_ALIAS[raw] || raw;
+  return { tab: TABS.includes(name) ? name : null, defs: raw === 'defs' || raw === 'extras', params: Object.fromEntries(new URLSearchParams(qs || '')) };
 }
 function writeHash(t, params) {
   const q = new URLSearchParams();
@@ -2136,6 +2124,7 @@ function syncHash() {
   writeHash(tab, p);
 }
 function applyHash(h) {
+  if (h.defs) pendingDefs = true;
   if (h.tab) tab = h.tab;
   Object.entries(HASH_STATE[tab] || {}).forEach(([k, s]) => s.set(h.params[k] || ''));
 }
@@ -2148,7 +2137,7 @@ function setTab(name) {
 }
 
 document.querySelectorAll('.lx-tab').forEach((b) => b.addEventListener('click', () => setTab(b.dataset.tab)));
-['lx-sc-p', 'lx-sc-v', 'lx-sc-unb', 'lx-team', 'lx-min', 'lx-q-mons', 'lx-unused', 'lx-mp', 'lx-q-moves', 'lx-q-games', 'lx-sp', 'lx-ss', 'lx-lp'].forEach((id) => {
+['lx-sc-p', 'lx-sc-v', 'lx-sc-unb', 'lx-team', 'lx-min', 'lx-q-mons', 'lx-unused', 'lx-q-moves', 'lx-q-games', 'lx-sp', 'lx-ss', 'lx-lp'].forEach((id) => {
   const el = $('#' + id);
   el.addEventListener(el.type === 'search' ? 'input' : 'change', render);
 });
@@ -2156,12 +2145,21 @@ document.querySelectorAll('.lx-tab').forEach((b) => b.addEventListener('click', 
 [$('#lx-wf'), $('#lx-wt')].forEach((e) => e.addEventListener('change', () => { wkClamp(e); render(); }));
 $('#lx-wreset').addEventListener('click', () => { const f = $('#lx-wf'), t = $('#lx-wt'); f.selectedIndex = 0; t.selectedIndex = t.options.length - 1; render(); });
 
+let pendingDefs = false;
+function showDefs() {
+  const d = $('#lx-defs');
+  d.open = true;
+  d.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+document.querySelectorAll('.lx-deflink').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); showDefs(); }));
+
 applyHash(readHash());
-addEventListener('hashchange', () => { applyHash(readHash()); setTab(tab); });
+addEventListener('hashchange', () => { applyHash(readHash()); setTab(tab); if (pendingDefs) { pendingDefs = false; showDefs(); } });
 dash.onData(() => {
   document.querySelectorAll('.lx-tab').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === tab)));
   document.querySelectorAll('.lx-page').forEach((p) => { p.hidden = p.dataset.page !== tab; });
   render();
+  if (pendingDefs) { pendingDefs = false; requestAnimationFrame(showDefs); }
 });
 
 </script>
