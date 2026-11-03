@@ -41,7 +41,9 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
 .lx-title { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0 0 var(--cds-gap-xs); }
 .lx-take { margin: 0 0 var(--cds-gap-md); color: var(--color-fg-muted); font-size: var(--cds-font-size-body); line-height: 1.5; max-width: 70ch; }
 .lx-take span { color: var(--color-fg); font-weight: var(--cds-font-weight-medium); }
-.lx-leaders { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: var(--cds-gap-md); margin-bottom: var(--cds-gap-lg); }
+.lx-leaders { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--cds-gap-md); margin-bottom: var(--cds-gap-lg); }
+@media (max-width: 60rem) { .lx-leaders { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 30rem) { .lx-leaders { grid-template-columns: minmax(0, 1fr); } }
 .lx-tile { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); min-height: 8.5rem; }
 .lx-lbody { display: flex; align-items: center; gap: var(--cds-gap-md); margin-top: var(--cds-gap-xs); }
 .lx-lbody .lx-ltext { min-width: 0; }
@@ -211,6 +213,33 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
 
   <div class="lx-leaders">
     <div class="lx-tile">
+      <div class="lx-tile-l">Highest Impact</div>
+      <div class="lx-lbody"><img class="lx-lspr" id="lx-spr-imp" alt="" hidden>
+        <div class="lx-ltext">
+          <div class="lx-lname"><span data-source="leaders" data-field="imp_mon" data-row="0">—</span></div>
+          <div class="lx-tile-v"><span data-source="leaders" data-field="imp_value" data-row="0" data-fmt="d1">—</span> <span class="lx-tile-s">HP bars</span></div>
+          <div class="lx-tile-s"><span data-source="leaders" data-field="imp_player" data-row="0">—</span> · <span data-source="leaders" data-field="imp_apps" data-row="0">—</span> games</div>
+        </div></div>
+    </div>
+    <div class="lx-tile">
+      <div class="lx-tile-l">Highest OFF</div>
+      <div class="lx-lbody"><img class="lx-lspr" id="lx-spr-off" alt="" hidden>
+        <div class="lx-ltext">
+          <div class="lx-lname"><span data-source="leaders" data-field="off_mon" data-row="0">—</span></div>
+          <div class="lx-tile-v"><span data-source="leaders" data-field="off_value" data-row="0" data-fmt="d1">—</span> <span class="lx-tile-s">HP bars</span></div>
+          <div class="lx-tile-s"><span data-source="leaders" data-field="off_player" data-row="0">—</span> · <span data-source="leaders" data-field="off_apps" data-row="0">—</span> games</div>
+        </div></div>
+    </div>
+    <div class="lx-tile">
+      <div class="lx-tile-l">Highest DEF</div>
+      <div class="lx-lbody"><img class="lx-lspr" id="lx-spr-def" alt="" hidden>
+        <div class="lx-ltext">
+          <div class="lx-lname"><span data-source="leaders" data-field="def_mon" data-row="0">—</span></div>
+          <div class="lx-tile-v"><span data-source="leaders" data-field="def_value" data-row="0" data-fmt="d1">—</span> <span class="lx-tile-s">HP bars</span></div>
+          <div class="lx-tile-s"><span data-source="leaders" data-field="def_player" data-row="0">—</span> · <span data-source="leaders" data-field="def_apps" data-row="0">—</span> games</div>
+        </div></div>
+    </div>
+    <div class="lx-tile">
       <div class="lx-tile-l">Most KOs</div>
       <div class="lx-lbody"><img class="lx-lspr" id="lx-spr-ko" alt="" hidden>
         <div class="lx-ltext">
@@ -254,14 +283,6 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
         <div class="lx-tile-s"><span data-source="leaders" data-field="longest_winner" data-row="0">—</span> won</div>
       </div>
     </div>
-    <div class="lx-tile">
-      <div class="lx-tile-l">Most dominant win</div>
-      <div class="lx-ltext">
-        <div class="lx-lname"><span data-source="leaders" data-field="dom_winner" data-row="0">—</span></div>
-        <div class="lx-tile-v"><span data-source="leaders" data-field="dom_hp" data-row="0" data-fmt="d1">—</span> <span class="lx-tile-s">HP bars left</span></div>
-        <div class="lx-tile-s"><span data-source="leaders" data-field="dom_left" data-row="0">—</span> Pokémon left, <span data-source="leaders" data-field="dom_matchup" data-row="0">—</span></div>
-      </div>
-    </div>
   </div>
 
   <div class="lx-tabs">
@@ -269,6 +290,7 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
       <button class="lx-tab" role="tab" data-tab="teams" aria-selected="true">Standings</button>
       <button class="lx-tab" role="tab" data-tab="schedule" aria-selected="false">Schedule</button>
       <button class="lx-tab" role="tab" data-tab="pokemon" aria-selected="false">Pokémon</button>
+      <button class="lx-tab" role="tab" data-tab="moves" aria-selected="false">Moves</button>
       <button class="lx-tab" role="tab" data-tab="draft" aria-selected="false">Draft</button>
       <button class="lx-tab" role="tab" data-tab="scout" aria-selected="false">Scout</button>
       <button class="lx-tab" role="tab" data-tab="luck" aria-selected="false">Luck</button>
@@ -422,25 +444,8 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
       <label><input id="lx-unused" type="checkbox"> Include Pokémon that never appeared</label>
     </div>
     <div class="lx-card">
-      <h2>Highest Impact+</h2>
-      <p class="lx-note">Impact per game brought, where 100 is an average Pokémon and 150 is 50% more. Only Pokémon brought at least the minimum games above are shown, since a game or two swings a lot. Hover a bar for the breakdown. See <a class="lx-deflink" href="#defs">how Impact works</a>.</p>
-      <div class="lx-chart dash-skeleton" id="lx-c-imp" data-source="mons"></div>
-    </div>
-    <div class="lx-grid">
-      <div class="lx-card">
-        <h2>Most KOs</h2>
-        <p class="lx-note">KOs credited to the last attack that hit the fainted Pokémon.</p>
-        <div class="lx-chart dash-skeleton" id="lx-c-kos" data-source="mons"></div>
-      </div>
-      <div class="lx-card">
-        <h2>Most damage dealt</h2>
-        <p class="lx-note">Full HP bars taken from opponents by this Pokémon's attacks.</p>
-        <div class="lx-chart dash-skeleton" id="lx-c-dmg" data-source="mons"></div>
-      </div>
-    </div>
-    <div class="lx-card">
       <h2>Every Pokémon</h2>
-      <p class="lx-note">Bring % and lead % are out of that player's games. Impact+ is Impact per game brought, where 100 is average. OFF+ and DEF+ do the same for its two sides: OFF is HP taken off the opponents (damage, set-up damage, shares), DEF is HP kept on its own side (healing, prevented), and OFF + DEF = Impact. Impact is the season total in HP bars; the columns after it are what it is made of. Hover Impact+, Impact, Prevented or Shares for the breakdown. Select a row to see its moves below the table.</p>
+      <p class="lx-note">Bring % and lead % are out of that player's games. The Impact columns are at the end of the table. Impact+ is Impact per game brought, where 100 is average. OFF+ and DEF+ do the same for its two sides: OFF is HP taken off the opponents (damage, set-up damage, shares), DEF is HP kept on its own side (healing, prevented), and OFF + DEF = Impact. Impact is the season total in HP bars; the columns after it are what it is made of. Hover Impact+, Impact, Prevented or Shares for the breakdown. Select a row to see its moves below the table.</p>
       <div class="lx-scroll">
         <table class="lx-table" id="lx-t-mons" data-source="mons" data-row-key="id">
           <thead><tr>
@@ -450,18 +455,6 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
             <th class="num" data-field="lead_pct"><button class="lx-sort" type="button">Lead %</button></th>
             <th class="num" data-field="brought"><button class="lx-sort" type="button">Brought</button></th>
             <th class="num" data-field="led"><button class="lx-sort" type="button">Led</button></th>
-            <th class="num" data-field="impact_plus"><button class="lx-sort" type="button">Impact+</button></th>
-            <th class="num" data-field="off_plus"><button class="lx-sort" type="button">OFF+</button></th>
-            <th class="num" data-field="def_plus"><button class="lx-sort" type="button">DEF+</button></th>
-            <th class="num" data-field="impact"><button class="lx-sort" type="button">Impact</button></th>
-            <th class="num" data-field="off"><button class="lx-sort" type="button">OFF</button></th>
-            <th class="num" data-field="def"><button class="lx-sort" type="button">DEF</button></th>
-            <th class="num" data-field="impact_per_app"><button class="lx-sort" type="button">Impact / game brought</button></th>
-            <th class="num" data-field="imp_damage"><button class="lx-sort" type="button">Damage</button></th>
-            <th class="num" data-field="imp_setup"><button class="lx-sort" type="button">Set-up damage</button></th>
-            <th class="num" data-field="imp_share"><button class="lx-sort" type="button">Shares</button></th>
-            <th class="num" data-field="imp_heal"><button class="lx-sort" type="button">Healing</button></th>
-            <th class="num" data-field="imp_prevented"><button class="lx-sort" type="button">Prevented</button></th>
             <th class="num" data-field="kos"><button class="lx-sort" type="button">KOs</button></th>
             <th class="num" data-field="kos_per_app"><button class="lx-sort" type="button">KOs / game</button></th>
             <th class="num" data-field="damage"><button class="lx-sort" type="button">Damage dealt</button></th>
@@ -477,16 +470,83 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
             <th class="num" data-field="super_effective"><button class="lx-sort" type="button">Super effective hits</button></th>
             <th class="num" data-field="misses"><button class="lx-sort" type="button">Misses</button></th>
             <th class="num" data-field="statuses"><button class="lx-sort" type="button">Statuses inflicted</button></th>
+            <th class="num" data-field="impact_plus"><button class="lx-sort" type="button">Impact+</button></th>
+            <th class="num" data-field="off_plus"><button class="lx-sort" type="button">OFF+</button></th>
+            <th class="num" data-field="def_plus"><button class="lx-sort" type="button">DEF+</button></th>
+            <th class="num" data-field="impact"><button class="lx-sort" type="button">Impact</button></th>
+            <th class="num" data-field="off"><button class="lx-sort" type="button">OFF</button></th>
+            <th class="num" data-field="def"><button class="lx-sort" type="button">DEF</button></th>
+            <th class="num" data-field="impact_per_app"><button class="lx-sort" type="button">Impact / game brought</button></th>
+            <th class="num" data-field="imp_damage"><button class="lx-sort" type="button">Damage</button></th>
+            <th class="num" data-field="imp_setup"><button class="lx-sort" type="button">Set-up damage</button></th>
+            <th class="num" data-field="imp_share"><button class="lx-sort" type="button">Shares</button></th>
+            <th class="num" data-field="imp_heal"><button class="lx-sort" type="button">Healing</button></th>
+            <th class="num" data-field="imp_prevented"><button class="lx-sort" type="button">Prevented</button></th>
           </tr></thead>
           <tbody></tbody>
         </table>
       </div>
     </div>
     <div class="lx-card" id="lx-detail"></div>
+    <div class="lx-card">
+      <h2>Most Impact</h2>
+      <p class="lx-note">Season total of Impact in HP bars: OFF + DEF. Hover a bar for the breakdown, including Impact+. See <a class="lx-deflink" href="#defs">how Impact works</a>.</p>
+      <div class="lx-chart dash-skeleton" id="lx-c-imp" data-source="mons"></div>
+    </div>
+    <div class="lx-grid">
+      <div class="lx-card">
+        <h2>Most OFF</h2>
+        <p class="lx-note">Season total of HP taken off opponents: damage, set-up damage and shares.</p>
+        <div class="lx-chart dash-skeleton" id="lx-c-off" data-source="mons"></div>
+      </div>
+      <div class="lx-card">
+        <h2>Most DEF</h2>
+        <p class="lx-note">Season total of HP kept on its own side: healing and prevented damage.</p>
+        <div class="lx-chart dash-skeleton" id="lx-c-def" data-source="mons"></div>
+      </div>
+    </div>
+    <div class="lx-grid">
+      <div class="lx-card">
+        <h2>Most KOs</h2>
+        <p class="lx-note">KOs credited to the last attack that hit the fainted Pokémon.</p>
+        <div class="lx-chart dash-skeleton" id="lx-c-kos" data-source="mons"></div>
+      </div>
+      <div class="lx-card">
+        <h2>Most damage dealt</h2>
+        <p class="lx-note">Full HP bars taken from opponents by this Pokémon's attacks.</p>
+        <div class="lx-chart dash-skeleton" id="lx-c-dmg" data-source="mons"></div>
+      </div>
+    </div>
+    <div class="lx-grid">
+      <div class="lx-card">
+        <h2>Damage from sources other than attacks</h2>
+        <p class="lx-note">Full HP bars lost to status, weather, hazards and recoil, with the Pokémon each one fainted beside the bar.</p>
+        <div class="lx-chart dash-skeleton" id="lx-c-ind" data-source="indirect"></div>
+      </div>
+      <div class="lx-card">
+        <h2>Weather</h2>
+        <p class="lx-note">Games where each weather was active at some point.</p>
+        <div class="lx-scroll" style="max-height:none">
+          <table class="lx-table" id="lx-t-weather" data-source="weather" data-row-key="weather">
+            <thead><tr>
+              <th data-field="weather"><button class="lx-sort" type="button">Weather</button></th>
+              <th class="num" data-field="games"><button class="lx-sort" type="button">Games</button></th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="lx-page" id="lx-moves" data-page="moves" hidden>
+    <div class="lx-controls">
+      <select id="lx-mp" aria-label="Player"><option value="">All players</option></select>
+    </div>
     <div class="lx-grid">
       <div class="lx-card">
         <h2>Most damage dealt by move</h2>
-        <p class="lx-note">Full HP bars dealt across all games, with KOs beside each bar. The player filter at the top of the tab applies to the move charts and table too.</p>
+        <p class="lx-note">Full HP bars dealt across all games, with KOs beside each bar.</p>
         <div class="lx-chart dash-skeleton" id="lx-c-mdmg" data-source="moves"></div>
       </div>
       <div class="lx-card">
@@ -512,26 +572,6 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
           </tr></thead>
           <tbody></tbody>
         </table>
-      </div>
-    </div>
-    <div class="lx-grid">
-      <div class="lx-card">
-        <h2>Damage from sources other than attacks</h2>
-        <p class="lx-note">Full HP bars lost to status, weather, hazards and recoil, with the Pokémon each one fainted beside the bar.</p>
-        <div class="lx-chart dash-skeleton" id="lx-c-ind" data-source="indirect"></div>
-      </div>
-      <div class="lx-card">
-        <h2>Weather</h2>
-        <p class="lx-note">Games where each weather was active at some point.</p>
-        <div class="lx-scroll" style="max-height:none">
-          <table class="lx-table" id="lx-t-weather" data-source="weather" data-row-key="weather">
-            <thead><tr>
-              <th data-field="weather"><button class="lx-sort" type="button">Weather</button></th>
-              <th class="num" data-field="games"><button class="lx-sort" type="button">Games</button></th>
-            </tr></thead>
-            <tbody></tbody>
-          </table>
-        </div>
       </div>
     </div>
   </section>
@@ -945,7 +985,7 @@ dash.calc('playoffs', {
 dash.calc('leaders', {
   inputs: ['mons', 'moves', 'games'],
   title: 'League leaders',
-  description: 'The top Pokémon, move and games by KOs, damage, turns on the field, length and margin of victory.',
+  description: 'The top Pokémon, move and game by Impact, OFF, DEF, KOs, damage, turns on the field and length.',
   fn: (mons, moves, games) => {
     const best = (a, f) => a.slice().sort((x, y) => f(y) - f(x))[0];
     const ko = mons.slice().sort((a, b) => b.kos - a.kos || (b.kos_per_app || 0) - (a.kos_per_app || 0));
@@ -955,14 +995,16 @@ dash.calc('leaders', {
     const tof = best(mons, (m) => m.turns_on_field);
     const mv = moves.slice().sort((a, b) => b.kos - a.kos || b.damage - a.damage)[0];
     const lg = best(games, (g) => g.turns);
-    const dom = games.slice().sort((a, b) => b.winner_mons_left - a.winner_mons_left || b.winner_hp_left - a.winner_hp_left)[0];
+    const imp = best(mons, (m) => m.impact || 0), off = best(mons, (m) => m.off || 0), def = best(mons, (m) => m.def || 0);
     return [{
       ko_mon: k.pokemon, ko_player: k.player, ko_value: k.kos, ko_apps: k.brought, ko_tie: ties.length ? 'Ties: ' + ties.join(', ') : '',
       dmg_mon: dmg.pokemon, dmg_player: dmg.player, dmg_value: dmg.damage, dmg_apps: dmg.brought,
       tof_mon: tof.pokemon, tof_player: tof.player, tof_value: tof.turns_on_field, tof_apps: tof.brought,
       move_name: mv.move, move_kos: mv.kos, move_uses: mv.uses,
       longest_matchup: lg.matchup, longest_turns: lg.turns, longest_winner: lg.winner,
-      dom_winner: dom.winner, dom_hp: dom.winner_hp_left, dom_left: dom.winner_mons_left, dom_matchup: dom.matchup,
+      imp_mon: imp.pokemon, imp_player: imp.player, imp_value: imp.impact, imp_apps: imp.brought,
+      off_mon: off.pokemon, off_player: off.player, off_value: off.off, off_apps: off.brought,
+      def_mon: def.pokemon, def_player: def.player, def_value: def.def, def_apps: def.brought,
     }];
   },
 });
@@ -1104,7 +1146,7 @@ function gate(el, ids) {
 const rowsOf = (id) => dash.data(id).data || [];
 const players = () => rowsOf('teams').map((t) => t.player).sort();
 
-const WK_TABS = ['teams', 'scout', 'pokemon'];
+const WK_TABS = ['teams', 'scout', 'pokemon', 'moves'];
 const WK_IDS = ['games', 'gamemons', 'gamemoves', 'mons', 'schedule'];
 function wkRange() {
   const f = $('#lx-wf'), t = $('#lx-wt'), n = f.options.length;
@@ -1382,13 +1424,11 @@ const T_TEAMS = mkTable('lx-t-teams', [
   { f: 'first_blood_pct', t: 'pct' }, { f: 'win_pct_after_first_blood', t: 'pct' }, { f: 'accounts', t: 'text' },
 ], { f: 'series_wins', dir: -1 }, 'player');
 const T_MONS = mkTable('lx-t-mons', [
-  { f: 'pokemon', t: 'text', spr: true }, { f: 'player', t: 'text' }, { f: 'bring_pct', t: 'pct' }, { f: 'lead_pct', t: 'pct' }, { f: 'brought', t: 'int' }, { f: 'led', t: 'int' },
-  { f: 'impact_plus', t: 'int', tip: 'impact_tip' }, { f: 'off_plus', t: 'int', tip: 'impact_tip' }, { f: 'def_plus', t: 'int', tip: 'impact_tip' },
-  { f: 'impact', t: 'd1', tip: 'impact_tip' }, { f: 'off', t: 'd1', tip: 'impact_tip' }, { f: 'def', t: 'd1', tip: 'impact_tip' }, { f: 'impact_per_app', t: 'd2' },
+  { f: 'pokemon', t: 'text', spr: true }, { f: 'player', t: 'text' }, { f: 'bring_pct', t: 'pct' }, { f: 'lead_pct', t: 'pct' }, { f: 'brought', t: 'int' }, { f: 'led', t: 'int' }, { f: 'kos', t: 'int' },
+  { f: 'kos_per_app', t: 'd2' }, { f: 'damage', t: 'd1' }, { f: 'damage_per_app', t: 'd2' }, { f: 'taken', t: 'd1' }, { f: 'recoil', t: 'd1' }, { f: 'faints', t: 'int' }, { f: 'survival_pct', t: 'pct' },
+  { f: 'win_pct_brought', t: 'pct' }, { f: 'turns_on_field', t: 'int' }, { f: 'sacrifices', t: 'int' }, { f: 'crits', t: 'int' }, { f: 'super_effective', t: 'int' }, { f: 'misses', t: 'int' }, { f: 'statuses', t: 'int' },
+  { f: 'impact_plus', t: 'int', tip: 'impact_tip' }, { f: 'off_plus', t: 'int', tip: 'impact_tip' }, { f: 'def_plus', t: 'int', tip: 'impact_tip' }, { f: 'impact', t: 'd1', tip: 'impact_tip' }, { f: 'off', t: 'd1', tip: 'impact_tip' }, { f: 'def', t: 'd1', tip: 'impact_tip' }, { f: 'impact_per_app', t: 'd2' },
   { f: 'imp_damage', t: 'd1' }, { f: 'imp_setup', t: 'd1' }, { f: 'imp_share', t: 's1', tip: 'share_tip' }, { f: 'imp_heal', t: 'd1' }, { f: 'imp_prevented', t: 'd1', tip: 'prevented_tip' },
-  { f: 'kos', t: 'int' }, { f: 'kos_per_app', t: 'd2' }, { f: 'damage', t: 'd1' }, { f: 'damage_per_app', t: 'd2' }, { f: 'taken', t: 'd1' }, { f: 'recoil', t: 'd1' },
-  { f: 'faints', t: 'int' }, { f: 'survival_pct', t: 'pct' }, { f: 'win_pct_brought', t: 'pct' }, { f: 'turns_on_field', t: 'int' },
-  { f: 'sacrifices', t: 'int' }, { f: 'crits', t: 'int' }, { f: 'super_effective', t: 'int' }, { f: 'misses', t: 'int' }, { f: 'statuses', t: 'int' },
 ], { f: 'impact_plus', dir: -1 }, 'id');
 const T_MOVES = mkTable('lx-t-moves', [
   { f: 'move', t: 'text' }, { f: 'uses', t: 'int' }, { f: 'kos', t: 'int' }, { f: 'damage', t: 'd1' }, { f: 'damage_per_use', t: 'd2' }, { f: 'kos_per_10_uses', t: 'd2' }, { f: 'used_by', t: 'text', tip: 'used_by_full' },
@@ -1459,7 +1499,7 @@ function renderHeader() {
     el.textContent = v == null ? (row ? '' : '—') : el.dataset.fmt ? fmt[el.dataset.fmt](v) : String(v);
   });
   const Ld = dash.data('leaders');
-  [['ko', 'ko_mon'], ['dmg', 'dmg_mon'], ['tof', 'tof_mon']].forEach(([k, f]) => {
+  [['imp', 'imp_mon'], ['off', 'off_mon'], ['def', 'def_mon'], ['ko', 'ko_mon'], ['dmg', 'dmg_mon'], ['tof', 'tof_mon']].forEach(([k, f]) => {
     const img = $('#lx-spr-' + k);
     const u = Ld.status === 'ok' ? sprUrl(Ld.data[0][f]) : null;
     if (u) { img.src = u; img.hidden = false; } else img.hidden = true;
@@ -1784,16 +1824,16 @@ $('#lx-ll-more').addEventListener('click', () => { T_LLEADS.limit = T_LLEADS.lim
 function renderPokemon() {
   const sel = $('#lx-team');
   fillSel(sel, okAll(['teams']) && players());
-  const kosC = $('#lx-c-kos'), dmgC = $('#lx-c-dmg'), impC = $('#lx-c-imp');
-  const g1 = gate(kosC, need(['mons']));
-  const g2 = gate(dmgC, need(['mons']));
-  const g3 = gate(impC, need(['mons']));
-  if (g1 || g2 || g3) return;
+  const kosC = $('#lx-c-kos'), dmgC = $('#lx-c-dmg'), impC = $('#lx-c-imp'), offC = $('#lx-c-off'), defC = $('#lx-c-def');
+  const gs = [kosC, dmgC, impC, offC, defC].map((c) => gate(c, need(['mons'])));
+  if (gs.some(Boolean)) return;
   const rows = monFilter();
   const lab = (r) => r.pokemon;
-  const minG = +$('#lx-min').value || 1;
-  const byImp = rows.filter((r) => r.impact_plus != null && r.brought >= minG).sort((a, b) => b.impact_plus - a.impact_plus || b.impact - a.impact).slice(0, 12);
-  hbar(impC, byImp, { sprite: (r) => r.pokemon, label: lab, fmt: fmt.int, series: [{ key: 'impact_plus', label: 'Impact+', color: dash.colors[2] }], note: (r) => r.player, tip: (r) => ['Brought in ' + fmt.int(r.brought) + ' of ' + fmt.int(r.team_games) + ' games'].concat(impactLines(r), preventedLines(r)) });
+  const impTip = (r) => ['Brought in ' + fmt.int(r.brought) + ' of ' + fmt.int(r.team_games) + ' games'].concat(impactLines(r), preventedLines(r));
+  const top = (k, n) => rows.filter((r) => r[k] != null).sort((a, b) => b[k] - a[k] || (b.impact || 0) - (a.impact || 0)).slice(0, n);
+  hbar(impC, top('impact', 12), { sprite: (r) => r.pokemon, label: lab, fmt: fmt.d1, series: [{ key: 'impact', label: 'Impact', color: dash.colors[2] }], note: (r) => r.player, tip: impTip });
+  hbar(offC, top('off', 10), { sprite: (r) => r.pokemon, label: lab, fmt: fmt.d1, series: [{ key: 'off', label: 'OFF', color: dash.colors[0] }], note: (r) => r.player, tip: impTip });
+  hbar(defC, top('def', 10), { sprite: (r) => r.pokemon, label: lab, fmt: fmt.d1, series: [{ key: 'def', label: 'DEF', color: dash.colors[1] }], note: (r) => r.player, tip: impTip });
   const byKos = rows.slice().sort((a, b) => b.kos - a.kos || (b.kos_per_app || 0) - (a.kos_per_app || 0)).slice(0, 10);
   hbar(kosC, byKos, { sprite: (r) => r.pokemon, label: lab, fmt: fmt.int, series: [{ key: 'kos', label: 'KOs', color: dash.colors[0] }], note: (r) => r.player, tip: (r) => [fmt.int(r.brought) + ' games', fmt.d2(r.kos_per_app || 0) + ' KOs per game'] });
   const byDmg = rows.slice().sort((a, b) => b.damage - a.damage).slice(0, 10);
@@ -1808,7 +1848,8 @@ function renderPokemon() {
 
 function renderMoves() {
   const a = $('#lx-c-mdmg'), b = $('#lx-c-muse');
-  const sel = $('#lx-team'); // shares the Pokémon tab's player filter
+  const sel = $('#lx-mp');
+  fillSel(sel, okAll(['teams']) && players());
   const g1 = gate(a, need(['moves', 'teammoves'])), g2 = gate(b, need(['moves', 'teammoves']));
   if (g1 || g2) return;
   const p = sel.options.length > 1 ? sel.value : '';
@@ -2083,16 +2124,17 @@ function render() {
   renderWeeks();
   if (tab === 'teams') { renderTeams(); renderPlayoffs(); }
   else if (tab === 'schedule') { renderSchedule(); renderGames(); }
-  else if (tab === 'pokemon') { renderPokemon(); renderMoves(); renderExtras(); }
+  else if (tab === 'pokemon') { renderPokemon(); renderExtras(); }
+  else if (tab === 'moves') renderMoves();
   else if (tab === 'draft') renderDraft();
   else if (tab === 'scout') renderScout();
   else if (tab === 'luck') renderLuck();
   syncHash();
 }
 
-const TABS = ['teams', 'schedule', 'pokemon', 'draft', 'scout', 'luck'];
+const TABS = ['teams', 'schedule', 'pokemon', 'moves', 'draft', 'scout', 'luck'];
 // Tabs that were merged into others, so old links still land on the right content.
-const TAB_ALIAS = { players: 'teams', standings: 'teams', playoffs: 'teams', games: 'schedule', moves: 'pokemon', extras: 'pokemon' };
+const TAB_ALIAS = { players: 'teams', standings: 'teams', playoffs: 'teams', games: 'schedule', extras: 'pokemon' };
 const selField = (id) => ({ get: () => { const e = $('#' + id); return e.options.length > 1 || !e.dataset.want ? e.value : e.dataset.want; }, set: (v) => { const e = $('#' + id); e.dataset.want = v; e.value = v; } });
 const wkField = (id, last) => ({
   get: () => { const e = $('#' + id); return e.options.length < 2 ? e.dataset.want || '' : e.selectedIndex === (last ? e.options.length - 1 : 0) ? '' : e.value; },
@@ -2102,6 +2144,7 @@ const WKH = { from: wkField('lx-wf', false), to: wkField('lx-wt', true) };
 const HASH_STATE = {
   teams: WKH,
   scout: Object.assign({ player: selField('lx-sc-p'), vs: selField('lx-sc-v'), types: { get: () => ($('#lx-sc-unb').checked ? 'all' : ''), set: (v) => { $('#lx-sc-unb').checked = v === 'all'; } } }, WKH),
+  moves: Object.assign({ player: selField('lx-mp') }, WKH),
   pokemon: Object.assign({ player: selField('lx-team'), min: selField('lx-min'), mon: { get: () => selMon || '', set: (v) => { selMon = v || null; } } }, WKH),
   luck: { player: selField('lx-lp') },
   schedule: { player: selField('lx-sp'), status: selField('lx-ss') },
@@ -2137,7 +2180,7 @@ function setTab(name) {
 }
 
 document.querySelectorAll('.lx-tab').forEach((b) => b.addEventListener('click', () => setTab(b.dataset.tab)));
-['lx-sc-p', 'lx-sc-v', 'lx-sc-unb', 'lx-team', 'lx-min', 'lx-q-mons', 'lx-unused', 'lx-q-moves', 'lx-q-games', 'lx-sp', 'lx-ss', 'lx-lp'].forEach((id) => {
+['lx-sc-p', 'lx-sc-v', 'lx-sc-unb', 'lx-team', 'lx-min', 'lx-q-mons', 'lx-unused', 'lx-mp', 'lx-q-moves', 'lx-q-games', 'lx-sp', 'lx-ss', 'lx-lp'].forEach((id) => {
   const el = $('#' + id);
   el.addEventListener(el.type === 'search' ? 'input' : 'change', render);
 });
