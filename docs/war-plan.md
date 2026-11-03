@@ -17,7 +17,8 @@ HP Impact = HP Added      damage it caused (direct + set-up damage) + healing it
 soaking hits is often the job. Staying healthy already pays off on its own, because more turns
 in means more chances to add value. Damage taken is still shown as information.
 
-**No weights are invented.** Every number comes from one of three things:
+**Weights are kept to a minimum.** Almost every number comes from one of three things (the
+exceptions are the labelled heuristics for speed control and redirection, below):
 1. **What the replay shows**, such as HP lost or healed.
 2. **Gen 5 mechanics**, such as Intimidate (−1 Attack = ⅔ damage), burn (½ physical damage),
    doubles screens (about ⅔ damage) and Helping Hand (1.5×).
@@ -60,10 +61,10 @@ move, split across its targets for spread moves, or per move for that Pokémon.
 | **Intimidate** (`-ability … Intimidate`, `-unboost atk`) | While the drop lasts: the physical damage that Pokémon dealt × ½ (−1 Attack leaves ⅔ of the damage, so it would have done half again as much) | Intimidator |
 | **Reflect / Light Screen** | Physical or special damage allies took while it was up × ½ (doubles screens leave about ⅔) | Setter |
 | **Burn** (on top of the ticks) | The burned Pokémon's physical damage while burned × 1 (halved, so it would have done the same again) | Burner |
-| **Protect / Detect** (`-activate … Protect`) | Average damage of each attack it blocked | User |
+| **Protect / Detect** (`-activate … Protect`) | Average damage of each attack that **targeted it** and was blocked. The log writes this line only when an attack hits the Protect, so a Protect nobody attacked earns nothing. A spread move counts once per protected target, not once per move | User |
 | **Wide Guard / Quick Guard** | Average damage of each attack blocked, on every ally it covered | User |
 | **Immunity on a switch-in or ability** (`-immune`, Levitate, Lightning Rod, Storm Drain, Volt/Water Absorb) | Average damage of the absorbed attack | Immune Pokémon |
-| **Follow Me / Rage Powder** | Attacks drawn into immunity or Protect earn the full average damage. Attacks it takes on are not charged (damage taken is never subtracted), so its job never counts against it | Redirector |
+| **Follow Me / Rage Powder** | Attacks drawn into an immunity earn the full average damage. Attacks it absorbs are never charged, and (heuristic, see below) each opposing single-target attack it draws that turn earns ½ that attack's average damage | Redirector |
 | **Lost turns** (`cant` from flinch, paralysis, sleep, freeze, Taunt, Encore, Disable) | The victim's average damage per move (or the move it was locked into) | Whoever caused it (Fake Out user, paralyzer, sleeper, Taunter…) |
 | **Helping Hand** | ⅓ of the boosted attack's damage (1.5× → the extra half) | Helper |
 
@@ -71,13 +72,48 @@ Healing on top of these:
 - **Heal Bell / Aromatherapy**: each status cured earns its expected remaining cost (the burn
   ticks and halving, or the paralysis lost turns, at the league average rates).
 
-## Still a gap: speed control
+## Heuristics for effects that are hard to measure
 
-Tailwind, Trick Room, Icy Wind and the speed part of Thunder Wave change *who moves first*. The
-replay can't show what would have happened in the other order, and any credit would be a guess.
-Plan: don't count it in HP Impact. Show an **"Enabled"** number next to it instead: HP Added by
-allies during turns the setter's Tailwind or Trick Room was active. Readers can judge it, but it
-isn't summed in, which would double-count the allies' work.
+Some effects can't be valued from mechanics alone, so these use labelled heuristics. Each
+setting is one named constant in `scripts/impact.py` and is listed in the methodology note.
+Credit given to a setter here is a *share* taken from the ally's credit, never added on top, so
+nothing is counted twice.
+
+### Speed control: Tailwind, Trick Room, Icy Wind / Electroweb, Thunder Wave
+The replay shows the order Pokémon moved in, so we can detect when the order was **flipped** by
+the effect:
+
+1. **Who is naturally faster.** For each pair of Pokémon, use the order they moved in on turns
+   with no speed effects. If they never met in a clean turn, compare base Speed (this needs base
+   stats added to `scripts/ref/species.json` by `refresh_refdata.py`). Priority moves are
+   ignored, since they go first anyway.
+2. **Flipped action.** On a turn the effect is active, an ally moves before an opponent that is
+   naturally faster than it (or, under Trick Room, slower than it).
+3. **Credit to the setter (or the Pokémon that slowed the opponent):**
+   - **Denied action**: the flipped ally KOs that opponent before it moves → the setter gets
+     the opponent's average damage per move, just like a flinch. This comes from what
+     happened, not from a weight.
+   - **Went-first share**: `SPEED_SHARE` (default **25%**) of the HP Added by each other
+     flipped ally attack goes to the setter. The heuristic is that moving first is worth a
+     meaningful but minority part of the hit.
+   - Tailwind and Trick Room setters who also attack keep their own damage. They don't take a
+     share from themselves.
+
+### Redirection: Follow Me, Rage Powder
+`REDIRECT_SHARE` (default **50%**): each opposing single-target attack that hits the redirector
+on a turn it used Follow Me or Rage Powder earns half that attack's league-average damage. The
+log doesn't record the original target, so the heuristic assumes about half of those attacks
+were aimed at the partner. Attacks drawn into an immunity still earn full credit (above).
+
+### Other set-up support (only if it shows up enough to matter)
+Same "share of what it enabled" pattern, at `SPEED_SHARE`, for allies' attacks while the
+effect is active: Gravity, Wide Guard turns (on top of blocks), and stat boosts given to allies
+(Decorate-style, Coaching-style; rare in Gen 5). Start without these and add them only if a
+Pokémon clearly reads too low.
+
+### Tuning check
+After building, list each support Pokémon's rank under the default shares and under half and
+double them. If a ranking only holds at one setting, say so on the page.
 
 Luck (crits, misses) isn't removed here. The Luck tab covers it.
 
@@ -86,7 +122,7 @@ Luck (crits, misses) isn't removed here. The Luck tab covers it.
 - **HP Impact per game** replaces value on the Draft tab. Rank by per *team* game (not being
   brought counts as 0), with per *brought* game alongside.
 - **Breakdown** in tooltips and the Pokémon table: Damage · Set-up damage · Healing ·
-  Prevented · = Impact, plus Enabled and Taken as information. Readers can tell a sweeper from a
+  Prevented · Speed/support share · = Impact, plus Taken and recoil as information. Readers can tell a sweeper from a
   wall from a support at a glance.
 - **Comparison:** vs league average per brought game, and vs the average for its draft round.
   Both are plain averages, so no replacement level is needed.
@@ -98,7 +134,8 @@ Luck (crits, misses) isn't removed here. The Luck tab covers it.
    - Status sources (who burned, poisoned, paralyzed or slept whom), the weather setter, hazard
      setters per side, the Leech Seed seeder.
    - Effects with durations: Intimidate drops (until switch-out or reset), screens (turns),
-     burns, Tailwind and Trick Room (for Enabled).
+     burns, Tailwind, Trick Room, speed drops and paralysis (for speed control).
+   - Move order within each turn, flagging priority moves, for the flipped-order check.
    - Blocked and absorbed attacks (`-activate` Protect / Wide Guard, `-immune`, redirect
      abilities), and the move and target that were blocked.
    - `cant` lines and their cause, Helping Hand (`-singleturn`) linked to the next ally attack.
@@ -120,9 +157,7 @@ Luck (crits, misses) isn't removed here. The Luck tab covers it.
 
 ## Decisions for you
 
-1. Count Protect on *itself*? It's real (it wasted an attack), but Protect-spam could pad it.
-   Recommendation: count it. A wasted attack is a wasted attack, and the opponent chose to attack.
-2. Speed control: keep it as the separate "Enabled" number (recommended), or add a share of it
-   into Impact?
-3. Show Life Orb / recoil next to damage, or subtract it? Recommendation: show it, don't
+1. Starting heuristic shares: `SPEED_SHARE` 25%, `REDIRECT_SHARE` 50%. Good starting points,
+   or would you rather they were more or less generous to support?
+2. Show Life Orb / recoil next to damage, or subtract it? Recommendation: show it, don't
    subtract, to be consistent with not subtracting damage taken.
