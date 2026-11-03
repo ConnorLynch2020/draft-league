@@ -1,6 +1,7 @@
 # Plan: a fuller Pokémon value stat (HP Impact)
 
-Status: plan approved, not built yet.
+Status: built (first version). See "Implementation notes" at the end for where it differs from
+the plan.
 
 ## The idea
 
@@ -162,3 +163,21 @@ Luck (crits, misses) isn't removed here. The Luck tab covers it.
 2. Life Orb / recoil damage is shown next to damage dealt, not subtracted.
 3. Protect earns credit only for attacks that targeted the user and were blocked.
 4. Damage taken is shown but never subtracted.
+
+## Implementation notes
+
+- The per-game tracker lives in `scripts/impact.py` (`GameTracker`) rather than `replay.py`, so
+  the existing parser and every other tab are untouched. The build checks that its direct-damage
+  credit matches `replay.py` and that every HP bar lost is credited to someone or to nobody.
+- Base Speed and Prankster live in a new `scripts/ref/speed.json`, and moves gained `pri` and
+  `tgt` fields, both from `refresh_refdata.py`. `species.json` keeps its format.
+- Speed is read at the start of each turn (Gen 5 order). Flips are credited to Trick Room first,
+  then Tailwind, then paralysis, then Speed drops, and only when the setter is on the flipped
+  ally's side. Priority moves, Prankster status moves and Quick Claw turns are ignored.
+- Protect, Wide Guard and immunities earn nothing for blocking status moves (their league
+  average damage is 0). Any blocked or prevented credit is capped at the HP the target had left.
+- Heal Bell / Aromatherapy earn the season average cost per opposing status of that kind.
+- Gravity, Wide Guard set-up shares and ally stat boosts aren't built (see "Other set-up
+  support").
+- The tuning check writes `data/impact.json` (rank at half / default / double shares) and the
+  Draft tab lists the Pokémon that move 3+ places.

@@ -23,6 +23,7 @@ from collections import defaultdict, OrderedDict
 sys.path.insert(0, os.path.dirname(__file__))
 from replay import parse_replay  # noqa: E402
 from luck import luck_for_game, aggregate_luck  # noqa: E402
+import impact  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
@@ -163,6 +164,60 @@ def fetch(rid, offline):
     sys.exit("Couldn't fetch %s (%s). Private replays can't be read; make sure it's uploaded as public." % (url, last))
 
 
+IMPACT_FIELDS = (("imp_damage", "dmg"), ("imp_setup", "setup"), ("imp_heal", "heal"),
+                 ("imp_prevented", "prev"), ("imp_share", "share"), ("recoil", "recoil"))
+
+
+def impact_fields(v, side, sp):
+    """HP Impact columns for one Pokémon in one game (gamemons.json)."""
+    c = v["rows"].get((side, sp), {})
+    out = [(k, r6(c.get(src, 0.0))) for k, src in IMPACT_FIELDS]
+    out.append(("impact", r6(sum(c.get(src, 0.0) for src in ("dmg", "setup", "heal", "prev", "share")))))
+    pb = v["prev_by"].get((side, sp), {})
+    out.append(("prevented_by", OrderedDict((k, r6(pb[k])) for k in sorted(pb) if r6(pb[k]))))
+    return out
+
+
+def impact_totals(rows, team_games, brought):
+    """Season HP Impact columns for mons.json, summed from the per-game rows in the same order the
+    page sums them, so the page's week filter reproduces these numbers exactly."""
+    tot = sum(r["impact"] for r in rows)
+    out = [("impact", r2(tot)), ("impact_per_game", r2(tot / team_games) if team_games else 0),
+           ("impact_per_app", r2(tot / brought) if brought else None)]
+    out += [(k, r2(sum(r[k] for r in rows))) for k, _ in IMPACT_FIELDS]
+    pb = defaultdict(float)
+    for r in rows:
+        for k, v in r["prevented_by"].items():
+            pb[k] += v
+    out.append(("prevented_by", OrderedDict((k, r2(pb[k])) for k in sorted(pb))))
+    return out
+
+
+def impact_tuning(games, trackers, mons):
+    """Rank every brought Pokémon by HP Impact per team game with the heuristic shares at half,
+    default and double. Rows for Pokémon whose rank moves are flagged on the page."""
+    team_games = {m["id"]: m["team_games"] for m in mons if m["brought"]}
+    ranks = {}
+    for f in (0.5, 1, 2):
+        valued, _ = impact.evaluate(trackers, impact.SPEED_SHARE * f, impact.REDIRECT_SHARE * f)
+        tot = defaultdict(float)
+        for g, v in zip(games, valued):
+            for (side, sp), c in v["rows"].items():
+                tot["%s|%s" % (g["names"][side], sp)] += impact.impact_of(c)
+        order = sorted(team_games, key=lambda k: (-tot[k] / team_games[k], k))
+        ranks[f] = {k: i + 1 for i, k in enumerate(order)}
+    out = []
+    for k in sorted(team_games, key=lambda k: ranks[1][k]):
+        lo, mid, hi = ranks[0.5][k], ranks[1][k], ranks[2][k]
+        out.append(OrderedDict([("id", k), ("rank_half", lo), ("rank", mid), ("rank_double", hi),
+                                ("moves", max(lo, mid, hi) - min(lo, mid, hi))]))
+    moved = [r for r in out if r["moves"] >= 3]
+    print("HP Impact tuning: %d of %d Pokémon move 3+ places when the heuristic shares are halved or doubled%s" % (
+        len(moved), len(out), "".join("\n  %-28s %3d / %3d / %3d" % (r["id"], r["rank_half"], r["rank"],
+                                                                     r["rank_double"]) for r in moved)))
+    return out
+
+
 def main():
     offline = "--offline" in sys.argv
     os.makedirs(DATA, exist_ok=True)
@@ -202,6 +257,24 @@ def main():
         key = (g["week"], tuple(sorted(g["names"].values())))
         counter[key] += 1
         g["game"] = counter[key]
+
+    # ---- HP Impact: track every game, then value it with season-wide league averages ----------
+    trackers = []
+    for g in games:
+        tr = impact.track_game(g["rep"]["log"])
+        # every HP bar lost is either credited to someone or to nobody, and matches the main parser
+        seen = sum(m.taken for ms in g["mons"].values() for m in ms.values()) + sum(x[1] for x in g["indirect"])
+        if abs(seen - (tr.lost_total - tr.pain_split)) > 1e-6 or abs(
+                tr.lost_total - (tr.added_total + tr.friendly + tr.unattributed)) > 1e-6:
+            sys.exit("Replay %s: HP Impact accounting doesn't add up (%.4f lost, %.4f seen)." % (
+                g["id"], tr.lost_total, seen))
+        trackers.append(tr)
+    valued, _ = impact.evaluate(trackers)
+    for g, v in zip(games, valued):
+        for (side, sp) in v["rows"]:
+            if sp not in g["mons"][side]:
+                sys.exit("Replay %s: HP Impact credited %s, who never appeared." % (g["id"], sp))
+        g["impact"] = v
 
     species_ref = load(os.path.join(ROOT, "scripts", "ref", "species.json"), {})
     out_games, gm_rows, gmv_rows = [], [], []
@@ -299,7 +372,7 @@ def main():
                     ("turns_on_field", m.turns), ("sacrifices", m.sacrifices), ("friendly_fire", r6(m.friendly_fire)),
                     ("crits", m.crits), ("super_effective", m.super_effective), ("misses", m.misses),
                     ("statuses", m.statuses), ("hp", 0 if m.fainted else r6(m.frac)),
-                ]))
+                ] + impact_fields(g["impact"], s, sp)))
                 for mname, mm in m.moves.items():
                     gmv_rows.append(OrderedDict([
                         ("game", gid), ("player", p), ("pokemon", sp), ("move", mname),
@@ -362,6 +435,9 @@ def main():
     teams.sort(key=lambda x: (-x["series_wins"], -x["wins"], x["player"]))
 
     # ---- mons ----------------------------------------------------------------
+    imp_rows = defaultdict(list)
+    for r in gm_rows:
+        imp_rows[(r["player"], r["pokemon"])].append(r)
     mons = []
     for p, species in roster.items():
         for sp in species:
@@ -384,7 +460,7 @@ def main():
             ("friendly_fire", r2(row["friendly_fire"])), ("crits", int(row["crits"])),
             ("super_effective", int(row["super_effective"])), ("misses", int(row["misses"])),
             ("statuses", int(row["statuses"])),
-        ]))
+        ] + impact_totals(imp_rows.get((p, sp), []), tg, b)))
     mons.sort(key=lambda x: (x["player"], x["pokemon"]))
 
     # ---- moves ---------------------------------------------------------------
@@ -424,6 +500,7 @@ def main():
     save("weather", weather)
     for name, rows in aggregate_luck(games, out_games).items():
         save(name, rows)
+    save("impact", impact_tuning(games, trackers, mons))
     save("meta", {"updated": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
                   "games": len(out_games)})
     print("Built %d games, %d players, %d Pokémon." % (len(out_games), len(teams), len(mons)))

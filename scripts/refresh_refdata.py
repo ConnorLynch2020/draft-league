@@ -100,15 +100,23 @@ def main():
             "crit": m.get("critRatio") or 1, "willCrit": bool(m.get("willCrit")),
             "ohko": bool(m.get("ohko")), "fixed": m.get("damage") is not None,
             "sec": secondaries(m),
+            "pri": m.get("priority", 0), "tgt": m.get("target", "normal"),
         }
-    species = {}
+    species, speed = {}, {}
     for s in get("pokedex.json").values():
         if "types" in s:
             species[s["name"]] = s["types"]
+        if "baseStats" in s:
+            # base Speed, and whether the species can have Prankster (+1 priority on status moves)
+            speed[s["name"]] = {"spe": s["baseStats"]["spe"]}
+            if "Prankster" in (s.get("abilities") or {}).values():
+                speed[s["name"]]["prankster"] = True
     with open(os.path.join(OUT, "moves.json"), "w") as f:
         json.dump(moves, f, separators=(",", ":"), sort_keys=True)
     with open(os.path.join(OUT, "species.json"), "w") as f:
         json.dump(species, f, separators=(",", ":"), sort_keys=True)
+    with open(os.path.join(OUT, "speed.json"), "w") as f:
+        json.dump(speed, f, separators=(",", ":"), sort_keys=True)
     print(len(moves), "moves,", len(species), "species")
 
 

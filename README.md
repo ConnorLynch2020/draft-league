@@ -47,6 +47,9 @@ Fix the file and commit again; the action re-runs.
 - `scripts/luck.py` scores every random event (crits, accuracy, secondary effects, full paralysis,
   thaws, confusion) against its odds. Hidden information (Scope Lens, Serene Grace, Compound Eyes,
   etc.), speed ties and damage rolls aren't visible in replays, so they aren't included.
+- `scripts/impact.py` works out **HP Impact**, the value stat on the Draft and Pokémon tabs: HP bars
+  each Pokémon added (damage, set-up damage, healing) or kept off its team (Intimidate, screens,
+  Protect, immunities, lost turns, speed control). See `docs/war-plan.md`.
 - `index.html` + `dash-shim.js` render the page from `data/*.json`. Sprites for Pokémon that aren't
   in `sprites1.js` / `sprites2.js` load from Showdown's sprite server.
 - `scripts/ref/*.json` is move and type reference data (Gen 5), refreshed with
