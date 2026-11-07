@@ -1,14 +1,14 @@
 [
  {
   "source": "Sandstorm",
-  "hits": 232,
-  "damage": 13.84,
-  "faints": 13
+  "hits": 351,
+  "damage": 20.99,
+  "faints": 15
  },
  {
   "source": "Stealth Rock",
-  "hits": 80,
-  "damage": 9.89,
+  "hits": 85,
+  "damage": 10.45,
   "faints": 2
  },
  {
@@ -19,14 +19,14 @@
  },
  {
   "source": "Burn",
-  "hits": 62,
-  "damage": 7.48,
-  "faints": 7
+  "hits": 77,
+  "damage": 9.32,
+  "faints": 8
  },
  {
   "source": "Poison",
-  "hits": 62,
-  "damage": 6.57,
+  "hits": 72,
+  "damage": 8.04,
   "faints": 6
  },
  {
@@ -37,8 +37,8 @@
  },
  {
   "source": "Move recoil",
-  "hits": 13,
-  "damage": 2.2,
+  "hits": 15,
+  "damage": 2.64,
   "faints": 0
  },
  {

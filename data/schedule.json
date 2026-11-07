@@ -213,12 +213,12 @@
   "matchup": "Brayden vs Connor",
   "player1": "Brayden",
   "player2": "Connor",
-  "status": "Upcoming",
-  "winner": null,
-  "score": null,
-  "game1": null,
-  "game2": null,
-  "game3": null
+  "status": "Played",
+  "winner": "Connor",
+  "score": "1–2",
+  "game1": "2706590747",
+  "game2": "2706626343",
+  "game3": "2706632014"
  },
  {
   "id": "w4-Bo-Alex",
