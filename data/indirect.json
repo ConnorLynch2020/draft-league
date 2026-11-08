@@ -1,33 +1,33 @@
 [
  {
   "source": "Sandstorm",
-  "hits": 367,
-  "damage": 21.96,
-  "faints": 15
+  "hits": 381,
+  "damage": 22.77,
+  "faints": 16
  },
  {
   "source": "Burn",
-  "hits": 110,
-  "damage": 13.38,
-  "faints": 9
+  "hits": 118,
+  "damage": 14.27,
+  "faints": 10
  },
  {
   "source": "Poison",
-  "hits": 100,
-  "damage": 12.6,
-  "faints": 9
+  "hits": 105,
+  "damage": 13.44,
+  "faints": 10
  },
  {
   "source": "Stealth Rock",
-  "hits": 98,
-  "damage": 11.94,
+  "hits": 107,
+  "damage": 13.34,
   "faints": 2
  },
  {
   "source": "Life Orb recoil",
-  "hits": 115,
-  "damage": 11.06,
-  "faints": 5
+  "hits": 126,
+  "damage": 12.08,
+  "faints": 6
  },
  {
   "source": "Leech Seed",
@@ -37,8 +37,8 @@
  },
  {
   "source": "Move recoil",
-  "hits": 16,
-  "damage": 2.77,
+  "hits": 19,
+  "damage": 3.67,
   "faints": 0
  },
  {
