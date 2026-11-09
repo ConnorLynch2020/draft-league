@@ -6,27 +6,27 @@
   "faints": 16
  },
  {
+  "source": "Stealth Rock",
+  "hits": 125,
+  "damage": 16.08,
+  "faints": 2
+ },
+ {
+  "source": "Poison",
+  "hits": 124,
+  "damage": 15.88,
+  "faints": 12
+ },
+ {
   "source": "Burn",
   "hits": 118,
   "damage": 14.27,
   "faints": 10
  },
  {
-  "source": "Poison",
-  "hits": 105,
-  "damage": 13.44,
-  "faints": 10
- },
- {
-  "source": "Stealth Rock",
-  "hits": 107,
-  "damage": 13.34,
-  "faints": 2
- },
- {
   "source": "Life Orb recoil",
-  "hits": 126,
-  "damage": 12.08,
+  "hits": 133,
+  "damage": 12.78,
   "faints": 6
  },
  {
