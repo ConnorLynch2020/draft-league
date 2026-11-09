@@ -341,7 +341,7 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
     </div>
     <div class="lx-card">
       <h2>Playoff race</h2>
-      <p class="lx-note">Full season, whatever weeks are picked above. Seeds go by series wins. Ties are broken by head-to-head series win %, then game win %, then game differential, then name. Head-to-head only counts when all the tied players have played each other. After a tie splits, the smaller group starts again at head-to-head. A coin flip is not modelled.</p>
+      <p class="lx-note">Full season, whatever weeks are picked above. Seeds go by series wins. Ties are broken by head-to-head series win %, then game win %, then game differential. Players still level after all of these share a seed. Head-to-head only counts when all the tied players have played each other. After a tie splits, the smaller group starts again at head-to-head. A coin flip is not modelled.</p>
       <div class="lx-scroll">
         <table class="lx-table" id="lx-t-playoffs" data-source="playoffs" data-row-key="player">
           <thead><tr>
@@ -894,7 +894,7 @@ dash.calc('league', {
 dash.calc('playoffs', {
   inputs: ['teams', 'schedule'],
   title: 'Projected playoffs',
-  description: 'Playoff seeds if the season ended today: series wins, then head-to-head, game win %, game differential and name.',
+  description: 'Playoff seeds if the season ended today: series wins, then head-to-head, game win % and game differential; players level on all of these share a seed.',
   fn: (teams, sched) => {
     const names = teams.map((t) => t.player).sort();
     const by = Object.fromEntries(teams.map((t) => [t.player, t]));
@@ -911,10 +911,9 @@ dash.calc('playoffs', {
       { rule: 'h2h', ok: (g, c) => g.every((p) => c.h[p][0] + c.h[p][1] === g.length - 1), val: (p, c) => c.h[p][0] / (c.h[p][0] + c.h[p][1]) },
       { rule: 'gwp', val: (p) => by[p].wins / by[p].games, show: (p) => fmt.pct(by[p].wins / by[p].games) },
       { rule: 'diff', val: (p) => by[p].wins - by[p].losses, show: (p) => sgn(by[p].wins - by[p].losses) },
-      { rule: 'name', val: (p) => -names.indexOf(p) },
     ];
     const above = {}, below = {};
-    const tied = {};
+    const tied = {}, level = {};
     const order = (g, from) => {
       if (g.length < 2) return g;
       const c = { h: h2h(g) };
@@ -936,30 +935,37 @@ dash.calc('playoffs', {
         });
         return out;
       }
+      g.forEach((p) => { level[p] = g.filter((q) => q !== p); });
       return g;
     };
     const say = (p, tie) => {
       const t = by[p], a = above[p], b = below[p];
       const e = b && b.rule !== 'series' ? b : a && a.rule !== 'series' ? a : null;
       const sr = rec([t.series_wins, t.series_losses]);
+      if (level[p]) return 'Tied at ' + sr + (level[p].length === 1 ? ' with ' + level[p][0] : '') + '; level on every tiebreak';
       if (!e) return tie.length ? 'Tied at ' + sr : (b ? 'Ahead' : 'Behind') + ' on series wins';
       const up = e === b, top = !(a && a.rule !== 'series');
       const pre = 'Tied at ' + sr + (e.rule === 'h2h' && e.two ? ' with ' + e.who : '');
       const how = e.rule === 'h2h' ? (e.two ? (up ? 'won their series' : 'lost their series') : up ? 'ahead in head-to-head' : 'behind in head-to-head')
         : e.rule === 'gwp' ? (top ? 'best game win % (' + e.own + ')' : 'game win % ' + e.own + ' vs ' + e.other)
-        : e.rule === 'diff' ? (top ? 'best game differential (' + e.own + ')' : 'game differential ' + e.own + ' vs ' + e.other)
-        : up ? 'first by name' : 'later by name';
+        : top ? 'best game differential (' + e.own + ')' : 'game differential ' + e.own + ' vs ' + e.other;
       return pre + '; ' + how;
     };
     const ranked = order(names.slice(), 0);
+    // Players level on every tiebreak share the place of the first of them (1, 2, 2, 4).
+    const place = {};
+    ranked.forEach((p, i) => { place[p] = level[p] && level[p].some((q) => q in place) ? place[level[p].find((q) => q in place)] : i + 1; });
+    const status = (n) => (n <= 2 ? 'Bye' : n <= 6 ? 'Wild card' : 'Out');
     return ranked.map((p, i) => {
-      const t = by[p];
+      const t = by[p], n = place[p], next = ranked[i + 1];
+      const split = !next || place[next] !== n;
       return {
-        player: p, rank: i + 1, seed: i < 6 ? i + 1 : null,
+        player: p, rank: i + 1, place: n, seed: n <= 6 ? n : null,
+        cut: split && (i === 1 || i === 5) ? i + 1 : null,
         series_wins: t.series_wins, series_losses: t.series_losses, series: rec([t.series_wins, t.series_losses]),
         wins: t.wins, losses: t.losses, games_wl: rec([t.wins, t.losses]), game_pct: t.wins / t.games, diff: t.wins - t.losses,
         left: sched.filter((r) => r.status === 'Upcoming' && (r.player1 === p || r.player2 === p)).length,
-        status: i < 2 ? 'Bye' : i < 6 ? 'Wild card' : 'Out',
+        status: level[p] && level[p].some((q) => status(ranked.indexOf(q) + 1) !== status(i + 1)) ? 'Tied at the cut' : status(n),
         reason: say(p, tied[p] || []),
         reason_full: (tied[p] || []).length > 1 ? 'Tied with ' + tied[p].join(', ') : '',
       };
@@ -1434,7 +1440,7 @@ const T_PO = mkTable('lx-t-playoffs', [
   { f: 'seed', t: 'int' }, { f: 'player', t: 'text', plink: true }, { f: 'series', t: 'text' }, { f: 'games_wl', t: 'text' }, { f: 'game_pct', t: 'pct' },
   { f: 'left', t: 'int' }, { f: 'status', t: 'text' }, { f: 'reason', t: 'text', tip: 'reason_full' },
 ], { f: 'rank', dir: 1 }, 'player');
-T_PO.rowClass = (r) => (T_PO.sort.f !== 'rank' || T_PO.sort.dir !== 1 ? '' : r.rank === 2 ? 'lx-cut2' : r.rank === 6 ? 'lx-cut6' : '');
+T_PO.rowClass = (r) => (T_PO.sort.f !== 'rank' || T_PO.sort.dir !== 1 ? '' : r.cut === 2 ? 'lx-cut2' : r.cut === 6 ? 'lx-cut6' : '');
 const T_LUCK = mkTable('lx-t-luck', [
   { f: 'player', t: 'text', plink: true }, { f: 'score', t: 's2' }, { f: 'verdict', t: 'text' }, { f: 'net', t: 's1' }, { f: 'crit_net', t: 's1' }, { f: 'acc_net', t: 's1' },
   { f: 'status_net', t: 's1' }, { f: 'flinch_net', t: 's1' }, { f: 'lost_net', t: 's1' }, { f: 'minor_net', t: 's1' },
