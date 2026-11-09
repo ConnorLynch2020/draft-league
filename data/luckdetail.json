@@ -4,55 +4,55 @@
   "player": "Alex",
   "event": "Crits you landed",
   "kind": "Critical hits",
-  "tries": 106,
-  "happened": 8,
-  "expected": 6.62,
+  "tries": 154,
+  "happened": 11,
+  "expected": 9.62,
   "luck": 1.38,
-  "score": 0.55
+  "score": 0.46
  },
  {
   "id": "Alex|crit|vic",
   "player": "Alex",
   "event": "Crits you took",
   "kind": "Critical hits",
-  "tries": 74,
-  "happened": 9,
-  "expected": 4.94,
-  "luck": -4.06,
-  "score": -1.9
+  "tries": 107,
+  "happened": 10,
+  "expected": 7.0,
+  "luck": -3.0,
+  "score": -1.17
  },
  {
   "id": "Alex|acc|ben",
   "player": "Alex",
   "event": "Your moves hitting",
   "kind": "Accuracy",
-  "tries": 61,
-  "happened": 56,
-  "expected": 54.8,
-  "luck": 1.2,
-  "score": 0.51
+  "tries": 86,
+  "happened": 78,
+  "expected": 76.85,
+  "luck": 1.15,
+  "score": 0.4
  },
  {
   "id": "Alex|acc|vic",
   "player": "Alex",
   "event": "Opponent moves hitting you",
   "kind": "Accuracy",
-  "tries": 9,
-  "happened": 8,
-  "expected": 7.3,
-  "luck": -0.7,
-  "score": -0.6
+  "tries": 21,
+  "happened": 19,
+  "expected": 18.0,
+  "luck": -1.0,
+  "score": -0.63
  },
  {
   "id": "Alex|brn|vic",
   "player": "Alex",
   "event": "Burns you took",
   "kind": "Burns",
-  "tries": 1,
+  "tries": 3,
   "happened": 0,
-  "expected": 0.1,
-  "luck": 0.1,
-  "score": 0.33
+  "expected": 0.7,
+  "luck": 0.7,
+  "score": 0.98
  },
  {
   "id": "Alex|frz|ben",
@@ -92,11 +92,11 @@
   "player": "Alex",
   "event": "Flinches you caused",
   "kind": "Flinches",
-  "tries": 15,
-  "happened": 1,
-  "expected": 3.5,
-  "luck": -2.5,
-  "score": -1.57
+  "tries": 20,
+  "happened": 3,
+  "expected": 5.0,
+  "luck": -2.0,
+  "score": -1.05
  },
  {
   "id": "Alex|drop|ben",
@@ -125,11 +125,11 @@
   "player": "Alex",
   "event": "Opponent fully paralyzed",
   "kind": "Full paralysis",
-  "tries": 10,
-  "happened": 1,
-  "expected": 2.5,
-  "luck": -1.5,
-  "score": -1.1
+  "tries": 21,
+  "happened": 4,
+  "expected": 5.25,
+  "luck": -1.25,
+  "score": -0.63
  },
  {
   "id": "Alex|fpar|vic",
@@ -796,55 +796,55 @@
   "player": "David Kim",
   "event": "Crits you landed",
   "kind": "Critical hits",
-  "tries": 157,
-  "happened": 9,
-  "expected": 10.19,
-  "luck": -1.19,
-  "score": -0.39
+  "tries": 190,
+  "happened": 10,
+  "expected": 12.25,
+  "luck": -2.25,
+  "score": -0.67
  },
  {
   "id": "David Kim|crit|vic",
   "player": "David Kim",
   "event": "Crits you took",
   "kind": "Critical hits",
-  "tries": 143,
-  "happened": 6,
-  "expected": 8.94,
+  "tries": 191,
+  "happened": 9,
+  "expected": 11.94,
   "luck": 2.94,
-  "score": 1.01
+  "score": 0.88
  },
  {
   "id": "David Kim|acc|ben",
   "player": "David Kim",
   "event": "Your moves hitting",
   "kind": "Accuracy",
-  "tries": 71,
-  "happened": 63,
-  "expected": 64.3,
-  "luck": -1.3,
-  "score": -0.53
+  "tries": 83,
+  "happened": 74,
+  "expected": 75.0,
+  "luck": -1.0,
+  "score": -0.37
  },
  {
   "id": "David Kim|acc|vic",
   "player": "David Kim",
   "event": "Opponent moves hitting you",
   "kind": "Accuracy",
-  "tries": 30,
-  "happened": 27,
-  "expected": 26.5,
-  "luck": -0.5,
-  "score": -0.3
+  "tries": 55,
+  "happened": 49,
+  "expected": 48.55,
+  "luck": -0.45,
+  "score": -0.19
  },
  {
   "id": "David Kim|brn|ben",
   "player": "David Kim",
   "event": "Burns you inflicted",
   "kind": "Burns",
-  "tries": 11,
+  "tries": 13,
   "happened": 6,
-  "expected": 3.3,
-  "luck": 2.7,
-  "score": 1.78
+  "expected": 3.9,
+  "luck": 2.1,
+  "score": 1.27
  },
  {
   "id": "David Kim|brn|vic",
@@ -917,11 +917,11 @@
   "player": "David Kim",
   "event": "Flinches you took",
   "kind": "Flinches",
-  "tries": 4,
-  "happened": 2,
-  "expected": 1.2,
-  "luck": -0.8,
-  "score": -0.87
+  "tries": 9,
+  "happened": 4,
+  "expected": 2.7,
+  "luck": -1.3,
+  "score": -0.95
  },
  {
   "id": "David Kim|drop|ben",
@@ -972,11 +972,11 @@
   "player": "David Kim",
   "event": "You fully paralyzed",
   "kind": "Full paralysis",
-  "tries": 42,
-  "happened": 10,
-  "expected": 10.5,
-  "luck": 0.5,
-  "score": 0.18
+  "tries": 53,
+  "happened": 13,
+  "expected": 13.25,
+  "luck": 0.25,
+  "score": 0.08
  },
  {
   "id": "Dennis|crit|ben",

@@ -1,17 +1,17 @@
 [
  {
   "id": "Bo|Eelektrik",
-  "rank_half": 1,
+  "rank_half": 2,
   "rank": 1,
   "rank_double": 1,
-  "moves": 0
+  "moves": 1
  },
  {
   "id": "Max|Camerupt",
-  "rank_half": 2,
+  "rank_half": 1,
   "rank": 2,
   "rank_double": 3,
-  "moves": 1
+  "moves": 2
  },
  {
   "id": "Danny|Rhydon",
@@ -28,67 +28,67 @@
   "moves": 1
  },
  {
-  "id": "Alex|Tangrowth",
-  "rank_half": 5,
-  "rank": 5,
-  "rank_double": 6,
-  "moves": 1
- },
- {
   "id": "Max|Wartortle",
   "rank_half": 9,
-  "rank": 6,
+  "rank": 5,
   "rank_double": 2,
   "moves": 7
  },
  {
   "id": "Danny|Heatran",
-  "rank_half": 6,
-  "rank": 7,
+  "rank_half": 5,
+  "rank": 6,
   "rank_double": 7,
-  "moves": 1
+  "moves": 2
  },
  {
   "id": "Brayden|Hippowdon",
-  "rank_half": 7,
-  "rank": 8,
+  "rank_half": 6,
+  "rank": 7,
   "rank_double": 8,
-  "moves": 1
+  "moves": 2
  },
  {
   "id": "Dennis|Cresselia",
-  "rank_half": 8,
-  "rank": 9,
+  "rank_half": 7,
+  "rank": 8,
   "rank_double": 9,
-  "moves": 1
- },
- {
-  "id": "Dzzy|Lickilicky",
-  "rank_half": 11,
-  "rank": 10,
-  "rank_double": 10,
-  "moves": 1
+  "moves": 2
  },
  {
   "id": "Alex|Tyranitar",
+  "rank_half": 8,
+  "rank": 9,
+  "rank_double": 10,
+  "moves": 2
+ },
+ {
+  "id": "Dzzy|Lickilicky",
   "rank_half": 10,
-  "rank": 11,
+  "rank": 10,
   "rank_double": 11,
   "moves": 1
  },
  {
+  "id": "Alex|Tangrowth",
+  "rank_half": 15,
+  "rank": 11,
+  "rank_double": 6,
+  "moves": 9
+ },
+ {
   "id": "Dzzy|Terrakion",
-  "rank_half": 12,
+  "rank_half": 11,
   "rank": 12,
   "rank_double": 12,
-  "moves": 0
+  "moves": 1
  },
  {
   "id": "Bo|Galvantula",
-  "rank_half": 13,
+  "rank_half": 12,
   "rank": 13,
   "rank_double": 15,
-  "moves": 2
+  "moves": 3
  },
  {
   "id": "Ethan|Zapdos",
@@ -99,10 +99,10 @@
  },
  {
   "id": "Dzzy|Kyurem",
-  "rank_half": 15,
+  "rank_half": 13,
   "rank": 15,
   "rank_double": 16,
-  "moves": 1
+  "moves": 3
  },
  {
   "id": "Dennis|Dusknoir",
@@ -162,31 +162,31 @@
  },
  {
   "id": "Ethan|Blissey",
-  "rank_half": 26,
+  "rank_half": 25,
   "rank": 24,
   "rank_double": 23,
-  "moves": 3
+  "moves": 2
  },
  {
   "id": "Alex|Stoutland",
   "rank_half": 24,
   "rank": 25,
-  "rank_double": 26,
-  "moves": 2
+  "rank_double": 27,
+  "moves": 3
  },
  {
   "id": "Connor|Landorus-Therian",
-  "rank_half": 25,
+  "rank_half": 26,
   "rank": 26,
-  "rank_double": 27,
+  "rank_double": 28,
   "moves": 2
  },
  {
   "id": "Max|Porygon2",
   "rank_half": 28,
   "rank": 27,
-  "rank_double": 25,
-  "moves": 3
+  "rank_double": 26,
+  "moves": 2
  },
  {
   "id": "Connor|Scrafty",
@@ -220,8 +220,8 @@
   "id": "Danny|Kyurem-Black",
   "rank_half": 33,
   "rank": 32,
-  "rank_double": 38,
-  "moves": 6
+  "rank_double": 37,
+  "moves": 5
  },
  {
   "id": "Danny|Manaphy",
@@ -234,8 +234,8 @@
   "id": "Brayden|Honchkrow",
   "rank_half": 35,
   "rank": 34,
-  "rank_double": 37,
-  "moves": 3
+  "rank_double": 36,
+  "moves": 2
  },
  {
   "id": "Dzzy|Bisharp",
@@ -248,29 +248,29 @@
   "id": "Dennis|Lanturn",
   "rank_half": 29,
   "rank": 36,
-  "rank_double": 52,
-  "moves": 23
+  "rank_double": 51,
+  "moves": 22
  },
  {
   "id": "David Kim|Tangela",
-  "rank_half": 42,
+  "rank_half": 43,
   "rank": 37,
-  "rank_double": 28,
-  "moves": 14
- },
- {
-  "id": "Dzzy|Jellicent",
-  "rank_half": 40,
-  "rank": 38,
-  "rank_double": 32,
-  "moves": 8
+  "rank_double": 25,
+  "moves": 18
  },
  {
   "id": "Ethan|Alakazam",
   "rank_half": 37,
-  "rank": 39,
+  "rank": 38,
   "rank_double": 40,
   "moves": 3
+ },
+ {
+  "id": "Dzzy|Jellicent",
+  "rank_half": 40,
+  "rank": 39,
+  "rank_double": 32,
+  "moves": 8
  },
  {
   "id": "Connor|Suicune",
@@ -295,115 +295,115 @@
  },
  {
   "id": "Max|Volcarona",
-  "rank_half": 44,
+  "rank_half": 45,
   "rank": 43,
   "rank_double": 35,
-  "moves": 9
+  "moves": 10
  },
  {
   "id": "Connor|Genesect",
-  "rank_half": 43,
+  "rank_half": 42,
   "rank": 44,
   "rank_double": 45,
+  "moves": 3
+ },
+ {
+  "id": "David Kim|Kingdra",
+  "rank_half": 44,
+  "rank": 45,
+  "rank_double": 46,
   "moves": 2
  },
  {
   "id": "Max|Bronzong",
-  "rank_half": 49,
-  "rank": 45,
-  "rank_double": 43,
-  "moves": 6
- },
- {
-  "id": "Alex|Kangaskhan",
-  "rank_half": 45,
+  "rank_half": 48,
   "rank": 46,
-  "rank_double": 50,
+  "rank_double": 43,
   "moves": 5
  },
  {
-  "id": "Alex|Gurdurr",
+  "id": "Connor|Rotom-Heat",
   "rank_half": 46,
   "rank": 47,
-  "rank_double": 46,
-  "moves": 1
- },
- {
-  "id": "Connor|Rotom-Heat",
-  "rank_half": 47,
-  "rank": 48,
   "rank_double": 47,
   "moves": 1
  },
  {
-  "id": "David Kim|Kingdra",
-  "rank_half": 48,
-  "rank": 49,
+  "id": "Alex|Gurdurr",
+  "rank_half": 47,
+  "rank": 48,
   "rank_double": 48,
   "moves": 1
  },
  {
   "id": "Max|Alomomola",
-  "rank_half": 50,
-  "rank": 50,
+  "rank_half": 49,
+  "rank": 49,
   "rank_double": 49,
-  "moves": 1
+  "moves": 0
  },
  {
   "id": "Dennis|Hitmontop",
-  "rank_half": 51,
-  "rank": 51,
-  "rank_double": 51,
+  "rank_half": 50,
+  "rank": 50,
+  "rank_double": 50,
   "moves": 0
  },
  {
   "id": "David Kim|Politoed",
   "rank_half": 53,
-  "rank": 52,
-  "rank_double": 53,
-  "moves": 1
+  "rank": 51,
+  "rank_double": 52,
+  "moves": 2
  },
  {
   "id": "Dzzy|Amoonguss",
   "rank_half": 64,
-  "rank": 53,
-  "rank_double": 36,
-  "moves": 28
- },
- {
-  "id": "Brayden|Thundurus-Therian",
-  "rank_half": 56,
-  "rank": 54,
-  "rank_double": 55,
-  "moves": 2
+  "rank": 52,
+  "rank_double": 38,
+  "moves": 26
  },
  {
   "id": "Dennis|Tornadus-Therian",
-  "rank_half": 57,
-  "rank": 55,
-  "rank_double": 54,
+  "rank_half": 56,
+  "rank": 53,
+  "rank_double": 53,
   "moves": 3
  },
  {
   "id": "Max|Hariyama",
-  "rank_half": 55,
-  "rank": 56,
-  "rank_double": 58,
+  "rank_half": 54,
+  "rank": 54,
+  "rank_double": 57,
   "moves": 3
  },
  {
   "id": "Max|Swampert",
-  "rank_half": 54,
-  "rank": 57,
-  "rank_double": 62,
-  "moves": 8
+  "rank_half": 52,
+  "rank": 55,
+  "rank_double": 61,
+  "moves": 9
+ },
+ {
+  "id": "Brayden|Thundurus-Therian",
+  "rank_half": 55,
+  "rank": 56,
+  "rank_double": 55,
+  "moves": 1
  },
  {
   "id": "Dzzy|Boldore",
-  "rank_half": 52,
+  "rank_half": 51,
+  "rank": 57,
+  "rank_double": 71,
+  "moves": 20
+ },
+ {
+  "id": "Brayden|Excadrill",
+  "rank_half": 57,
   "rank": 58,
-  "rank_double": 70,
-  "moves": 18
+  "rank_double": 58,
+  "moves": 1
  },
  {
   "id": "Dennis|Scizor",
@@ -413,329 +413,329 @@
   "moves": 1
  },
  {
-  "id": "Brayden|Excadrill",
+  "id": "Dennis|Moltres",
   "rank_half": 59,
   "rank": 60,
-  "rank_double": 60,
-  "moves": 1
- },
- {
-  "id": "Dennis|Moltres",
-  "rank_half": 60,
-  "rank": 61,
-  "rank_double": 63,
+  "rank_double": 62,
   "moves": 3
  },
  {
   "id": "Danny|Staraptor",
   "rank_half": 63,
-  "rank": 62,
-  "rank_double": 57,
-  "moves": 6
+  "rank": 61,
+  "rank_double": 56,
+  "moves": 7
  },
  {
   "id": "Danny|Thundurus",
-  "rank_half": 61,
-  "rank": 63,
-  "rank_double": 65,
-  "moves": 4
+  "rank_half": 60,
+  "rank": 62,
+  "rank_double": 63,
+  "moves": 3
  },
  {
-  "id": "Dennis|Togetic",
-  "rank_half": 66,
-  "rank": 64,
-  "rank_double": 56,
-  "moves": 10
- },
- {
-  "id": "Ethan|Starmie",
+  "id": "Alex|Metagross",
   "rank_half": 62,
-  "rank": 65,
-  "rank_double": 66,
-  "moves": 4
- },
- {
-  "id": "Ethan|Deoxys-Speed",
-  "rank_half": 65,
-  "rank": 66,
+  "rank": 63,
   "rank_double": 64,
   "moves": 2
  },
  {
-  "id": "Brayden|Mienshao",
-  "rank_half": 67,
-  "rank": 67,
-  "rank_double": 67,
-  "moves": 0
+  "id": "Dennis|Togetic",
+  "rank_half": 65,
+  "rank": 64,
+  "rank_double": 54,
+  "moves": 11
  },
  {
-  "id": "Bo|Hydreigon",
+  "id": "Ethan|Starmie",
+  "rank_half": 61,
+  "rank": 65,
+  "rank_double": 67,
+  "moves": 6
+ },
+ {
+  "id": "Ethan|Deoxys-Speed",
+  "rank_half": 66,
+  "rank": 66,
+  "rank_double": 65,
+  "moves": 1
+ },
+ {
+  "id": "David Kim|Blastoise",
+  "rank_half": 71,
+  "rank": 67,
+  "rank_double": 66,
+  "moves": 5
+ },
+ {
+  "id": "Brayden|Mienshao",
   "rank_half": 68,
   "rank": 68,
   "rank_double": 68,
   "moves": 0
  },
  {
-  "id": "Dzzy|Drifblim",
-  "rank_half": 69,
+  "id": "Bo|Hydreigon",
+  "rank_half": 70,
   "rank": 69,
   "rank_double": 69,
-  "moves": 0
+  "moves": 1
+ },
+ {
+  "id": "Alex|Kangaskhan",
+  "rank_half": 67,
+  "rank": 70,
+  "rank_double": 72,
+  "moves": 5
+ },
+ {
+  "id": "Dzzy|Drifblim",
+  "rank_half": 69,
+  "rank": 71,
+  "rank_double": 70,
+  "moves": 2
+ },
+ {
+  "id": "Alex|Cradily",
+  "rank_half": 72,
+  "rank": 72,
+  "rank_double": 73,
+  "moves": 1
  },
  {
   "id": "Danny|Virizion",
-  "rank_half": 71,
-  "rank": 70,
-  "rank_double": 71,
+  "rank_half": 73,
+  "rank": 73,
+  "rank_double": 74,
+  "moves": 1
+ },
+ {
+  "id": "David Kim|Escavalier",
+  "rank_half": 75,
+  "rank": 74,
+  "rank_double": 75,
   "moves": 1
  },
  {
   "id": "Dzzy|Clefairy",
-  "rank_half": 80,
-  "rank": 71,
-  "rank_double": 61,
-  "moves": 19
- },
- {
-  "id": "David Kim|Blastoise",
-  "rank_half": 72,
-  "rank": 72,
-  "rank_double": 72,
-  "moves": 0
+  "rank_half": 82,
+  "rank": 75,
+  "rank_double": 60,
+  "moves": 22
  },
  {
   "id": "Ethan|Emboar",
-  "rank_half": 70,
-  "rank": 73,
-  "rank_double": 79,
-  "moves": 9
+  "rank_half": 74,
+  "rank": 76,
+  "rank_double": 81,
+  "moves": 7
  },
  {
   "id": "Max|Vileplume",
-  "rank_half": 75,
-  "rank": 74,
-  "rank_double": 73,
+  "rank_half": 78,
+  "rank": 77,
+  "rank_double": 76,
   "moves": 2
  },
  {
   "id": "Brayden|Entei",
-  "rank_half": 76,
-  "rank": 75,
-  "rank_double": 74,
+  "rank_half": 79,
+  "rank": 78,
+  "rank_double": 77,
   "moves": 2
  },
  {
   "id": "Ethan|Magnezone",
-  "rank_half": 74,
-  "rank": 76,
-  "rank_double": 78,
-  "moves": 4
+  "rank_half": 77,
+  "rank": 79,
+  "rank_double": 80,
+  "moves": 3
  },
  {
   "id": "Brayden|Salamence",
-  "rank_half": 77,
-  "rank": 77,
-  "rank_double": 75,
+  "rank_half": 80,
+  "rank": 80,
+  "rank_double": 78,
   "moves": 2
  },
  {
   "id": "Dennis|Snorlax",
-  "rank_half": 73,
-  "rank": 78,
-  "rank_double": 81,
-  "moves": 8
- },
- {
-  "id": "Alex|Metagross",
-  "rank_half": 78,
-  "rank": 79,
-  "rank_double": 76,
-  "moves": 3
+  "rank_half": 76,
+  "rank": 81,
+  "rank_double": 83,
+  "moves": 7
  },
  {
   "id": "David Kim|Quagsire",
-  "rank_half": 79,
-  "rank": 80,
-  "rank_double": 77,
+  "rank_half": 81,
+  "rank": 82,
+  "rank_double": 79,
   "moves": 3
  },
  {
   "id": "Bo|Seismitoad",
-  "rank_half": 81,
-  "rank": 81,
-  "rank_double": 80,
+  "rank_half": 83,
+  "rank": 83,
+  "rank_double": 82,
   "moves": 1
  },
  {
   "id": "Alex|Keldeo",
-  "rank_half": 82,
-  "rank": 82,
-  "rank_double": 82,
-  "moves": 0
- },
- {
-  "id": "Max|Ninetales",
-  "rank_half": 83,
-  "rank": 83,
-  "rank_double": 83,
-  "moves": 0
- },
- {
-  "id": "Bo|Pikachu",
   "rank_half": 84,
   "rank": 84,
   "rank_double": 84,
   "moves": 0
  },
  {
-  "id": "Bo|Chandelure",
+  "id": "Max|Ninetales",
   "rank_half": 85,
   "rank": 85,
   "rank_double": 85,
   "moves": 0
  },
  {
-  "id": "Ethan|Haunter",
+  "id": "Bo|Chandelure",
   "rank_half": 86,
   "rank": 86,
-  "rank_double": 88,
-  "moves": 2
+  "rank_double": 86,
+  "moves": 0
  },
  {
-  "id": "Danny|Golbat",
+  "id": "Bo|Pikachu",
   "rank_half": 87,
   "rank": 87,
-  "rank_double": 89,
-  "moves": 2
+  "rank_double": 88,
+  "moves": 1
  },
  {
-  "id": "Dzzy|Mew",
+  "id": "Ethan|Haunter",
   "rank_half": 88,
   "rank": 88,
   "rank_double": 90,
   "moves": 2
  },
  {
-  "id": "Connor|Latios",
+  "id": "Danny|Golbat",
   "rank_half": 89,
   "rank": 89,
   "rank_double": 91,
   "moves": 2
  },
  {
-  "id": "Alex|Crobat",
-  "rank_half": 91,
-  "rank": 90,
-  "rank_double": 87,
-  "moves": 4
- },
- {
-  "id": "Danny|Latias",
+  "id": "Dzzy|Mew",
   "rank_half": 90,
-  "rank": 91,
+  "rank": 90,
   "rank_double": 92,
   "moves": 2
  },
  {
-  "id": "Connor|Magmar",
-  "rank_half": 94,
+  "id": "Connor|Latios",
+  "rank_half": 91,
+  "rank": 91,
+  "rank_double": 93,
+  "moves": 2
+ },
+ {
+  "id": "Danny|Latias",
+  "rank_half": 92,
   "rank": 92,
-  "rank_double": 86,
-  "moves": 8
+  "rank_double": 94,
+  "moves": 2
+ },
+ {
+  "id": "Alex|Crobat",
+  "rank_half": 93,
+  "rank": 93,
+  "rank_double": 89,
+  "moves": 4
+ },
+ {
+  "id": "Connor|Magmar",
+  "rank_half": 96,
+  "rank": 94,
+  "rank_double": 87,
+  "moves": 9
  },
  {
   "id": "Dennis|Darkrai",
-  "rank_half": 92,
-  "rank": 93,
-  "rank_double": 93,
+  "rank_half": 94,
+  "rank": 95,
+  "rank_double": 95,
   "moves": 1
  },
  {
   "id": "Bo|Haxorus",
-  "rank_half": 93,
-  "rank": 94,
-  "rank_double": 94,
+  "rank_half": 95,
+  "rank": 96,
+  "rank_double": 96,
   "moves": 1
  },
  {
   "id": "Ethan|Garchomp",
-  "rank_half": 95,
-  "rank": 95,
-  "rank_double": 95,
-  "moves": 0
- },
- {
-  "id": "David Kim|Escavalier",
-  "rank_half": 96,
-  "rank": 96,
-  "rank_double": 96,
-  "moves": 0
- },
- {
-  "id": "Danny|Hitmonlee",
   "rank_half": 97,
   "rank": 97,
   "rank_double": 97,
   "moves": 0
  },
  {
-  "id": "Connor|Eelektross",
+  "id": "Danny|Hitmonlee",
   "rank_half": 98,
   "rank": 98,
-  "rank_double": 99,
+  "rank_double": 98,
+  "moves": 0
+ },
+ {
+  "id": "Connor|Eelektross",
+  "rank_half": 99,
+  "rank": 99,
+  "rank_double": 100,
   "moves": 1
  },
  {
   "id": "Dennis|Landorus",
-  "rank_half": 99,
-  "rank": 99,
-  "rank_double": 98,
+  "rank_half": 100,
+  "rank": 100,
+  "rank_double": 99,
   "moves": 1
  },
  {
   "id": "David Kim|Tornadus",
-  "rank_half": 100,
-  "rank": 100,
-  "rank_double": 100,
-  "moves": 0
- },
- {
-  "id": "Bo|Lucario",
   "rank_half": 101,
   "rank": 101,
   "rank_double": 101,
   "moves": 0
  },
  {
-  "id": "Alex|Rotom-Wash",
+  "id": "Bo|Lucario",
   "rank_half": 102,
   "rank": 102,
   "rank_double": 102,
   "moves": 0
  },
  {
-  "id": "Bo|Darmanitan",
+  "id": "Alex|Rotom-Wash",
   "rank_half": 103,
   "rank": 103,
   "rank_double": 103,
   "moves": 0
  },
  {
-  "id": "Max|Rampardos",
+  "id": "Bo|Darmanitan",
   "rank_half": 104,
   "rank": 104,
   "rank_double": 104,
   "moves": 0
  },
  {
-  "id": "Brayden|Celebi",
+  "id": "Max|Rampardos",
   "rank_half": 105,
   "rank": 105,
   "rank_double": 105,
   "moves": 0
  },
  {
-  "id": "Alex|Cradily",
+  "id": "Brayden|Celebi",
   "rank_half": 106,
   "rank": 106,
   "rank_double": 106,
