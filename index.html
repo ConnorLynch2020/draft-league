@@ -341,7 +341,7 @@ html, body { margin: 0; background: var(--color-bg); color: var(--color-fg); fon
     </div>
     <div class="lx-card">
       <h2>Playoff race</h2>
-      <p class="lx-note">Full season, whatever weeks are picked above. Seeds go by series wins. Ties are broken by head-to-head series win %, then game win %, then game differential. Players still level after all of these share a seed. Head-to-head only counts when all the tied players have played each other. After a tie splits, the smaller group starts again at head-to-head. A coin flip is not modelled.</p>
+      <p class="lx-note">Tiebreaks, in order: Series Wins, Head-to-Head, Game Win %, Game Differential. Players level on all of them share a seed.</p>
       <div class="lx-scroll">
         <table class="lx-table" id="lx-t-playoffs" data-source="playoffs" data-row-key="player">
           <thead><tr>
@@ -905,12 +905,11 @@ dash.calc('playoffs', {
       return m;
     };
     const rec = (a) => a[0] + '–' + a[1];
-    const sgn = (n) => (n > 0 ? '+' : '') + n;
     const STEPS = [
       { rule: 'series', val: (p) => by[p].series_wins },
       { rule: 'h2h', ok: (g, c) => g.every((p) => c.h[p][0] + c.h[p][1] === g.length - 1), val: (p, c) => c.h[p][0] / (c.h[p][0] + c.h[p][1]) },
-      { rule: 'gwp', val: (p) => by[p].wins / by[p].games, show: (p) => fmt.pct(by[p].wins / by[p].games) },
-      { rule: 'diff', val: (p) => by[p].wins - by[p].losses, show: (p) => sgn(by[p].wins - by[p].losses) },
+      { rule: 'gwp', val: (p) => by[p].wins / by[p].games },
+      { rule: 'diff', val: (p) => by[p].wins - by[p].losses },
     ];
     const above = {}, below = {};
     const tied = {}, level = {};
@@ -928,8 +927,8 @@ dash.calc('playoffs', {
           const tier = order(g.filter((p) => v(p) === x), 1);
           if (out.length) {
             const a = out[out.length - 1], b = tier[0];
-            above[b] = { who: a, rule: st.rule, two: g.length === 2, own: st.show && st.show(b), other: st.show && st.show(a) };
-            below[a] = { who: b, rule: st.rule, two: g.length === 2, own: st.show && st.show(a), other: st.show && st.show(b) };
+            above[b] = { rule: st.rule };
+            below[a] = { rule: st.rule };
           }
           out.push(...tier);
         });
@@ -938,18 +937,12 @@ dash.calc('playoffs', {
       g.forEach((p) => { level[p] = g.filter((q) => q !== p); });
       return g;
     };
-    const say = (p, tie) => {
-      const t = by[p], a = above[p], b = below[p];
+    const LABEL = { h2h: 'Head-to-Head', gwp: 'Game Win %', diff: 'Game Differential' };
+    const say = (p) => {
+      if (level[p]) return 'Tied';
+      const a = above[p], b = below[p];
       const e = b && b.rule !== 'series' ? b : a && a.rule !== 'series' ? a : null;
-      const sr = rec([t.series_wins, t.series_losses]);
-      if (level[p]) return 'Tied at ' + sr + (level[p].length === 1 ? ' with ' + level[p][0] : '') + '; level on every tiebreak';
-      if (!e) return tie.length ? 'Tied at ' + sr : (b ? 'Ahead' : 'Behind') + ' on series wins';
-      const up = e === b, top = !(a && a.rule !== 'series');
-      const pre = 'Tied at ' + sr + (e.rule === 'h2h' && e.two ? ' with ' + e.who : '');
-      const how = e.rule === 'h2h' ? (e.two ? (up ? 'won their series' : 'lost their series') : up ? 'ahead in head-to-head' : 'behind in head-to-head')
-        : e.rule === 'gwp' ? (top ? 'best game win % (' + e.own + ')' : 'game win % ' + e.own + ' vs ' + e.other)
-        : top ? 'best game differential (' + e.own + ')' : 'game differential ' + e.own + ' vs ' + e.other;
-      return pre + '; ' + how;
+      return e ? LABEL[e.rule] : '';
     };
     const ranked = order(names.slice(), 0);
     // Players level on every tiebreak share the place of the first of them (1, 2, 2, 4).
@@ -966,7 +959,7 @@ dash.calc('playoffs', {
         wins: t.wins, losses: t.losses, games_wl: rec([t.wins, t.losses]), game_pct: t.wins / t.games, diff: t.wins - t.losses,
         left: sched.filter((r) => r.status === 'Upcoming' && (r.player1 === p || r.player2 === p)).length,
         status: level[p] && level[p].some((q) => status(ranked.indexOf(q) + 1) !== status(i + 1)) ? 'Tied at the cut' : status(n),
-        reason: say(p, tied[p] || []),
+        reason: say(p),
         reason_full: (tied[p] || []).length > 1 ? 'Tied with ' + tied[p].join(', ') : '',
       };
     });
