@@ -2264,28 +2264,44 @@
   "share": 0.056
  },
  {
+  "id": "Dennis|Cresselia|Psychic",
+  "player": "Dennis",
+  "pokemon": "Cresselia",
+  "move": "Psychic",
+  "uses": 22,
+  "share": 0.379
+ },
+ {
   "id": "Dennis|Cresselia|Ice Beam",
   "player": "Dennis",
   "pokemon": "Cresselia",
   "move": "Ice Beam",
   "uses": 7,
-  "share": 0.2
+  "share": 0.121
  },
  {
-  "id": "Dennis|Cresselia|Psychic",
+  "id": "Dennis|Cresselia|Moonlight",
   "player": "Dennis",
   "pokemon": "Cresselia",
-  "move": "Psychic",
-  "uses": 6,
-  "share": 0.171
+  "move": "Moonlight",
+  "uses": 7,
+  "share": 0.121
  },
  {
   "id": "Dennis|Cresselia|Protect",
   "player": "Dennis",
   "pokemon": "Cresselia",
   "move": "Protect",
-  "uses": 5,
-  "share": 0.143
+  "uses": 7,
+  "share": 0.121
+ },
+ {
+  "id": "Dennis|Cresselia|Trick Room",
+  "player": "Dennis",
+  "pokemon": "Cresselia",
+  "move": "Trick Room",
+  "uses": 7,
+  "share": 0.121
  },
  {
   "id": "Dennis|Cresselia|Psyshock",
@@ -2293,23 +2309,7 @@
   "pokemon": "Cresselia",
   "move": "Psyshock",
   "uses": 5,
-  "share": 0.143
- },
- {
-  "id": "Dennis|Cresselia|Trick Room",
-  "player": "Dennis",
-  "pokemon": "Cresselia",
-  "move": "Trick Room",
-  "uses": 5,
-  "share": 0.143
- },
- {
-  "id": "Dennis|Cresselia|Moonlight",
-  "player": "Dennis",
-  "pokemon": "Cresselia",
-  "move": "Moonlight",
-  "uses": 4,
-  "share": 0.114
+  "share": 0.086
  },
  {
   "id": "Dennis|Cresselia|Energy Ball",
@@ -2317,15 +2317,15 @@
   "pokemon": "Cresselia",
   "move": "Energy Ball",
   "uses": 3,
-  "share": 0.086
+  "share": 0.052
  },
  {
   "id": "Dennis|Darkrai|Dark Pulse",
   "player": "Dennis",
   "pokemon": "Darkrai",
   "move": "Dark Pulse",
-  "uses": 6,
-  "share": 0.375
+  "uses": 7,
+  "share": 0.412
  },
  {
   "id": "Dennis|Darkrai|Taunt",
@@ -2333,7 +2333,7 @@
   "pokemon": "Darkrai",
   "move": "Taunt",
   "uses": 4,
-  "share": 0.25
+  "share": 0.235
  },
  {
   "id": "Dennis|Darkrai|Protect",
@@ -2341,7 +2341,7 @@
   "pokemon": "Darkrai",
   "move": "Protect",
   "uses": 3,
-  "share": 0.188
+  "share": 0.176
  },
  {
   "id": "Dennis|Darkrai|Ice Beam",
@@ -2349,7 +2349,7 @@
   "pokemon": "Darkrai",
   "move": "Ice Beam",
   "uses": 2,
-  "share": 0.125
+  "share": 0.118
  },
  {
   "id": "Dennis|Darkrai|Focus Blast",
@@ -2357,7 +2357,7 @@
   "pokemon": "Darkrai",
   "move": "Focus Blast",
   "uses": 1,
-  "share": 0.062
+  "share": 0.059
  },
  {
   "id": "Dennis|Dusknoir|Will-O-Wisp",
@@ -2404,32 +2404,32 @@
   "player": "Dennis",
   "pokemon": "Hitmontop",
   "move": "Fake Out",
-  "uses": 15,
-  "share": 0.5
- },
- {
-  "id": "Dennis|Hitmontop|Mach Punch",
-  "player": "Dennis",
-  "pokemon": "Hitmontop",
-  "move": "Mach Punch",
-  "uses": 6,
-  "share": 0.2
+  "uses": 21,
+  "share": 0.488
  },
  {
   "id": "Dennis|Hitmontop|Close Combat",
   "player": "Dennis",
   "pokemon": "Hitmontop",
   "move": "Close Combat",
-  "uses": 5,
-  "share": 0.167
+  "uses": 8,
+  "share": 0.186
+ },
+ {
+  "id": "Dennis|Hitmontop|Mach Punch",
+  "player": "Dennis",
+  "pokemon": "Hitmontop",
+  "move": "Mach Punch",
+  "uses": 8,
+  "share": 0.186
  },
  {
   "id": "Dennis|Hitmontop|Wide Guard",
   "player": "Dennis",
   "pokemon": "Hitmontop",
   "move": "Wide Guard",
-  "uses": 4,
-  "share": 0.133
+  "uses": 6,
+  "share": 0.14
  },
  {
   "id": "Dennis|Landorus|Grass Knot",
@@ -2437,7 +2437,7 @@
   "pokemon": "Landorus",
   "move": "Grass Knot",
   "uses": 4,
-  "share": 0.5
+  "share": 0.444
  },
  {
   "id": "Dennis|Landorus|Rock Slide",
@@ -2445,7 +2445,7 @@
   "pokemon": "Landorus",
   "move": "Rock Slide",
   "uses": 2,
-  "share": 0.25
+  "share": 0.222
  },
  {
   "id": "Dennis|Landorus|Earth Power",
@@ -2453,7 +2453,15 @@
   "pokemon": "Landorus",
   "move": "Earth Power",
   "uses": 1,
-  "share": 0.125
+  "share": 0.111
+ },
+ {
+  "id": "Dennis|Landorus|Earthquake",
+  "player": "Dennis",
+  "pokemon": "Landorus",
+  "move": "Earthquake",
+  "uses": 1,
+  "share": 0.111
  },
  {
   "id": "Dennis|Landorus|Protect",
@@ -2461,7 +2469,7 @@
   "pokemon": "Landorus",
   "move": "Protect",
   "uses": 1,
-  "share": 0.125
+  "share": 0.111
  },
  {
   "id": "Dennis|Lanturn|Ice Beam",
@@ -2469,6 +2477,14 @@
   "pokemon": "Lanturn",
   "move": "Ice Beam",
   "uses": 6,
+  "share": 1.0
+ },
+ {
+  "id": "Dennis|Moltres|Heat Wave",
+  "player": "Dennis",
+  "pokemon": "Moltres",
+  "move": "Heat Wave",
+  "uses": 1,
   "share": 1.0
  },
  {
@@ -2520,12 +2536,28 @@
   "share": 0.053
  },
  {
+  "id": "Dennis|Snorlax|Crunch",
+  "player": "Dennis",
+  "pokemon": "Snorlax",
+  "move": "Crunch",
+  "uses": 7,
+  "share": 0.389
+ },
+ {
   "id": "Dennis|Snorlax|Earthquake",
   "player": "Dennis",
   "pokemon": "Snorlax",
   "move": "Earthquake",
-  "uses": 5,
-  "share": 0.714
+  "uses": 6,
+  "share": 0.333
+ },
+ {
+  "id": "Dennis|Snorlax|Focus Punch",
+  "player": "Dennis",
+  "pokemon": "Snorlax",
+  "move": "Focus Punch",
+  "uses": 2,
+  "share": 0.111
  },
  {
   "id": "Dennis|Snorlax|Return",
@@ -2533,7 +2565,15 @@
   "pokemon": "Snorlax",
   "move": "Return",
   "uses": 2,
-  "share": 0.286
+  "share": 0.111
+ },
+ {
+  "id": "Dennis|Snorlax|Protect",
+  "player": "Dennis",
+  "pokemon": "Snorlax",
+  "move": "Protect",
+  "uses": 1,
+  "share": 0.056
  },
  {
   "id": "Dennis|Togetic|Helping Hand",
@@ -2573,7 +2613,7 @@
   "pokemon": "Tornadus-Therian",
   "move": "Hurricane",
   "uses": 5,
-  "share": 0.417
+  "share": 0.294
  },
  {
   "id": "Dennis|Tornadus-Therian|Grass Knot",
@@ -2581,7 +2621,7 @@
   "pokemon": "Tornadus-Therian",
   "move": "Grass Knot",
   "uses": 3,
-  "share": 0.25
+  "share": 0.176
  },
  {
   "id": "Dennis|Tornadus-Therian|Taunt",
@@ -2589,7 +2629,23 @@
   "pokemon": "Tornadus-Therian",
   "move": "Taunt",
   "uses": 3,
-  "share": 0.25
+  "share": 0.176
+ },
+ {
+  "id": "Dennis|Tornadus-Therian|Air Slash",
+  "player": "Dennis",
+  "pokemon": "Tornadus-Therian",
+  "move": "Air Slash",
+  "uses": 2,
+  "share": 0.118
+ },
+ {
+  "id": "Dennis|Tornadus-Therian|Tailwind",
+  "player": "Dennis",
+  "pokemon": "Tornadus-Therian",
+  "move": "Tailwind",
+  "uses": 2,
+  "share": 0.118
  },
  {
   "id": "Dennis|Tornadus-Therian|Focus Blast",
@@ -2597,7 +2653,15 @@
   "pokemon": "Tornadus-Therian",
   "move": "Focus Blast",
   "uses": 1,
-  "share": 0.083
+  "share": 0.059
+ },
+ {
+  "id": "Dennis|Tornadus-Therian|Heat Wave",
+  "player": "Dennis",
+  "pokemon": "Tornadus-Therian",
+  "move": "Heat Wave",
+  "uses": 1,
+  "share": 0.059
  },
  {
   "id": "Dzzy|Amoonguss|Rage Powder",
@@ -3632,12 +3696,36 @@
   "share": 0.019
  },
  {
+  "id": "Max|Alomomola|Heal Pulse",
+  "player": "Max",
+  "pokemon": "Alomomola",
+  "move": "Heal Pulse",
+  "uses": 4,
+  "share": 0.364
+ },
+ {
   "id": "Max|Alomomola|Helping Hand",
   "player": "Max",
   "pokemon": "Alomomola",
   "move": "Helping Hand",
   "uses": 2,
-  "share": 0.667
+  "share": 0.182
+ },
+ {
+  "id": "Max|Alomomola|Light Screen",
+  "player": "Max",
+  "pokemon": "Alomomola",
+  "move": "Light Screen",
+  "uses": 2,
+  "share": 0.182
+ },
+ {
+  "id": "Max|Alomomola|Rain Dance",
+  "player": "Max",
+  "pokemon": "Alomomola",
+  "move": "Rain Dance",
+  "uses": 2,
+  "share": 0.182
  },
  {
   "id": "Max|Alomomola|Scald",
@@ -3645,14 +3733,14 @@
   "pokemon": "Alomomola",
   "move": "Scald",
   "uses": 1,
-  "share": 0.333
+  "share": 0.091
  },
  {
   "id": "Max|Bronzong|Gyro Ball",
   "player": "Max",
   "pokemon": "Bronzong",
   "move": "Gyro Ball",
-  "uses": 21,
+  "uses": 24,
   "share": 0.429
  },
  {
@@ -3660,16 +3748,16 @@
   "player": "Max",
   "pokemon": "Bronzong",
   "move": "Stealth Rock",
-  "uses": 10,
-  "share": 0.204
+  "uses": 11,
+  "share": 0.196
  },
  {
   "id": "Max|Bronzong|Trick Room",
   "player": "Max",
   "pokemon": "Bronzong",
   "move": "Trick Room",
-  "uses": 6,
-  "share": 0.122
+  "uses": 7,
+  "share": 0.125
  },
  {
   "id": "Max|Bronzong|Protect",
@@ -3677,7 +3765,7 @@
   "pokemon": "Bronzong",
   "move": "Protect",
   "uses": 5,
-  "share": 0.102
+  "share": 0.089
  },
  {
   "id": "Max|Bronzong|Sunny Day",
@@ -3685,7 +3773,7 @@
   "pokemon": "Bronzong",
   "move": "Sunny Day",
   "uses": 3,
-  "share": 0.061
+  "share": 0.054
  },
  {
   "id": "Max|Bronzong|Light Screen",
@@ -3693,7 +3781,15 @@
   "pokemon": "Bronzong",
   "move": "Light Screen",
   "uses": 2,
-  "share": 0.041
+  "share": 0.036
+ },
+ {
+  "id": "Max|Bronzong|Reflect",
+  "player": "Max",
+  "pokemon": "Bronzong",
+  "move": "Reflect",
+  "uses": 2,
+  "share": 0.036
  },
  {
   "id": "Max|Bronzong|Toxic",
@@ -3701,31 +3797,31 @@
   "pokemon": "Bronzong",
   "move": "Toxic",
   "uses": 2,
-  "share": 0.041
+  "share": 0.036
  },
  {
   "id": "Max|Camerupt|Eruption",
   "player": "Max",
   "pokemon": "Camerupt",
   "move": "Eruption",
-  "uses": 3,
-  "share": 0.6
- },
- {
-  "id": "Max|Camerupt|Earth Power",
-  "player": "Max",
-  "pokemon": "Camerupt",
-  "move": "Earth Power",
-  "uses": 1,
-  "share": 0.2
+  "uses": 9,
+  "share": 0.643
  },
  {
   "id": "Max|Camerupt|Protect",
   "player": "Max",
   "pokemon": "Camerupt",
   "move": "Protect",
-  "uses": 1,
-  "share": 0.2
+  "uses": 3,
+  "share": 0.214
+ },
+ {
+  "id": "Max|Camerupt|Earth Power",
+  "player": "Max",
+  "pokemon": "Camerupt",
+  "move": "Earth Power",
+  "uses": 2,
+  "share": 0.143
  },
  {
   "id": "Max|Hariyama|Fake Out",
@@ -3765,7 +3861,15 @@
   "pokemon": "Ninetales",
   "move": "Calm Mind",
   "uses": 4,
-  "share": 0.667
+  "share": 0.444
+ },
+ {
+  "id": "Max|Ninetales|Protect",
+  "player": "Max",
+  "pokemon": "Ninetales",
+  "move": "Protect",
+  "uses": 2,
+  "share": 0.222
  },
  {
   "id": "Max|Ninetales|Flamethrower",
@@ -3773,23 +3877,31 @@
   "pokemon": "Ninetales",
   "move": "Flamethrower",
   "uses": 1,
-  "share": 0.167
+  "share": 0.111
  },
  {
-  "id": "Max|Ninetales|Protect",
+  "id": "Max|Ninetales|Overheat",
   "player": "Max",
   "pokemon": "Ninetales",
-  "move": "Protect",
+  "move": "Overheat",
   "uses": 1,
-  "share": 0.167
+  "share": 0.111
+ },
+ {
+  "id": "Max|Ninetales|Will-O-Wisp",
+  "player": "Max",
+  "pokemon": "Ninetales",
+  "move": "Will-O-Wisp",
+  "uses": 1,
+  "share": 0.111
  },
  {
   "id": "Max|Porygon2|Ice Beam",
   "player": "Max",
   "pokemon": "Porygon2",
   "move": "Ice Beam",
-  "uses": 16,
-  "share": 0.348
+  "uses": 17,
+  "share": 0.347
  },
  {
   "id": "Max|Porygon2|Thunderbolt",
@@ -3797,15 +3909,15 @@
   "pokemon": "Porygon2",
   "move": "Thunderbolt",
   "uses": 9,
-  "share": 0.196
+  "share": 0.184
  },
  {
   "id": "Max|Porygon2|Recover",
   "player": "Max",
   "pokemon": "Porygon2",
   "move": "Recover",
-  "uses": 7,
-  "share": 0.152
+  "uses": 8,
+  "share": 0.163
  },
  {
   "id": "Max|Porygon2|Shadow Ball",
@@ -3813,7 +3925,7 @@
   "pokemon": "Porygon2",
   "move": "Shadow Ball",
   "uses": 6,
-  "share": 0.13
+  "share": 0.122
  },
  {
   "id": "Max|Porygon2|Trick Room",
@@ -3821,7 +3933,7 @@
   "pokemon": "Porygon2",
   "move": "Trick Room",
   "uses": 5,
-  "share": 0.109
+  "share": 0.102
  },
  {
   "id": "Max|Porygon2|Discharge",
@@ -3829,7 +3941,15 @@
   "pokemon": "Porygon2",
   "move": "Discharge",
   "uses": 3,
-  "share": 0.065
+  "share": 0.061
+ },
+ {
+  "id": "Max|Porygon2|Rain Dance",
+  "player": "Max",
+  "pokemon": "Porygon2",
+  "move": "Rain Dance",
+  "uses": 1,
+  "share": 0.02
  },
  {
   "id": "Max|Rampardos|Earthquake",
@@ -3952,6 +4072,14 @@
   "share": 0.026
  },
  {
+  "id": "Max|Vileplume|Moonlight",
+  "player": "Max",
+  "pokemon": "Vileplume",
+  "move": "Moonlight",
+  "uses": 1,
+  "share": 1.0
+ },
+ {
   "id": "Max|Volcarona|Flamethrower",
   "player": "Max",
   "pokemon": "Volcarona",
@@ -3992,20 +4120,44 @@
   "share": 0.071
  },
  {
+  "id": "Max|Wartortle|Follow Me",
+  "player": "Max",
+  "pokemon": "Wartortle",
+  "move": "Follow Me",
+  "uses": 13,
+  "share": 0.419
+ },
+ {
+  "id": "Max|Wartortle|Scald",
+  "player": "Max",
+  "pokemon": "Wartortle",
+  "move": "Scald",
+  "uses": 6,
+  "share": 0.194
+ },
+ {
+  "id": "Max|Wartortle|Toxic",
+  "player": "Max",
+  "pokemon": "Wartortle",
+  "move": "Toxic",
+  "uses": 4,
+  "share": 0.129
+ },
+ {
   "id": "Max|Wartortle|Fake Out",
   "player": "Max",
   "pokemon": "Wartortle",
   "move": "Fake Out",
   "uses": 3,
-  "share": 0.375
+  "share": 0.097
  },
  {
-  "id": "Max|Wartortle|Follow Me",
+  "id": "Max|Wartortle|Iron Defense",
   "player": "Max",
   "pokemon": "Wartortle",
-  "move": "Follow Me",
-  "uses": 2,
-  "share": 0.25
+  "move": "Iron Defense",
+  "uses": 3,
+  "share": 0.097
  },
  {
   "id": "Max|Wartortle|Protect",
@@ -4013,14 +4165,6 @@
   "pokemon": "Wartortle",
   "move": "Protect",
   "uses": 2,
-  "share": 0.25
- },
- {
-  "id": "Max|Wartortle|Scald",
-  "player": "Max",
-  "pokemon": "Wartortle",
-  "move": "Scald",
-  "uses": 1,
-  "share": 0.125
+  "share": 0.065
  }
 ]

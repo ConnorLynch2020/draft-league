@@ -1043,5 +1043,43 @@
   "crits1": 3,
   "crits2": 0,
   "events": 28
+ },
+ {
+  "id": "2711181186",
+  "replay": "https://replay.pokemonshowdown.com/gen5doublescustomgame-2711181186",
+  "week": 5,
+  "game": 1,
+  "matchup": "Max vs Dennis",
+  "player1": "Max",
+  "player2": "Dennis",
+  "winner": "Max",
+  "turns": 12,
+  "luckier": "Dennis",
+  "edge": 1.25,
+  "edge_score": 0.91,
+  "swing": "",
+  "luckier_won": "No",
+  "crits1": 2,
+  "crits2": 2,
+  "events": 26
+ },
+ {
+  "id": "2711185168",
+  "replay": "https://replay.pokemonshowdown.com/gen5doublescustomgame-2711185168",
+  "week": 5,
+  "game": 2,
+  "matchup": "Dennis vs Max",
+  "player1": "Dennis",
+  "player2": "Max",
+  "winner": "Max",
+  "turns": 22,
+  "luckier": "Max",
+  "edge": 3.49,
+  "edge_score": 1.44,
+  "swing": "",
+  "luckier_won": "Yes",
+  "crits1": 2,
+  "crits2": 1,
+  "events": 72
  }
 ]

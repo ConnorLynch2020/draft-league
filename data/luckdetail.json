@@ -983,55 +983,66 @@
   "player": "Dennis",
   "event": "Crits you landed",
   "kind": "Critical hits",
-  "tries": 77,
-  "happened": 8,
-  "expected": 4.81,
-  "luck": 3.19,
-  "score": 1.5
+  "tries": 121,
+  "happened": 12,
+  "expected": 7.56,
+  "luck": 4.44,
+  "score": 1.67
  },
  {
   "id": "Dennis|crit|vic",
   "player": "Dennis",
   "event": "Crits you took",
   "kind": "Critical hits",
-  "tries": 100,
-  "happened": 6,
-  "expected": 6.25,
-  "luck": 0.25,
-  "score": 0.1
+  "tries": 117,
+  "happened": 9,
+  "expected": 7.31,
+  "luck": -1.69,
+  "score": -0.64
  },
  {
   "id": "Dennis|acc|ben",
   "player": "Dennis",
   "event": "Your moves hitting",
   "kind": "Accuracy",
-  "tries": 14,
-  "happened": 10,
-  "expected": 10.65,
-  "luck": -0.65,
-  "score": -0.41
+  "tries": 19,
+  "happened": 15,
+  "expected": 15.25,
+  "luck": -0.25,
+  "score": -0.15
  },
  {
   "id": "Dennis|acc|vic",
   "player": "Dennis",
   "event": "Opponent moves hitting you",
   "kind": "Accuracy",
-  "tries": 36,
-  "happened": 34,
-  "expected": 31.6,
-  "luck": -2.4,
-  "score": -1.24
+  "tries": 42,
+  "happened": 40,
+  "expected": 36.85,
+  "luck": -3.15,
+  "score": -1.51
+ },
+ {
+  "id": "Dennis|brn|ben",
+  "player": "Dennis",
+  "event": "Burns you inflicted",
+  "kind": "Burns",
+  "tries": 2,
+  "happened": 0,
+  "expected": 0.2,
+  "luck": -0.2,
+  "score": -0.47
  },
  {
   "id": "Dennis|brn|vic",
   "player": "Dennis",
   "event": "Burns you took",
   "kind": "Burns",
-  "tries": 21,
-  "happened": 2,
-  "expected": 4.7,
-  "luck": 2.7,
-  "score": 1.45
+  "tries": 22,
+  "happened": 3,
+  "expected": 5.0,
+  "luck": 2.0,
+  "score": 1.05
  },
  {
   "id": "Dennis|frz|ben",
@@ -1071,11 +1082,11 @@
   "player": "Dennis",
   "event": "Flinches you caused",
   "kind": "Flinches",
-  "tries": 1,
-  "happened": 0,
-  "expected": 0.3,
-  "luck": -0.3,
-  "score": -0.65
+  "tries": 3,
+  "happened": 1,
+  "expected": 0.8,
+  "luck": 0.2,
+  "score": 0.26
  },
  {
   "id": "Dennis|flinch|vic",
@@ -1093,11 +1104,11 @@
   "player": "Dennis",
   "event": "Stat drops you caused",
   "kind": "Stat drops",
-  "tries": 6,
-  "happened": 1,
-  "expected": 0.6,
-  "luck": 0.4,
-  "score": 0.54
+  "tries": 27,
+  "happened": 3,
+  "expected": 3.4,
+  "luck": -0.4,
+  "score": -0.23
  },
  {
   "id": "Dennis|drop|vic",
@@ -1456,66 +1467,66 @@
   "player": "Max",
   "event": "Crits you landed",
   "kind": "Critical hits",
-  "tries": 128,
-  "happened": 5,
-  "expected": 8.0,
-  "luck": -3.0,
-  "score": -1.1
+  "tries": 145,
+  "happened": 8,
+  "expected": 9.06,
+  "luck": -1.06,
+  "score": -0.36
  },
  {
   "id": "Max|crit|vic",
   "player": "Max",
   "event": "Crits you took",
   "kind": "Critical hits",
-  "tries": 136,
-  "happened": 12,
-  "expected": 8.88,
-  "luck": -3.12,
-  "score": -1.09
+  "tries": 180,
+  "happened": 16,
+  "expected": 11.62,
+  "luck": -4.38,
+  "score": -1.33
  },
  {
   "id": "Max|acc|ben",
   "player": "Max",
   "event": "Your moves hitting",
   "kind": "Accuracy",
-  "tries": 17,
-  "happened": 17,
-  "expected": 15.55,
-  "luck": 1.45,
-  "score": 1.27
+  "tries": 23,
+  "happened": 23,
+  "expected": 20.8,
+  "luck": 2.2,
+  "score": 1.58
  },
  {
   "id": "Max|acc|vic",
   "player": "Max",
   "event": "Opponent moves hitting you",
   "kind": "Accuracy",
-  "tries": 46,
-  "happened": 41,
-  "expected": 40.2,
-  "luck": -0.8,
-  "score": -0.37
+  "tries": 51,
+  "happened": 46,
+  "expected": 44.8,
+  "luck": -1.2,
+  "score": -0.54
  },
  {
   "id": "Max|brn|ben",
   "player": "Max",
   "event": "Burns you inflicted",
   "kind": "Burns",
-  "tries": 9,
-  "happened": 1,
-  "expected": 2.1,
-  "luck": -1.1,
-  "score": -0.89
+  "tries": 10,
+  "happened": 2,
+  "expected": 2.4,
+  "luck": -0.4,
+  "score": -0.3
  },
  {
   "id": "Max|brn|vic",
   "player": "Max",
   "event": "Burns you took",
   "kind": "Burns",
-  "tries": 16,
+  "tries": 18,
   "happened": 6,
-  "expected": 2.4,
-  "luck": -3.6,
-  "score": -2.6
+  "expected": 2.6,
+  "luck": -3.4,
+  "score": -2.35
  },
  {
   "id": "Max|frz|ben",
@@ -1566,11 +1577,11 @@
   "player": "Max",
   "event": "Flinches you took",
   "kind": "Flinches",
-  "tries": 1,
-  "happened": 0,
-  "expected": 0.3,
-  "luck": 0.3,
-  "score": 0.65
+  "tries": 3,
+  "happened": 1,
+  "expected": 0.8,
+  "luck": -0.2,
+  "score": -0.26
  },
  {
   "id": "Max|drop|ben",
@@ -1588,11 +1599,11 @@
   "player": "Max",
   "event": "Stat drops you took",
   "kind": "Stat drops",
-  "tries": 19,
-  "happened": 4,
-  "expected": 2.7,
-  "luck": -1.3,
-  "score": -0.86
+  "tries": 40,
+  "happened": 6,
+  "expected": 5.5,
+  "luck": -0.5,
+  "score": -0.23
  },
  {
   "id": "Max|cself|vic",
