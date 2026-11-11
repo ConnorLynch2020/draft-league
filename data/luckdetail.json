@@ -4,55 +4,55 @@
   "player": "Alex",
   "event": "Crits you landed",
   "kind": "Critical hits",
-  "tries": 106,
-  "happened": 8,
-  "expected": 6.62,
+  "tries": 154,
+  "happened": 11,
+  "expected": 9.62,
   "luck": 1.38,
-  "score": 0.55
+  "score": 0.46
  },
  {
   "id": "Alex|crit|vic",
   "player": "Alex",
   "event": "Crits you took",
   "kind": "Critical hits",
-  "tries": 74,
-  "happened": 9,
-  "expected": 4.94,
-  "luck": -4.06,
-  "score": -1.9
+  "tries": 107,
+  "happened": 10,
+  "expected": 7.0,
+  "luck": -3.0,
+  "score": -1.17
  },
  {
   "id": "Alex|acc|ben",
   "player": "Alex",
   "event": "Your moves hitting",
   "kind": "Accuracy",
-  "tries": 61,
-  "happened": 56,
-  "expected": 54.8,
-  "luck": 1.2,
-  "score": 0.51
+  "tries": 86,
+  "happened": 78,
+  "expected": 76.85,
+  "luck": 1.15,
+  "score": 0.4
  },
  {
   "id": "Alex|acc|vic",
   "player": "Alex",
   "event": "Opponent moves hitting you",
   "kind": "Accuracy",
-  "tries": 9,
-  "happened": 8,
-  "expected": 7.3,
-  "luck": -0.7,
-  "score": -0.6
+  "tries": 21,
+  "happened": 19,
+  "expected": 18.0,
+  "luck": -1.0,
+  "score": -0.63
  },
  {
   "id": "Alex|brn|vic",
   "player": "Alex",
   "event": "Burns you took",
   "kind": "Burns",
-  "tries": 1,
+  "tries": 3,
   "happened": 0,
-  "expected": 0.1,
-  "luck": 0.1,
-  "score": 0.33
+  "expected": 0.7,
+  "luck": 0.7,
+  "score": 0.98
  },
  {
   "id": "Alex|frz|ben",
@@ -92,11 +92,11 @@
   "player": "Alex",
   "event": "Flinches you caused",
   "kind": "Flinches",
-  "tries": 15,
-  "happened": 1,
-  "expected": 3.5,
-  "luck": -2.5,
-  "score": -1.57
+  "tries": 20,
+  "happened": 3,
+  "expected": 5.0,
+  "luck": -2.0,
+  "score": -1.05
  },
  {
   "id": "Alex|drop|ben",
@@ -125,11 +125,11 @@
   "player": "Alex",
   "event": "Opponent fully paralyzed",
   "kind": "Full paralysis",
-  "tries": 10,
-  "happened": 1,
-  "expected": 2.5,
-  "luck": -1.5,
-  "score": -1.1
+  "tries": 21,
+  "happened": 4,
+  "expected": 5.25,
+  "luck": -1.25,
+  "score": -0.63
  },
  {
   "id": "Alex|fpar|vic",
@@ -158,44 +158,44 @@
   "player": "Bo",
   "event": "Crits you landed",
   "kind": "Critical hits",
-  "tries": 74,
+  "tries": 93,
   "happened": 5,
-  "expected": 4.62,
-  "luck": 0.38,
-  "score": 0.18
+  "expected": 5.81,
+  "luck": -0.81,
+  "score": -0.35
  },
  {
   "id": "Bo|crit|vic",
   "player": "Bo",
   "event": "Crits you took",
   "kind": "Critical hits",
-  "tries": 100,
-  "happened": 9,
-  "expected": 6.38,
-  "luck": -2.62,
-  "score": -1.08
+  "tries": 113,
+  "happened": 12,
+  "expected": 7.19,
+  "luck": -4.81,
+  "score": -1.86
  },
  {
   "id": "Bo|acc|ben",
   "player": "Bo",
   "event": "Your moves hitting",
   "kind": "Accuracy",
-  "tries": 24,
-  "happened": 19,
-  "expected": 21.6,
-  "luck": -2.6,
-  "score": -1.77
+  "tries": 32,
+  "happened": 27,
+  "expected": 28.8,
+  "luck": -1.8,
+  "score": -1.06
  },
  {
   "id": "Bo|acc|vic",
   "player": "Bo",
   "event": "Opponent moves hitting you",
   "kind": "Accuracy",
-  "tries": 50,
-  "happened": 44,
-  "expected": 44.7,
-  "luck": 0.7,
-  "score": 0.33
+  "tries": 58,
+  "happened": 51,
+  "expected": 51.2,
+  "luck": 0.2,
+  "score": 0.08
  },
  {
   "id": "Bo|brn|ben",
@@ -224,11 +224,11 @@
   "player": "Bo",
   "event": "Freezes you took",
   "kind": "Freezes",
-  "tries": 8,
+  "tries": 9,
   "happened": 1,
-  "expected": 0.8,
-  "luck": -0.2,
-  "score": -0.24
+  "expected": 0.9,
+  "luck": -0.1,
+  "score": -0.11
  },
  {
   "id": "Bo|par|ben",
@@ -268,22 +268,22 @@
   "player": "Bo",
   "event": "Stat drops you caused",
   "kind": "Stat drops",
-  "tries": 8,
+  "tries": 9,
   "happened": 0,
-  "expected": 1.0,
-  "luck": -1.0,
-  "score": -1.08
+  "expected": 1.2,
+  "luck": -1.2,
+  "score": -1.19
  },
  {
   "id": "Bo|drop|vic",
   "player": "Bo",
   "event": "Stat drops you took",
   "kind": "Stat drops",
-  "tries": 1,
+  "tries": 3,
   "happened": 0,
-  "expected": 0.2,
-  "luck": 0.2,
-  "score": 0.5
+  "expected": 0.4,
+  "luck": 0.4,
+  "score": 0.69
  },
  {
   "id": "Bo|thaw|ben",
@@ -301,55 +301,55 @@
   "player": "Brayden",
   "event": "Crits you landed",
   "kind": "Critical hits",
-  "tries": 156,
-  "happened": 10,
-  "expected": 9.75,
-  "luck": 0.25,
-  "score": 0.08
+  "tries": 175,
+  "happened": 14,
+  "expected": 10.94,
+  "luck": 3.06,
+  "score": 0.96
  },
  {
   "id": "Brayden|crit|vic",
   "player": "Brayden",
   "event": "Crits you took",
   "kind": "Critical hits",
-  "tries": 82,
+  "tries": 99,
   "happened": 4,
-  "expected": 5.19,
-  "luck": 1.19,
-  "score": 0.54
+  "expected": 6.31,
+  "luck": 2.31,
+  "score": 0.95
  },
  {
   "id": "Brayden|acc|ben",
   "player": "Brayden",
   "event": "Your moves hitting",
   "kind": "Accuracy",
-  "tries": 33,
-  "happened": 31,
-  "expected": 30.15,
-  "luck": 0.85,
-  "score": 0.53
+  "tries": 36,
+  "happened": 34,
+  "expected": 32.85,
+  "luck": 1.15,
+  "score": 0.68
  },
  {
   "id": "Brayden|acc|vic",
   "player": "Brayden",
   "event": "Opponent moves hitting you",
   "kind": "Accuracy",
-  "tries": 26,
-  "happened": 19,
-  "expected": 21.6,
-  "luck": 2.6,
-  "score": 1.39
+  "tries": 32,
+  "happened": 23,
+  "expected": 26.45,
+  "luck": 3.45,
+  "score": 1.64
  },
  {
   "id": "Brayden|brn|ben",
   "player": "Brayden",
   "event": "Burns you inflicted",
   "kind": "Burns",
-  "tries": 14,
+  "tries": 17,
   "happened": 3,
-  "expected": 3.6,
-  "luck": -0.6,
-  "score": -0.37
+  "expected": 4.1,
+  "luck": -1.1,
+  "score": -0.64
  },
  {
   "id": "Brayden|brn|vic",
@@ -367,22 +367,22 @@
   "player": "Brayden",
   "event": "Freezes you inflicted",
   "kind": "Freezes",
-  "tries": 10,
-  "happened": 4,
-  "expected": 1.0,
-  "luck": 3.0,
-  "score": 3.16
+  "tries": 12,
+  "happened": 5,
+  "expected": 1.2,
+  "luck": 3.8,
+  "score": 3.66
  },
  {
   "id": "Brayden|frz|vic",
   "player": "Brayden",
   "event": "Freezes you took",
   "kind": "Freezes",
-  "tries": 7,
+  "tries": 8,
   "happened": 0,
-  "expected": 0.7,
-  "luck": 0.7,
-  "score": 0.88
+  "expected": 0.8,
+  "luck": 0.8,
+  "score": 0.94
  },
  {
   "id": "Brayden|par|ben",
@@ -444,77 +444,77 @@
   "player": "Brayden",
   "event": "Opponent's Pokémon thawing out",
   "kind": "Thawing",
-  "tries": 11,
+  "tries": 12,
   "happened": 1,
-  "expected": 2.2,
-  "luck": 1.2,
-  "score": 0.9
+  "expected": 2.4,
+  "luck": 1.4,
+  "score": 1.01
  },
  {
   "id": "Connor|crit|ben",
   "player": "Connor",
   "event": "Crits you landed",
   "kind": "Critical hits",
-  "tries": 90,
+  "tries": 108,
   "happened": 7,
-  "expected": 5.69,
-  "luck": 1.31,
-  "score": 0.57
+  "expected": 6.94,
+  "luck": 0.06,
+  "score": 0.02
  },
  {
   "id": "Connor|crit|vic",
   "player": "Connor",
   "event": "Crits you took",
   "kind": "Critical hits",
-  "tries": 139,
-  "happened": 8,
-  "expected": 8.69,
-  "luck": 0.69,
-  "score": 0.24
+  "tries": 153,
+  "happened": 11,
+  "expected": 9.69,
+  "luck": -1.31,
+  "score": -0.44
  },
  {
   "id": "Connor|acc|ben",
   "player": "Connor",
   "event": "Your moves hitting",
   "kind": "Accuracy",
-  "tries": 37,
-  "happened": 32,
-  "expected": 30.8,
-  "luck": 1.2,
-  "score": 0.56
+  "tries": 46,
+  "happened": 40,
+  "expected": 38.3,
+  "luck": 1.7,
+  "score": 0.71
  },
  {
   "id": "Connor|acc|vic",
   "player": "Connor",
   "event": "Opponent moves hitting you",
   "kind": "Accuracy",
-  "tries": 41,
-  "happened": 34,
-  "expected": 36.9,
-  "luck": 2.9,
-  "score": 1.51
+  "tries": 46,
+  "happened": 38,
+  "expected": 41.4,
+  "luck": 3.4,
+  "score": 1.68
  },
  {
   "id": "Connor|brn|ben",
   "player": "Connor",
   "event": "Burns you inflicted",
   "kind": "Burns",
-  "tries": 6,
+  "tries": 8,
   "happened": 2,
-  "expected": 1.6,
-  "luck": 0.4,
-  "score": 0.37
+  "expected": 1.8,
+  "luck": 0.2,
+  "score": 0.17
  },
  {
   "id": "Connor|brn|vic",
   "player": "Connor",
   "event": "Burns you took",
   "kind": "Burns",
-  "tries": 15,
+  "tries": 16,
   "happened": 4,
-  "expected": 4.1,
-  "luck": 0.1,
-  "score": 0.06
+  "expected": 4.2,
+  "luck": 0.2,
+  "score": 0.12
  },
  {
   "id": "Connor|frz|ben",
@@ -543,22 +543,22 @@
   "player": "Connor",
   "event": "Paralysis you inflicted",
   "kind": "Paralysis",
-  "tries": 3,
+  "tries": 4,
   "happened": 0,
-  "expected": 0.7,
-  "luck": -0.7,
-  "score": -0.98
+  "expected": 0.8,
+  "luck": -0.8,
+  "score": -1.03
  },
  {
   "id": "Connor|par|vic",
   "player": "Connor",
   "event": "Paralysis you took",
   "kind": "Paralysis",
-  "tries": 7,
+  "tries": 9,
   "happened": 1,
-  "expected": 1.7,
-  "luck": 0.7,
-  "score": 0.63
+  "expected": 1.9,
+  "luck": 0.9,
+  "score": 0.76
  },
  {
   "id": "Connor|flinch|ben",
@@ -616,6 +616,17 @@
   "score": 0.65
  },
  {
+  "id": "Connor|fpar|vic",
+  "player": "Connor",
+  "event": "You fully paralyzed",
+  "kind": "Full paralysis",
+  "tries": 4,
+  "happened": 1,
+  "expected": 1.0,
+  "luck": 0.0,
+  "score": 0.0
+ },
+ {
   "id": "Connor|cself|ben",
   "player": "Connor",
   "event": "Opponent hit itself in confusion",
@@ -642,66 +653,66 @@
   "player": "Danny",
   "event": "Crits you landed",
   "kind": "Critical hits",
-  "tries": 81,
-  "happened": 8,
-  "expected": 5.5,
-  "luck": 2.5,
-  "score": 1.11
+  "tries": 95,
+  "happened": 11,
+  "expected": 6.5,
+  "luck": 4.5,
+  "score": 1.83
  },
  {
   "id": "Danny|crit|vic",
   "player": "Danny",
   "event": "Crits you took",
   "kind": "Critical hits",
-  "tries": 61,
+  "tries": 79,
   "happened": 4,
-  "expected": 3.81,
-  "luck": -0.19,
-  "score": -0.1
+  "expected": 5.06,
+  "luck": 1.06,
+  "score": 0.49
  },
  {
   "id": "Danny|acc|ben",
   "player": "Danny",
   "event": "Your moves hitting",
   "kind": "Accuracy",
-  "tries": 44,
-  "happened": 41,
-  "expected": 39.7,
-  "luck": 1.3,
-  "score": 0.66
+  "tries": 49,
+  "happened": 45,
+  "expected": 44.2,
+  "luck": 0.8,
+  "score": 0.38
  },
  {
   "id": "Danny|acc|vic",
   "player": "Danny",
   "event": "Opponent moves hitting you",
   "kind": "Accuracy",
-  "tries": 14,
-  "happened": 13,
-  "expected": 12.15,
-  "luck": -0.85,
-  "score": -0.68
+  "tries": 23,
+  "happened": 21,
+  "expected": 19.65,
+  "luck": -1.35,
+  "score": -0.81
  },
  {
   "id": "Danny|brn|ben",
   "player": "Danny",
   "event": "Burns you inflicted",
   "kind": "Burns",
-  "tries": 16,
+  "tries": 17,
   "happened": 4,
-  "expected": 2.2,
-  "luck": 1.8,
-  "score": 1.34
+  "expected": 2.3,
+  "luck": 1.7,
+  "score": 1.24
  },
  {
   "id": "Danny|brn|vic",
   "player": "Danny",
   "event": "Burns you took",
   "kind": "Burns",
-  "tries": 6,
+  "tries": 8,
   "happened": 1,
-  "expected": 0.6,
-  "luck": -0.4,
-  "score": -0.54
+  "expected": 0.8,
+  "luck": -0.2,
+  "score": -0.24
  },
  {
   "id": "Danny|frz|ben",
@@ -730,22 +741,22 @@
   "player": "Danny",
   "event": "Paralysis you inflicted",
   "kind": "Paralysis",
-  "tries": 3,
+  "tries": 5,
   "happened": 0,
-  "expected": 0.3,
-  "luck": -0.3,
-  "score": -0.58
+  "expected": 0.5,
+  "luck": -0.5,
+  "score": -0.75
  },
  {
   "id": "Danny|par|vic",
   "player": "Danny",
   "event": "Paralysis you took",
   "kind": "Paralysis",
-  "tries": 5,
+  "tries": 6,
   "happened": 0,
-  "expected": 0.5,
-  "luck": 0.5,
-  "score": 0.75
+  "expected": 0.6,
+  "luck": 0.6,
+  "score": 0.82
  },
  {
   "id": "Danny|drop|ben",
@@ -774,66 +785,66 @@
   "player": "Danny",
   "event": "Opponent fully paralyzed",
   "kind": "Full paralysis",
-  "tries": 8,
-  "happened": 0,
-  "expected": 2.0,
+  "tries": 12,
+  "happened": 1,
+  "expected": 3.0,
   "luck": -2.0,
-  "score": -1.63
+  "score": -1.33
  },
  {
   "id": "David Kim|crit|ben",
   "player": "David Kim",
   "event": "Crits you landed",
   "kind": "Critical hits",
-  "tries": 157,
-  "happened": 9,
-  "expected": 10.19,
-  "luck": -1.19,
-  "score": -0.39
+  "tries": 190,
+  "happened": 10,
+  "expected": 12.25,
+  "luck": -2.25,
+  "score": -0.67
  },
  {
   "id": "David Kim|crit|vic",
   "player": "David Kim",
   "event": "Crits you took",
   "kind": "Critical hits",
-  "tries": 143,
-  "happened": 6,
-  "expected": 8.94,
+  "tries": 191,
+  "happened": 9,
+  "expected": 11.94,
   "luck": 2.94,
-  "score": 1.01
+  "score": 0.88
  },
  {
   "id": "David Kim|acc|ben",
   "player": "David Kim",
   "event": "Your moves hitting",
   "kind": "Accuracy",
-  "tries": 71,
-  "happened": 63,
-  "expected": 64.3,
-  "luck": -1.3,
-  "score": -0.53
+  "tries": 83,
+  "happened": 74,
+  "expected": 75.0,
+  "luck": -1.0,
+  "score": -0.37
  },
  {
   "id": "David Kim|acc|vic",
   "player": "David Kim",
   "event": "Opponent moves hitting you",
   "kind": "Accuracy",
-  "tries": 30,
-  "happened": 27,
-  "expected": 26.5,
-  "luck": -0.5,
-  "score": -0.3
+  "tries": 55,
+  "happened": 49,
+  "expected": 48.55,
+  "luck": -0.45,
+  "score": -0.19
  },
  {
   "id": "David Kim|brn|ben",
   "player": "David Kim",
   "event": "Burns you inflicted",
   "kind": "Burns",
-  "tries": 11,
+  "tries": 13,
   "happened": 6,
-  "expected": 3.3,
-  "luck": 2.7,
-  "score": 1.78
+  "expected": 3.9,
+  "luck": 2.1,
+  "score": 1.27
  },
  {
   "id": "David Kim|brn|vic",
@@ -906,11 +917,11 @@
   "player": "David Kim",
   "event": "Flinches you took",
   "kind": "Flinches",
-  "tries": 4,
-  "happened": 2,
-  "expected": 1.2,
-  "luck": -0.8,
-  "score": -0.87
+  "tries": 9,
+  "happened": 4,
+  "expected": 2.7,
+  "luck": -1.3,
+  "score": -0.95
  },
  {
   "id": "David Kim|drop|ben",
@@ -961,66 +972,77 @@
   "player": "David Kim",
   "event": "You fully paralyzed",
   "kind": "Full paralysis",
-  "tries": 42,
-  "happened": 10,
-  "expected": 10.5,
-  "luck": 0.5,
-  "score": 0.18
+  "tries": 53,
+  "happened": 13,
+  "expected": 13.25,
+  "luck": 0.25,
+  "score": 0.08
  },
  {
   "id": "Dennis|crit|ben",
   "player": "Dennis",
   "event": "Crits you landed",
   "kind": "Critical hits",
-  "tries": 77,
-  "happened": 8,
-  "expected": 4.81,
-  "luck": 3.19,
-  "score": 1.5
+  "tries": 121,
+  "happened": 12,
+  "expected": 7.56,
+  "luck": 4.44,
+  "score": 1.67
  },
  {
   "id": "Dennis|crit|vic",
   "player": "Dennis",
   "event": "Crits you took",
   "kind": "Critical hits",
-  "tries": 100,
-  "happened": 6,
-  "expected": 6.25,
-  "luck": 0.25,
-  "score": 0.1
+  "tries": 117,
+  "happened": 9,
+  "expected": 7.31,
+  "luck": -1.69,
+  "score": -0.64
  },
  {
   "id": "Dennis|acc|ben",
   "player": "Dennis",
   "event": "Your moves hitting",
   "kind": "Accuracy",
-  "tries": 14,
-  "happened": 10,
-  "expected": 10.65,
-  "luck": -0.65,
-  "score": -0.41
+  "tries": 19,
+  "happened": 15,
+  "expected": 15.25,
+  "luck": -0.25,
+  "score": -0.15
  },
  {
   "id": "Dennis|acc|vic",
   "player": "Dennis",
   "event": "Opponent moves hitting you",
   "kind": "Accuracy",
-  "tries": 36,
-  "happened": 34,
-  "expected": 31.6,
-  "luck": -2.4,
-  "score": -1.24
+  "tries": 42,
+  "happened": 40,
+  "expected": 36.85,
+  "luck": -3.15,
+  "score": -1.51
+ },
+ {
+  "id": "Dennis|brn|ben",
+  "player": "Dennis",
+  "event": "Burns you inflicted",
+  "kind": "Burns",
+  "tries": 2,
+  "happened": 0,
+  "expected": 0.2,
+  "luck": -0.2,
+  "score": -0.47
  },
  {
   "id": "Dennis|brn|vic",
   "player": "Dennis",
   "event": "Burns you took",
   "kind": "Burns",
-  "tries": 21,
-  "happened": 2,
-  "expected": 4.7,
-  "luck": 2.7,
-  "score": 1.45
+  "tries": 22,
+  "happened": 3,
+  "expected": 5.0,
+  "luck": 2.0,
+  "score": 1.05
  },
  {
   "id": "Dennis|frz|ben",
@@ -1060,11 +1082,11 @@
   "player": "Dennis",
   "event": "Flinches you caused",
   "kind": "Flinches",
-  "tries": 1,
-  "happened": 0,
-  "expected": 0.3,
-  "luck": -0.3,
-  "score": -0.65
+  "tries": 3,
+  "happened": 1,
+  "expected": 0.8,
+  "luck": 0.2,
+  "score": 0.26
  },
  {
   "id": "Dennis|flinch|vic",
@@ -1082,11 +1104,11 @@
   "player": "Dennis",
   "event": "Stat drops you caused",
   "kind": "Stat drops",
-  "tries": 6,
-  "happened": 1,
-  "expected": 0.6,
-  "luck": 0.4,
-  "score": 0.54
+  "tries": 27,
+  "happened": 3,
+  "expected": 3.4,
+  "luck": -0.4,
+  "score": -0.23
  },
  {
   "id": "Dennis|drop|vic",
@@ -1115,44 +1137,44 @@
   "player": "Dzzy",
   "event": "Crits you landed",
   "kind": "Critical hits",
-  "tries": 91,
+  "tries": 108,
   "happened": 7,
-  "expected": 5.88,
-  "luck": 1.12,
-  "score": 0.48
+  "expected": 7.0,
+  "luck": 0.0,
+  "score": 0.0
  },
  {
   "id": "Dzzy|crit|vic",
   "player": "Dzzy",
   "event": "Crits you took",
   "kind": "Critical hits",
-  "tries": 100,
-  "happened": 6,
-  "expected": 6.25,
-  "luck": 0.25,
-  "score": 0.1
+  "tries": 119,
+  "happened": 10,
+  "expected": 7.44,
+  "luck": -2.56,
+  "score": -0.97
  },
  {
   "id": "Dzzy|acc|ben",
   "player": "Dzzy",
   "event": "Your moves hitting",
   "kind": "Accuracy",
-  "tries": 25,
-  "happened": 19,
-  "expected": 20.5,
-  "luck": -1.5,
-  "score": -0.8
+  "tries": 31,
+  "happened": 23,
+  "expected": 25.35,
+  "luck": -2.35,
+  "score": -1.11
  },
  {
   "id": "Dzzy|acc|vic",
   "player": "Dzzy",
   "event": "Opponent moves hitting you",
   "kind": "Accuracy",
-  "tries": 51,
-  "happened": 44,
-  "expected": 45.75,
-  "luck": 1.75,
-  "score": 0.83
+  "tries": 54,
+  "happened": 47,
+  "expected": 48.45,
+  "luck": 1.45,
+  "score": 0.66
  },
  {
   "id": "Dzzy|brn|ben",
@@ -1170,11 +1192,33 @@
   "player": "Dzzy",
   "event": "Burns you took",
   "kind": "Burns",
-  "tries": 3,
+  "tries": 6,
   "happened": 1,
-  "expected": 0.7,
-  "luck": -0.3,
-  "score": -0.42
+  "expected": 1.2,
+  "luck": 0.2,
+  "score": 0.21
+ },
+ {
+  "id": "Dzzy|frz|ben",
+  "player": "Dzzy",
+  "event": "Freezes you inflicted",
+  "kind": "Freezes",
+  "tries": 1,
+  "happened": 0,
+  "expected": 0.1,
+  "luck": -0.1,
+  "score": -0.33
+ },
+ {
+  "id": "Dzzy|frz|vic",
+  "player": "Dzzy",
+  "event": "Freezes you took",
+  "kind": "Freezes",
+  "tries": 2,
+  "happened": 1,
+  "expected": 0.2,
+  "luck": -0.8,
+  "score": -1.89
  },
  {
   "id": "Dzzy|par|ben",
@@ -1232,48 +1276,59 @@
   "score": -1.22
  },
  {
+  "id": "Dzzy|thaw|ben",
+  "player": "Dzzy",
+  "event": "Your Pokémon thawing out",
+  "kind": "Thawing",
+  "tries": 1,
+  "happened": 0,
+  "expected": 0.2,
+  "luck": -0.2,
+  "score": -0.5
+ },
+ {
   "id": "Ethan|crit|ben",
   "player": "Ethan",
   "event": "Crits you landed",
   "kind": "Critical hits",
-  "tries": 95,
-  "happened": 6,
-  "expected": 5.94,
-  "luck": 0.06,
-  "score": 0.03
+  "tries": 108,
+  "happened": 9,
+  "expected": 6.75,
+  "luck": 2.25,
+  "score": 0.89
  },
  {
   "id": "Ethan|crit|vic",
   "player": "Ethan",
   "event": "Crits you took",
   "kind": "Critical hits",
-  "tries": 120,
+  "tries": 139,
   "happened": 9,
-  "expected": 7.69,
-  "luck": -1.31,
-  "score": -0.49
+  "expected": 8.88,
+  "luck": -0.12,
+  "score": -0.04
  },
  {
   "id": "Ethan|acc|ben",
   "player": "Ethan",
   "event": "Your moves hitting",
   "kind": "Accuracy",
-  "tries": 27,
-  "happened": 25,
-  "expected": 23.45,
-  "luck": 1.55,
-  "score": 0.9
+  "tries": 35,
+  "happened": 32,
+  "expected": 29.95,
+  "luck": 2.05,
+  "score": 1.01
  },
  {
   "id": "Ethan|acc|vic",
   "player": "Ethan",
   "event": "Opponent moves hitting you",
   "kind": "Accuracy",
-  "tries": 50,
-  "happened": 49,
-  "expected": 44.8,
-  "luck": -4.2,
-  "score": -1.97
+  "tries": 58,
+  "happened": 57,
+  "expected": 52.0,
+  "luck": -5.0,
+  "score": -2.18
  },
  {
   "id": "Ethan|brn|ben",
@@ -1302,11 +1357,11 @@
   "player": "Ethan",
   "event": "Freezes you inflicted",
   "kind": "Freezes",
-  "tries": 7,
+  "tries": 8,
   "happened": 1,
-  "expected": 0.7,
-  "luck": 0.3,
-  "score": 0.38
+  "expected": 0.8,
+  "luck": 0.2,
+  "score": 0.24
  },
  {
   "id": "Ethan|frz|vic",
@@ -1357,22 +1412,22 @@
   "player": "Ethan",
   "event": "Stat drops you caused",
   "kind": "Stat drops",
-  "tries": 6,
+  "tries": 8,
   "happened": 2,
-  "expected": 0.6,
-  "luck": 1.4,
-  "score": 1.91
+  "expected": 0.8,
+  "luck": 1.2,
+  "score": 1.41
  },
  {
   "id": "Ethan|drop|vic",
   "player": "Ethan",
   "event": "Stat drops you took",
   "kind": "Stat drops",
-  "tries": 9,
+  "tries": 10,
   "happened": 2,
-  "expected": 1.1,
-  "luck": -0.9,
-  "score": -0.92
+  "expected": 1.3,
+  "luck": -0.7,
+  "score": -0.66
  },
  {
   "id": "Ethan|fpar|ben",
@@ -1412,66 +1467,66 @@
   "player": "Max",
   "event": "Crits you landed",
   "kind": "Critical hits",
-  "tries": 128,
-  "happened": 5,
-  "expected": 8.0,
-  "luck": -3.0,
-  "score": -1.1
+  "tries": 145,
+  "happened": 8,
+  "expected": 9.06,
+  "luck": -1.06,
+  "score": -0.36
  },
  {
   "id": "Max|crit|vic",
   "player": "Max",
   "event": "Crits you took",
   "kind": "Critical hits",
-  "tries": 136,
-  "happened": 12,
-  "expected": 8.88,
-  "luck": -3.12,
-  "score": -1.09
+  "tries": 180,
+  "happened": 16,
+  "expected": 11.62,
+  "luck": -4.38,
+  "score": -1.33
  },
  {
   "id": "Max|acc|ben",
   "player": "Max",
   "event": "Your moves hitting",
   "kind": "Accuracy",
-  "tries": 17,
-  "happened": 17,
-  "expected": 15.55,
-  "luck": 1.45,
-  "score": 1.27
+  "tries": 23,
+  "happened": 23,
+  "expected": 20.8,
+  "luck": 2.2,
+  "score": 1.58
  },
  {
   "id": "Max|acc|vic",
   "player": "Max",
   "event": "Opponent moves hitting you",
   "kind": "Accuracy",
-  "tries": 46,
-  "happened": 41,
-  "expected": 40.2,
-  "luck": -0.8,
-  "score": -0.37
+  "tries": 51,
+  "happened": 46,
+  "expected": 44.8,
+  "luck": -1.2,
+  "score": -0.54
  },
  {
   "id": "Max|brn|ben",
   "player": "Max",
   "event": "Burns you inflicted",
   "kind": "Burns",
-  "tries": 9,
-  "happened": 1,
-  "expected": 2.1,
-  "luck": -1.1,
-  "score": -0.89
+  "tries": 10,
+  "happened": 2,
+  "expected": 2.4,
+  "luck": -0.4,
+  "score": -0.3
  },
  {
   "id": "Max|brn|vic",
   "player": "Max",
   "event": "Burns you took",
   "kind": "Burns",
-  "tries": 16,
+  "tries": 18,
   "happened": 6,
-  "expected": 2.4,
-  "luck": -3.6,
-  "score": -2.6
+  "expected": 2.6,
+  "luck": -3.4,
+  "score": -2.35
  },
  {
   "id": "Max|frz|ben",
@@ -1522,11 +1577,11 @@
   "player": "Max",
   "event": "Flinches you took",
   "kind": "Flinches",
-  "tries": 1,
-  "happened": 0,
-  "expected": 0.3,
-  "luck": 0.3,
-  "score": 0.65
+  "tries": 3,
+  "happened": 1,
+  "expected": 0.8,
+  "luck": -0.2,
+  "score": -0.26
  },
  {
   "id": "Max|drop|ben",
@@ -1544,11 +1599,11 @@
   "player": "Max",
   "event": "Stat drops you took",
   "kind": "Stat drops",
-  "tries": 19,
-  "happened": 4,
-  "expected": 2.7,
-  "luck": -1.3,
-  "score": -0.86
+  "tries": 40,
+  "happened": 6,
+  "expected": 5.5,
+  "luck": -0.5,
+  "score": -0.23
  },
  {
   "id": "Max|cself|vic",
